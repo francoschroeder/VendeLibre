@@ -23,8 +23,6 @@ Route::get('/Item', function () {
 
 Auth::routes();
 
-<<<<<<< Updated upstream
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-=======
+
 Route::get('/store', 'StoreController@show');
->>>>>>> Stashed changes
