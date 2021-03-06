@@ -23,6 +23,7 @@ class CreateItemsTable extends Migration
             $table->string('title');
             $table->float('price');
             $table->string('description');
+            $table->index('store_id');
         });
     }
 
