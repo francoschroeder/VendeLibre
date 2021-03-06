@@ -37,10 +37,8 @@
                     </div>
                     @endif
 
-                    @foreach($items as $item) {
-                        <div>{{$item->title}}</div>
-                        }  
-                    @endforeach
+        
+                    
                 </div>
             </div>
         </div>
