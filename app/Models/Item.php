@@ -9,6 +9,8 @@ class Item extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     public function store() {
     	return $this->belongsTo(Store::class);
     }

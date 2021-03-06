@@ -21,7 +21,6 @@ class CreateStoresTable extends Migration
                     ->on('users')
                     ->onDelete('cascade');
             $table->string('name');
-            $table->timestamps();
         });
     }
 

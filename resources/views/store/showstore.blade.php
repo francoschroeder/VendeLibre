@@ -19,6 +19,12 @@
                     @endif
 
                     ¡Bienvenido a VendeLibre!
+                    <h1> {{$store->name}} </h1>
+
+                    @foreach($items as $item)
+                        <h5> {{$item->name}} </h5>
+                    @endforeach
+
                 </div>
             </div>
         </div>

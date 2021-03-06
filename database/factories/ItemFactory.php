@@ -23,10 +23,10 @@ class ItemFactory extends Factory
     public function definition()
     {
         return [
-            'store_id'      => Store::factory(),
             'title'         => $this->faker->name . "'s Item",
             'price'         => rand(1, 999),
             'description'   => $this->faker->text,
+            'store_id'      => Store::factory(),
         ];
     }
 }
