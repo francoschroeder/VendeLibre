@@ -9,10 +9,12 @@ use App\Models\Item;
 class StoreController extends Controller
 {
     public function show($store_id) {
-    	$store = Store::findOrFail($store_id);
-		$items = Item::findOrfail($store_id)->first();
-		
-		return view('store.showstore',compact('store'),compact('items'));
-    		
+    	$store = Store::find($store_id);
+
+    	$items = $store->items;
+    	
+    	return view('store.showstore')
+    			->with(compact('store'))
+    			->with(compact('items'));
     }
 }

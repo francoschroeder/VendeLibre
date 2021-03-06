@@ -17,28 +17,12 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
                     ¡Bienvenido a VendeLibre!
                     <h1> {{$store->name}} </h1>
 
-                 
-         
-                    @if($items->count())
-                    <div class ="container">
-                        <ul class="list-group">
-                
-                      
-                        <li> {{$items -> title}} 
-                        <h5> {{$items ->description}} </h5>
-                        </li>
-                      
-
-                        </ul>
-                    </div>
-                    @endif
-
-        
-                    
+                    @foreach($items as $item)
+                        <h5> {{$item->title}} </h5>
+                    @endforeach
                 </div>
             </div>
         </div>
