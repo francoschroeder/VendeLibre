@@ -20,7 +20,7 @@ class CreateItemsTable extends Migration
                     ->references('id')
                     ->on('stores')
                     ->onDelete('cascade');
-            $talbe->string('title');
+            $table->string('title');
             $table->float('price');
             $table->string('description');
         });
