@@ -25,7 +25,7 @@
                     @endforeach
                 </div>
 
-                <a href="/store/{$store->id}/addItem">
+                <a href="/store/{{ $store->id }}/addItem">
 				<button type="button" class="btn btn-success">Agregar Item</button>
 			    </a>
             </div>

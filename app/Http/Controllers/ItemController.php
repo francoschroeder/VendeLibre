@@ -19,9 +19,9 @@ class ItemController extends Controller
 
     public function addItem($id_store) {
         $store = Store::findOrFail($id_store);
-        return view('item.create',compact('store'));
-       
+
+        return view('item.create')
+                ->with(compact('store'));
     }
-   
 }
 

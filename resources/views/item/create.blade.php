@@ -1,3 +1,9 @@
+@extends('layouts.app')
+
+@section('title')
+    Añadir Item
+@endsection
+
 @section('content')
 <div class = "container">
 					<form method = "POST" action="/store/{id_store}/createItem">
