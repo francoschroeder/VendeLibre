@@ -15,4 +15,15 @@ class StoreController extends Controller
     			->with(compact('store'))
     			->with(compact('items'));
     }
+
+    public function create(Request $request) {
+    	$store = new Store;
+
+    	$store->name 	= $request->name;
+    	$store->user_id = $request->user_id;
+
+    	$store->save();
+
+    	return redirect('/store/' . $store->id);
+    }
 }
