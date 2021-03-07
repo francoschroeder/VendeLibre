@@ -31,6 +31,12 @@ Route::post('/store/{id_store}/createItem','ItemController@createItem');
 
 Route::get('/store/{id_store}', 'StoreController@show');
 
+Route::get('/createStore', function () {
+	return view('store.createstore');
+});
+
+Route::post('/createStore','StoreController@create');
+
 Route::get('/store/{id_store}/{id_item}', 'ItemController@show')->name('item.show');
 
 
