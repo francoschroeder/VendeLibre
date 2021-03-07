@@ -29,4 +29,5 @@ Route::get('/store/{id_store}', 'StoreController@show');
 
 Route::get('/store/{id_store}/{id_item}', 'ItemController@show')->name('item.show');
 
-Route::get('/store/{id_store}/addItem', 'ItemController@addItem');
+Route::get('/store/{id_store}/addItem', 'ItemController@addItem')->name('item.addItem');
+

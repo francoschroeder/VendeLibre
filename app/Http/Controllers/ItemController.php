@@ -17,9 +17,10 @@ class ItemController extends Controller
         return view('items.edit',compact('item')); 
     }
 
-    public function additem($id_store) {
-        dd($id_store);
-    	//return view('item.addItem',compact($store_id));
+    public function addItem($id_store) {
+        $item = Item::findOrFail('1');
+        return view('item.show',compact('item'));
+       
     }
    
 }
