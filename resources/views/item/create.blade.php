@@ -1,34 +1,45 @@
 @section('content')
-    <h2 class="text-center">Crear lista</h2>
-	<form method="POST" action="/store/{{}}">
-                        @csrf
+<div class = "container">
+					<form method = "POST" action="/store/{id_store}/createItem">
+						
+								@csrf
+								<div class = "container">
+										<div class="form-group row">
+												<label for="example-text-input" class="col-2 col-form-label">Item</label>
+											<div class="col-10">
+												<input class="form-control" type="text" id="example-text-input" name = "title">
+												</div>
+										</div>
+										<div class="form-group row">
+											<label for="example-date-input" class="col-2 col-form-label">Precio</label>
+											<div class="col-10">
+											<input class="form-control" type="number" min="0,00"  name="price">
+											</div>
+										</div>
+										<div class="form-group row">
+												<label for="example-number-input" class="col-2 col-form-label">Descripcion</label>
+												<div class="col-10">
+												<input class="form-control" type="text" id="example-text-input" name = "description">
+												</div>
+										</div>
+									
+								
+								
+								
+								</div>
+								<div>
+								<button type="submit" class="btn btn-primary">Agregar</button>
+								</div>
+										
+								<div>
+									<ul>
+										@foreach($errors->all() as $error)
+											<br>
+											<li>{{$error}}</li>
+										@endforeach	
+									</ul>
+								</div>
+				</form>
+	</div>
 
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nombre de la lista') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" required autofocus>
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="public" id="public">
-
-                                    <label class="form-check-label" for="public">
-                                        {{ __('¿Pública?') }}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Crear nueva lista') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
 @endsection
