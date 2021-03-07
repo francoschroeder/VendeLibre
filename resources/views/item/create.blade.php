@@ -6,7 +6,7 @@
 
 @section('content')
 <div class = "container">
-					<form method = "POST" action="/store/{id_store}/createItem">
+					<form method = "POST" action="/store/{{$store->id}/createItem">
 						
 								@csrf
 								<div class = "container">
