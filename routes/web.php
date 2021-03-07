@@ -27,4 +27,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('/store/{id_store}', 'StoreController@show');
 
-Route::get('/store/{id_store}/item/{id_item}', 'ItemController@show')->name('item.show');
+Route::get('/store/{id_store}/{id_item}', 'ItemController@show')->name('item.show');
+
+Route::get('/store/{id_store}/addItem', 'ItemController@addItem');

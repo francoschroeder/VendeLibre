@@ -17,14 +17,12 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    
+                    ¡Bienvenido a VendeLibre!
                     <h1> {{$item->title}} </h1>
 
-                  
-                    <h5> {{$item->price}} </h5>
-                    <h5> {{$item->description}} </h5>
-                    
-                   
+                    @foreach($items as $item)
+                        <h5> {{$item->title}} </h5>
+                    @endforeach
                 </div>
             </div>
         </div>

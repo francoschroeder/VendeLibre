@@ -3,42 +3,24 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Store;
+use App\Models\Item;
 
 class ItemController extends Controller
 {
-    public function show($store_id, $item_id) {
-
-       dd($item_id);
-       return view('home');
-        // $item = Items::where('id', $item_Id)->get();
-       // return view();
-    }
+    public function show($store_id, $id) {
+        $item = Item::findOrFail($id);
+        return view('item.show',compact('item'));
+        }
 
     public function edit(Item $item){
         return view('items.edit',compact('item')); 
     }
 
-    public function store(){
-        return $this->belongsTo(Store::class);
+    public function additem($id_store) {
+        dd($id_store);
+    	//return view('item.addItem',compact($store_id));
     }
-    public function sstore($item){
-
-        request()->validate([
-            'title' => ['required', 'min:2', 'max:155'],
-            'price' => ['required','float'],
-            'descripion' => ['required', 'min:2', 'max:155']
-        ]);
-    
-        $item = new Item;
-        $item->store_id = $things;
-        $item->title = request('title');
-        $item->price = request('price');
-        $item->description = request('description');
-        $item->save();
-
-        return redirect('/things'); 
-    }
-
-    
+   
 }
 
