@@ -11,7 +11,7 @@ class ItemController extends Controller
     public function show($store_id, $id) {
         $item = Item::findOrFail($id);
         return view('item.show',compact('item'));
-        }
+    }
 
     public function edit(Item $item){
         return view('item.edit',compact('item')); 
@@ -25,8 +25,6 @@ class ItemController extends Controller
     }
 
     public function createItem($store_id){
-        
-        
         request()->validate([
             'title' => ['required', 'min:2', 'max:155'],
             'price' => ['required', 'min:0,0'],
@@ -41,7 +39,5 @@ class ItemController extends Controller
         $item->store_id = $store_id;
         $item->save();
         return redirect('/store/'.$store_id); 
-        
     }
 }
-
