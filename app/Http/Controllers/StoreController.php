@@ -13,7 +13,12 @@ class StoreController extends Controller
     	$store = Store::findOrFail($store_id);
 		$items = $store->items;
 
-		$map = Mapper::map(53.381128999999990000, -1.470085000000040000);
+		$map = Mapper::map(-39.09658811417856, -67.08757219374567);
+		
+		//hay que tener la app_key
+		//Mapper::location('Sheffield');
+
+
 
 		return view('store.showstore')
     			->with(compact('store'))
