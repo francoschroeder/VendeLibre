@@ -24,12 +24,16 @@
                         <h5> {{$item->title}} </h5>
                     @endforeach
                 </div>
-
                 <a href="/store/{{ $store->id }}/addItem">
 				<button type="button" class="btn btn-success">Agregar Item</button>
 			    </a>
             </div>
         </div>
+        <div style="width: 500px; height: 500px;">
+            {!! Mapper::render() !!}
+        </div>
     </div>
+
+     
 </div>
 @endsection
