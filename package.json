@@ -27,7 +27,6 @@
     },
     "dependencies": {
         "@popperjs/core": "^2.9.0",
-        "mercadopago": "^1.5.5",
         "popper.js": "^1.16.1"
     }
 }

@@ -5,12 +5,30 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Store;
 use App\Models\Item;
+use MercadoPago;
 
 class ItemController extends Controller
 {
     public function show($store_id, $id) {
+        // Agrega credenciales
+        MercadoPago\SDK::setAccessToken('TEST-3364711930325075-030813-3ee07693f9e87c8a7226b298529dc3b5-209177342');
+
+        // Crea un objeto de preferencia
+        $preference = new MercadoPago\Preference();
+
+        // Crea un ítem en la preferencia
+        $product = new MercadoPago\Item();
+        $product->title = 'Mi producto';
+        $product->quantity = 1;
+        $product->unit_price = 75.56;
+        $preference->items = array($item);
+        $preference->save();
+
         $item = Item::findOrFail($id);
-        return view('item.show',compact('item'));
+
+        return view('item.show')
+                ->compact('item')
+                ->compact('preference');
     }
 
     public function edit(Item $item){

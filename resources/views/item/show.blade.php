@@ -19,12 +19,12 @@
                     @endif
                     
                     <h1> {{$item->title}} </h1>
-
-                  
                     <h5> {{$item->price}} </h5>
                     <h5> {{$item->description}} </h5>
-                    
-                   
+                    <script
+                        src="https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js"
+                        data-preference-id="{{ $preference->id }}">
+                    </script>
                 </div>
             </div>
         </div>
