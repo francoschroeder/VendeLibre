@@ -13,29 +13,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/Item', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', 'HomeController@index');
 
-Route::get('/store/{id_store}/addItem','ItemController@addItem');
+Route::get('/store/{id_store}/addItem','ItemController@addItem')
+		->middleware('auth');
 
-Route::post('/store/{id_store}/createItem','ItemController@createItem');
+Route::post('/store/{id_store}/addItem','ItemController@createItem')
+		->middleware('auth');
 
 Route::get('/store/{id_store}', 'StoreController@show');
 
 Route::get('/createStore', function () {
 	return view('store.createstore');
-});
+})		->middleware('auth');
 
-Route::post('/createStore','StoreController@create');
+Route::post('/createStore','StoreController@create')
+		->middleware('auth');
 
 Route::get('/store/{id_store}/{id_item}', 'ItemController@show')->name('item.show');
 

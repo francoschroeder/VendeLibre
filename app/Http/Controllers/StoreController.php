@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Store;
+use Illuminate\Support\Facades\Auth;
 
 class StoreController extends Controller
 {
@@ -20,7 +21,7 @@ class StoreController extends Controller
     	$store = new Store;
 
     	$store->name 	= $request->name;
-    	$store->user_id = $request->user_id;
+    	$store->user_id = Auth::id();
 
     	$store->save();
 

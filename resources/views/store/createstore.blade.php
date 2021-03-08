@@ -17,13 +17,6 @@
 					<input class="form-control" type="text" id="example-text-input" name = "name">
 				</div>
 			</div>
-			<div class="form-group row">
-				<label for="example-number-input" class="col-2 col-form-label">ID de Usuario</label>
-
-				<div class="col-10">
-					<input class="form-control" type="number" name = "user_id">
-				</div>
-			</div>
 		</div>
 		<div>
 			<button type="submit" class="btn btn-primary">Agregar</button>
