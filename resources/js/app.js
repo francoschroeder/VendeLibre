@@ -14,9 +14,3 @@ require('./bootstrap');
 
 require('./components/Example');
 
-import * as VueGoogleMaps from 'vue2-google-maps';
-Vue.use(VueGoogleMaps, {
-    load:{
-        key:''
-    }
-})
