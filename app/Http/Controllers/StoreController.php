@@ -13,7 +13,7 @@ class StoreController extends Controller
     	$store = Store::findOrFail($store_id);
 		$items = $store->items;
 
-		$map = Mapper::map(-39.09658811417856, -67.08757219374567);
+		$map = Mapper::map($store->latitud, $store->longitud);
 		
 		//hay que tener la app_key
 		//Mapper::location('Sheffield');
@@ -30,7 +30,9 @@ class StoreController extends Controller
     	$store = new Store;
 
     	$store->name 	= $request->name;
-    	$store->user_id = Auth::id();
+		$store->latitud	= $request->latitud;
+		$store->longitud 	= $request->longitud;
+		$store->user_id = Auth::id();
 
     	$store->save();
 

@@ -16,6 +16,10 @@
 
                     {{ __('You are logged in!') }}
                 </div>
+
+                <div>
+                <a href="http://127.0.0.1:8000/createStore">Crear Stores</a>
+		    </div>
             </div>
         </div>
     </div>

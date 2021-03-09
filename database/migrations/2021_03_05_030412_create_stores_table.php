@@ -21,6 +21,9 @@ class CreateStoresTable extends Migration
                     ->on('users')
                     ->onDelete('cascade');
             $table->string('name');
+            $table->float('latitud');
+            $table->float('longitud');
+
         });
     }
 
