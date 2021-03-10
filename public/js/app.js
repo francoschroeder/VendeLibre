@@ -2066,8 +2066,7 @@ var App = /*#__PURE__*/function (_Component) {
             component: _Store__WEBPACK_IMPORTED_MODULE_2__.default
           })
         })
-      }) //<Store/>
-      ;
+      });
     }
   }]);
 
