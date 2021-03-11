@@ -44,7 +44,9 @@ class StoreController extends Controller
 	
 	public function description($store_id){
 		$store = Store::findOrFail($store_id);
-		$map = Mapper::map($store->latitud, $store->longitud);
+
+		//$map = Mapper::map($store->latitud, $store->longitud);
+		$map = Mapper::map(1, 1);
 		return view('store.description')->with(compact('store'))
 										->with(compact('map'));
 	}
