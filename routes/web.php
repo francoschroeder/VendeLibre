@@ -41,8 +41,4 @@ Route::get('/store/{id_store}/contact', 'Storecontroller@description')->name('st
 Route::get('/store/{id_store}/{id_item}', 'ItemController@show')->name('item.show');
 
 
-
-
-Auth::routes();
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
