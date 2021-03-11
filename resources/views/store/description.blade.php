@@ -30,10 +30,9 @@
             </div>
         </div>  
     </div>
-</div>
 
-    <!-- Contact Section Begin -->
-    <section class="contact-section spad">
+<!-- Contact Section Begin -->
+<section class="contact-section spad">
         <div class="container">
             <div class="row">
                 <div class="col-lg-5">
@@ -74,6 +73,12 @@
         </div>
     </section>
     <!-- Contact Section End -->
+
+
+</div>
+
+
+    
 
     <script src="{{ asset('js/jquery-3.3.1.min.js')}}"></script>
     <script src="{{ asset('js/bootstrap.min.js')}}"></script>
