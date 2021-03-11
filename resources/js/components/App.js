@@ -16,4 +16,7 @@ class App extends Component {
     }
 }
 
-ReactDOM.render(<App />, document.getElementById('react-app'))
+var reactApp = document.getElementById('react-app')
+
+if (reactApp != null)
+	ReactDOM.render(<App />, reactApp)
