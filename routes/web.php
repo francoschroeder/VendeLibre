@@ -36,6 +36,8 @@ Route::get('/createStore', function () {
 Route::post('/createStore','StoreController@create')
 		->middleware('auth');
 
+Route::get('/store/{id_store}/contact', 'Storecontroller@description')->name('store.description');
+
 Route::get('/store/{id_store}/{id_item}', 'ItemController@show')->name('item.show');
 
 

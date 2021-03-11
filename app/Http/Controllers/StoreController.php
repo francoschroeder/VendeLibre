@@ -13,7 +13,7 @@ class StoreController extends Controller
     	$store = Store::findOrFail($store_id);
 		$items = $store->items;
 
-		$map = Mapper::map($store->latitud, $store->longitud);
+		
 		
 		//hay que tener la app_key
 		//Mapper::location('Sheffield');
@@ -22,8 +22,7 @@ class StoreController extends Controller
 
 		return view('store.showstore')
     			->with(compact('store'))
-				->with(compact('items'))
-				->with(compact('map'));
+				->with(compact('items'));
     }
 
     public function create(Request $request) {
@@ -31,11 +30,20 @@ class StoreController extends Controller
 
     	$store->name 	= $request->name;
 		$store->latitud	= $request->latitud;
-		$store->longitud 	= $request->longitud;
+		$store->longitud = $request->longitud;
+		$store->phone = $request->phone;
+		$store->description = $request->description;
 		$store->user_id = Auth::id();
 
     	$store->save();
 
     	return redirect('/store/' . $store->id);
-    }
+	}
+	
+	public function description($store_id){
+		$store = Store::findOrFail($store_id);
+		$map = Mapper::map($store->latitud, $store->longitud);
+		return view('store.description')->with(compact('store'))
+										->with(compact('map'));
+	}
 }

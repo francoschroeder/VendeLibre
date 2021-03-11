@@ -28,10 +28,7 @@
 				<button type="button" class="btn btn-success">Agregar Item</button>
 			    </a>
             </div>
-        </div>
-        <div style="width: 500px; height: 500px;">
-            {!! Mapper::render() !!}
-        </div>
+        </div>  
     </div>
 
      
