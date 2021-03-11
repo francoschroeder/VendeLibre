@@ -32,6 +32,8 @@ class StoreController extends Controller
 		$store->latitud	= $request->latitud;
 		$store->longitud = $request->longitud;
 		$store->phone = $request->phone;
+		$store->email = $request->email;
+		$store->direction = $request->direction;
 		$store->description = $request->description;
 		$store->user_id = Auth::id();
 

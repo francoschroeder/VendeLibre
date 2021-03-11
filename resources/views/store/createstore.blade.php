@@ -23,6 +23,14 @@
 				<div class="col-10">
 					<input class="form-control" type="float" id="example-float-input" name = "phone">
 				</div>
+				<label for="example-text-input" class="col-2 col-form-label">Email de contacto</label>
+				<div class="col-10">
+					<input class="form-control" type="float" id="example-float-input" name = "email">
+				</div>
+				<label for="example-text-input" class="col-2 col-form-label">Direccion</label>
+				<div class="col-10">
+					<input class="form-control" type="float" id="example-float-input" name = "direction">
+				</div>
 				<label for="example-text-input" class="col-2 col-form-label">Longitud</label>
 				<div class="col-10">
 					<input class="form-control" type="float" id="example-float-input" name = "longitud">
