@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-
+<link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css')}}" type="text/css">
 <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css')}}" type="text/css">
 <link rel="stylesheet" href="{{ asset('css/themify-icons.css')}}" type="text/css">
@@ -47,7 +47,7 @@
                             </div>
                             <div class="ci-text">
                                 <span>Direccion</span>
-                                <p>60-49 Road 11378 New York</p>
+                                <p>{{$store->direction}}</p>
                             </div>
                         </div>
                         <div class="cw-item">
@@ -65,7 +65,7 @@
                             </div>
                             <div class="ci-text">
                                 <span>Email:</span>
-                                <p>hellocolorlib@gmail.com</p>
+                                <p>{{$store->email}}</p>
                             </div>
                         </div>
                     </div>
