@@ -79,7 +79,10 @@ export default function SearchAppBar() {
             <MenuIcon />
           </IconButton>
           <Typography className={classes.title} variant="h6" noWrap>
-            Material-UI
+            Tienda
+          </Typography>
+          <Typography className={classes.subtitle} variant="h7" noWrap>
+            Contacto
           </Typography>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
