@@ -655,6 +655,13 @@ ol {
 	display: flex;
 }
 
+.nav-item-2 {
+	background: #ffffff;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+}
+
 .nav-item .nav-depart {
 	float: left;
 }
