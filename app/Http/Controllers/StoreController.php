@@ -26,7 +26,9 @@ class StoreController extends Controller
     }
 
     public function create(Request $request) {
-    	$store = new Store;
+		
+		
+		$store = new Store;
 
     	$store->name 	= $request->name;
 		$store->latitud	= $request->latitud;
