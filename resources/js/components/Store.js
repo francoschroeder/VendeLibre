@@ -67,7 +67,6 @@ export default function Album() {
   return (
     <React.Fragment>
       <CssBaseline />
-      <NavBar/>
       <main>
         {/* Hero unit */}
         <div className={classes.heroContent}>
