@@ -81,7 +81,7 @@ export default function SearchAppBar() {
           <Typography className={classes.title} variant="h6" noWrap>
             Tienda
           </Typography>
-          <Typography className={classes.subtitle} variant="h7" noWrap>
+          <Typography className={classes.subtitle} variant="h6" noWrap>
             Contacto
           </Typography>
           <div className={classes.search}>
