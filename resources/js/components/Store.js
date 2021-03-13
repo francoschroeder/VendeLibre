@@ -66,7 +66,7 @@ export default function Album() {
                 setName(response.data.name);
                 setDescription(response.data.description);
         })
-    }); 
+    }, []); 
 
     return (
     <React.Fragment>

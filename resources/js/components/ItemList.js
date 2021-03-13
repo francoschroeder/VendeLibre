@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import Card from '@material-ui/core/Card';
@@ -45,13 +45,23 @@ const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 export default function ItemList() {
 	const classes = useStyles();
+    const [items, setItems] = useState([]);
+
+    useEffect(() =>{
+        window.axios = require('axios');
+
+        axios.get('/api/getItemList/1')
+            .then(function (response) {
+                setItems(response.data)
+        })
+    }, []); 
 
 	return (
 		<Container className={classes.cardGrid} maxWidth="md">
           {/* End hero unit */}
           <Grid container spacing={4}>
-            {cards.map((card) => (
-              <Grid item key={card} xs={12} sm={6} md={4}>
+            {items.map((item) => (
+              <Grid item key={item.id} xs={12} sm={6} md={4}>
                 <Card className={classes.card}>
                   <CardMedia
                     className={classes.cardMedia}
@@ -60,10 +70,10 @@ export default function ItemList() {
                   />
                   <CardContent className={classes.cardContent}>
                     <Typography gutterBottom variant="h5" component="h2">
-                      Heading
+                      {item.title}
                     </Typography>
                     <Typography>
-                      This is a media card. You can use this section to describe the content.
+                      {item.description}
                     </Typography>
                   </CardContent>
                   <CardActions>

@@ -10,7 +10,7 @@ use MercadoPago;
 class ItemController extends Controller
 {
     public function show($store_id, $id) {
-        // Agrega credenciales
+        /*// Agrega credenciales
         MercadoPago\SDK::setAccessToken('TEST-3364711930325075-030813-3ee07693f9e87c8a7226b298529dc3b5-209177342');
 
         // Crea un objeto de preferencia
@@ -22,13 +22,13 @@ class ItemController extends Controller
         $product->quantity = 1;
         $product->unit_price = 75.56;
         $preference->items = array($item);
-        $preference->save();
+        $preference->save();*/
 
         $item = Item::findOrFail($id);
 
         return view('item.show')
-                ->compact('item')
-                ->compact('preference');
+                ->compact('item');
+                //->compact('preference');
     }
 
     public function edit(Item $item){

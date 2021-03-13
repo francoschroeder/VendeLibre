@@ -19,3 +19,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/getStore/{id_store}', 'StoreController@getStore');
+Route::get('/getItemList/{id_store}', 'StoreController@getItemList');
