@@ -52,4 +52,10 @@ class StoreController extends Controller
 		return view('store.description')->with(compact('store'))
 										->with(compact('map'));
 	}
+
+	public function getStore($store_id) {
+		$store = Store::find($store_id);
+
+		return response()->json($store);
+	}
 }
