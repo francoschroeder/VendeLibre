@@ -79,11 +79,8 @@ export default function ItemList() {
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <Button size="small" color="primary">
-                      View
-                    </Button>
-                    <Button size="small" color="primary">
-                      Edit
+                    <Button size="small" color="primary" href={'/store/' + id + '/' + item.id}>
+                      Ver
                     </Button>
                   </CardActions>
                 </Card>
