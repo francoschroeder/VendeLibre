@@ -9,25 +9,7 @@ use Cornford\Googlmapper\Facades\MapperFacade as Mapper;
 
 class StoreController extends Controller
 {
-    public function show($store_id) {
-    	$store = Store::findOrFail($store_id);
-		$items = $store->items;
-
-		
-		
-		//hay que tener la app_key
-		//Mapper::location('Sheffield');
-
-
-
-		return view('store.showstore')
-    			->with(compact('store'))
-				->with(compact('items'));
-    }
-
     public function create(Request $request) {
-		
-		
 		$store = new Store;
 
     	$store->name 	= $request->name;
@@ -53,6 +35,7 @@ class StoreController extends Controller
 										->with(compact('map'));
 	}
 
+	//API methods
 	public function getStore($store_id) {
 		$store = Store::find($store_id);
 
