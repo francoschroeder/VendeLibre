@@ -11,18 +11,9 @@ class StoreController extends Controller
 {
     public function show($store_id) {
     	$store = Store::findOrFail($store_id);
-		$items = $store->items;
-
-		
-		
-		//hay que tener la app_key
-		//Mapper::location('Sheffield');
-
-
 
 		return view('store.showstore')
-    			->with(compact('store'))
-				->with(compact('items'));
+    			->with(compact('store'));
     }
 
     public function create(Request $request) {
