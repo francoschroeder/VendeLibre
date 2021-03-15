@@ -1,4 +1,5 @@
 @extends('layouts.navBar')
+@extends('layouts.headerStore')
 
 @section('title')
     Página Principal
