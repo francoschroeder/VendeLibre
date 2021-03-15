@@ -27,7 +27,7 @@ class ItemController extends Controller
         $item = Item::findOrFail($id);
 
         return view('item.show')
-                ->compact('item');
+                ->with(compact('item'));
                 //->compact('preference');
     }
 

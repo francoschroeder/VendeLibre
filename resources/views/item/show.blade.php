@@ -23,7 +23,7 @@
                     <h5> {{$item->description}} </h5>
                     <script
                         src="https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js"
-                        data-preference-id="{{ $preference->id }}">
+                        data-preference-id="1">
                     </script>
                 </div>
             </div>
