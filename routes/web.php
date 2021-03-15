@@ -23,7 +23,7 @@ Route::get('/store/{id_store}/addItem','ItemController@addItem')
 Route::post('/store/{id_store}/addItem','ItemController@createItem')
 		->middleware('auth');
 
-Route::view('/store/{id_store}', 'store.showstore');
+Route::get('/store/{id_store}', 'StoreController@show');
 
 Route::get('/store/{id_store}/edit', function () {
 	return view('store.editstore');
