@@ -12,9 +12,10 @@
                             </li>
                             <li><a href="./blog.html">Blog</a></li>
                             <li><a href="/store/{{$store->id}}/contact">Contact</a></li>
-                            <li><a href="#">Pages</a>
-                                
-                            </li>
+                            @guest
+                            @else
+                            <li><a href="/store/{{$store->id}}/edit">Editar Pagina</a> </li>
+                            @endguest
                         </ul>
                     </nav>
                     <div id="mobile-menu-wrap"></div>
