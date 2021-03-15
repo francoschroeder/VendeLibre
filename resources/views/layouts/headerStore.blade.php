@@ -1,6 +1,6 @@
 
 @section('company_name')
-    {{$store->name}}
+    <a href="/store/{{$store->id}}">{{$store->name}}</a> 
 @endsection
 
 @section('phone')
