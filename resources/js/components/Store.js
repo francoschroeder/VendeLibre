@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
@@ -55,13 +56,14 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Album() {
     const classes = useStyles();
+    let { id } = useParams();
     const [name, setName] = useState();
     const [description, setDescription] = useState();
 
     useEffect(() =>{
         window.axios = require('axios');
 
-        axios.get('/api/getStore/1')
+        axios.get('/api/getStore/' + id)
             .then(function (response) {
                 setName(response.data.name);
                 setDescription(response.data.description);

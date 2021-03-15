@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import Card from '@material-ui/core/Card';
@@ -45,12 +46,13 @@ const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 export default function ItemList() {
 	const classes = useStyles();
+    let { id } = useParams();
     const [items, setItems] = useState([]);
 
     useEffect(() =>{
         window.axios = require('axios');
 
-        axios.get('/api/getItemList/1')
+        axios.get('/api/getItemList/' + id)
             .then(function (response) {
                 setItems(response.data)
         })
