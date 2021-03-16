@@ -10,10 +10,11 @@
                             <li><a href="./shop.html">Shop</a></li>
                             <li><a href="#">Collection</a>
                             </li>
-                            <li><a href="./blog.html">Blog</a></li>
+                            
                             <li><a href="/store/{{$store->id}}/contact">Contact</a></li>
                             @guest
                             @else
+                            <li><a href="/store/{{$store->id}}/addItem">Agregar Producto</a></li>
                             <li><a href="/store/{{$store->id}}/edit">Editar Pagina</a> </li>
                             @endguest
                         </ul>
