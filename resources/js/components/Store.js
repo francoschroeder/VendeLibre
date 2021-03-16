@@ -21,7 +21,10 @@ function Copyright() {
         </Typography>
     );
 }
-
+function cambiarNombre(setName){
+    console.log('pepe');
+    setName('pepe');
+}
 const useStyles = makeStyles((theme) => ({
     heroContent: {
         backgroundColor: theme.palette.background.paper,
@@ -42,6 +45,8 @@ export default function Store({edit}) {
     const [name, setName] = useState();
     const [description, setDescription] = useState();
 
+    
+
     useEffect(() =>{
         window.axios = require('axios');
 
@@ -59,7 +64,7 @@ export default function Store({edit}) {
             {/* Hero unit */}
             <div className={classes.heroContent}>
                 <Container maxWidth="sm">
-                    <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
+                    <Typography component="h1" variant="h2" align="center" color="textPrimary" onClick={cambiarNombre(setName)} gutterBottom>
                         {name}
                     </Typography>
                     <Typography variant="h5" align="center" color="textSecondary" paragraph>
