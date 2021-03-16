@@ -104,10 +104,10 @@ export default function Album() {
         {/* Footer */}
         <footer className={classes.footer}>
             <Typography variant="h6" align="center" gutterBottom>
-                Footer
+                Develop by el Fuller Schroeder
             </Typography>
             <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
-                Something here to give the footer a purpose!
+                Aguante Macri
             </Typography>
             <Copyright />
         </footer>
