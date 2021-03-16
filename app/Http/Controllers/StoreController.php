@@ -44,6 +44,14 @@ class StoreController extends Controller
 										->with(compact('map'));
 	}
 
+	public function edit($store_id) {
+		$store = Store::find($store_id);
+
+		return view('store.editstore')
+			->with(compact('store'));
+	}
+
+	//API
 	public function getStore($store_id) {
 		$store = Store::find($store_id);
 
