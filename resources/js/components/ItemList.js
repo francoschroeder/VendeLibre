@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import Card from '@material-ui/core/Card';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
@@ -13,7 +14,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ItemList() {
+function newItemCard(edit) {
+    if (edit)
+        return (
+            <Grid item key={16} xs={12} sm={6} md={4}>
+                Hola
+            </Grid>
+        )
+}
+
+export default function ItemList({ edit }) {
 	const classes = useStyles();
     let { id } = useParams();
     const [items, setItems] = useState([]);
@@ -36,6 +46,7 @@ export default function ItemList() {
                 <ItemCard item = {item}/>
               </Grid>
             ))}
+            {newItemCard(edit)}
           </Grid>
         </Container>
 	);

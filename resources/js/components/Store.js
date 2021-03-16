@@ -37,7 +37,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Store({edit}) {
-    console.log(edit);
     const classes = useStyles();
     let { id } = useParams();
     const [name, setName] = useState();
@@ -82,7 +81,7 @@ export default function Store({edit}) {
                     </div>
                 </Container>
             </div>
-            <ItemList/>
+            <ItemList edit = {edit}/>
             </main>
         {/* Footer */}
         <footer className={classes.footer}>
