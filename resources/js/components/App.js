@@ -8,8 +8,8 @@ class App extends Component {
     return (
         <BrowserRouter>
             <Switch>
-                <Route path="/store/:id" component = { () => <Store edit = {false}/> }/>
-                <Route path="/store/:id/edit" component = { () => <Store edit = {true}/> }/>
+                <Route exact path="/store/:id" component = { () => <Store edit = {false}/> }/>
+                <Route exact path="/store/:id/edit" component = { () => <Store edit = {true}/> }/>
             </Switch>
         </BrowserRouter>
     )
