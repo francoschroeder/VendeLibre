@@ -25,9 +25,7 @@ Route::post('/store/{id_store}/addItem','ItemController@createItem')
 
 Route::get('/store/{id_store}', 'StoreController@show');
 
-Route::get('/store/{id_store}/edit', function () {
-	return view('store.editstore');
-});
+Route::get('/store/{id_store}/edit', 'StoreController@edit');
 
 Route::get('/createStore', function () {
 	return view('store.createstore');

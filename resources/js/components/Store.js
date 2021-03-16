@@ -36,7 +36,8 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function Album() {
+export default function Store({edit}) {
+    console.log(edit);
     const classes = useStyles();
     let { id } = useParams();
     const [name, setName] = useState();
