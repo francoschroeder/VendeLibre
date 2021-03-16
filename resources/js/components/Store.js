@@ -68,14 +68,6 @@ export default function Store({edit}) {
                     <div className={classes.heroButtons}>
                         <Grid container spacing={2} justify="center">
                             <Grid item>
-                                <Button variant="contained" color="primary">
-                                    Main call to action
-                                </Button>
-                            </Grid>
-                            <Grid item>
-                                <Button variant="outlined" color="primary">
-                                    Secondary action
-                                </Button>
                             </Grid>
                         </Grid>
                     </div>
