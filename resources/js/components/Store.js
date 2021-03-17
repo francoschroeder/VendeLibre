@@ -22,6 +22,22 @@ function Copyright() {
     );
 }
 
+function RenderName(edit, name) {
+    if (edit)
+        return (
+            <input
+            className="MuiTypography-root MuiTypography-h4 MuiTypography-displayInline"
+            value={name}
+            />
+        )
+    else
+        return (
+            <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
+                {name}
+            </Typography>
+        )
+}
+
 const useStyles = makeStyles((theme) => ({
     heroContent: {
         backgroundColor: theme.palette.background.paper,
@@ -36,15 +52,11 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const [name, setName] = useState();
-
 export default function Store({edit}) {
     const classes = useStyles();
     let { id } = useParams();
     const [name, setName] = useState();
     const [description, setDescription] = useState();
-
-    
 
     useEffect(() =>{
         window.axios = require('axios');
@@ -63,9 +75,7 @@ export default function Store({edit}) {
             {/* Hero unit */}
             <div className={classes.heroContent}>
                 <Container maxWidth="sm">
-                    <Typography component="h1" variant="h2" align="center" color="textPrimary" onClick={() => setName('pepe')} gutterBottom>
-                        {name}
-                    </Typography>
+                    {RenderName(edit, name)}
                     <Typography variant="h5" align="center" color="textSecondary" paragraph>
                         {description}
                     </Typography>
