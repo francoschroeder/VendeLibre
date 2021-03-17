@@ -21,10 +21,7 @@ function Copyright() {
         </Typography>
     );
 }
-function cambiarNombre(setName){
-    console.log('pepe');
-    setName('pepe');
-}
+
 const useStyles = makeStyles((theme) => ({
     heroContent: {
         backgroundColor: theme.palette.background.paper,
@@ -38,6 +35,8 @@ const useStyles = makeStyles((theme) => ({
         padding: theme.spacing(6),
     },
 }));
+
+const [name, setName] = useState();
 
 export default function Store({edit}) {
     const classes = useStyles();
@@ -55,7 +54,7 @@ export default function Store({edit}) {
                 setName(response.data.name);
                 setDescription(response.data.description);
         })
-    }, []); 
+    }, []);
 
     return (
     <React.Fragment>
@@ -64,7 +63,7 @@ export default function Store({edit}) {
             {/* Hero unit */}
             <div className={classes.heroContent}>
                 <Container maxWidth="sm">
-                    <Typography component="h1" variant="h2" align="center" color="textPrimary" onClick={cambiarNombre(setName)} gutterBottom>
+                    <Typography component="h1" variant="h2" align="center" color="textPrimary" onClick={() => setName('pepe')} gutterBottom>
                         {name}
                     </Typography>
                     <Typography variant="h5" align="center" color="textSecondary" paragraph>
