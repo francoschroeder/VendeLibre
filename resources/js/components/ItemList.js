@@ -14,15 +14,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function newItemCard(edit) {
-    if (edit)
-        return (
-            <Grid item key={16} xs={12} sm={6} md={4}>
-                Hola
-            </Grid>
-        )
-}
-
 export default function ItemList({ edit }) {
 	const classes = useStyles();
     let { id } = useParams();
@@ -46,7 +37,6 @@ export default function ItemList({ edit }) {
                 <ItemCard item = {item}/>
               </Grid>
             ))}
-            {newItemCard(edit)}
           </Grid>
         </Container>
 	);

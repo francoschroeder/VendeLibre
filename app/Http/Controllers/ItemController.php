@@ -25,7 +25,7 @@ class ItemController extends Controller
         $preference->save();*/
 
         $item = Item::findOrFail($id);
-        $store = Store::findOrFail($id_store);
+        $store = Store::findOrFail($store_id);
 
         return view('item.show')
                 ->with(compact('item'))
