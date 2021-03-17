@@ -22,20 +22,36 @@ function Copyright() {
     );
 }
 
-function RenderName(edit, name) {
-    if (edit)
+function RenderHeader(edit) {
+    const [name, setName] = useState();
+    const [description, setDescription] = useState();
+
+    useEffect(() =>{
+        window.axios = require('axios');
+
+        axios.get('/api/getStore/' + id)
+            .then(function (response) {
+                setName(response.data.name);
+                setDescription(response.data.description);
+        })
+    }, []);
+
+    /*if (edit)
         return (
             <input
             className="MuiTypography-root MuiTypography-h4 MuiTypography-displayInline"
             value={name}
             />
         )
-    else
+    else*/
         return (
             <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
                 {name}
             </Typography>
-        )
+            <Typography variant="h5" align="center" color="textSecondary" paragraph>
+                {description}
+            </Typography>
+        );
 }
 
 const useStyles = makeStyles((theme) => ({
@@ -55,18 +71,6 @@ const useStyles = makeStyles((theme) => ({
 export default function Store({edit}) {
     const classes = useStyles();
     let { id } = useParams();
-    const [name, setName] = useState();
-    const [description, setDescription] = useState();
-
-    useEffect(() =>{
-        window.axios = require('axios');
-
-        axios.get('/api/getStore/' + id)
-            .then(function (response) {
-                setName(response.data.name);
-                setDescription(response.data.description);
-        })
-    }, []);
 
     return (
     <React.Fragment>
@@ -75,16 +79,7 @@ export default function Store({edit}) {
             {/* Hero unit */}
             <div className={classes.heroContent}>
                 <Container maxWidth="sm">
-                    {RenderName(edit, name)}
-                    <Typography variant="h5" align="center" color="textSecondary" paragraph>
-                        {description}
-                    </Typography>
-                    <div className={classes.heroButtons}>
-                        <Grid container spacing={2} justify="center">
-                            <Grid item>
-                            </Grid>
-                        </Grid>
-                    </div>
+                    {RenderHeader(edit)}
                 </Container>
             </div>
             <ItemList edit = {edit}/>
