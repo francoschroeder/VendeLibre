@@ -6,8 +6,8 @@
                     
                     <nav class="nav-menu mobile-menu">
                         <ul>
-                            <li><a href="/store/{{$store->id}}">Home</a></li>
-                            <li><a href="./shop.html">Shop</a></li>
+                            <li><a href="/home">Home</a></li>
+                            <li><a  href="/store/{{$store->id}}">Shop</a></li>
                             <li><a href="#">Collection</a>
                             </li>
                             

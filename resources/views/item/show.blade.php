@@ -16,12 +16,12 @@
     </div>
     <div class="col-sm-9">
       
-        <div class="col-8 col-sm-6">
+        <div class="col-8 col-sm-6 p-2">
             <h1> {{$item->title}} </h1>
         </div>
-        <div class="col-4 col-sm-6">
-            <h5> {{$item->price}} </h5>
-            <h5> {{$item->description}} </h5>
+        <div class="col-4 col-sm-6 p-2">
+            <h5 class="p-1">$ {{$item->price}} </h5>
+            <h5 class="p-1"> {{$item->description}} </h5>
             <script
                         src="https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js"
                         data-preference-id="1">
