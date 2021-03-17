@@ -53,17 +53,19 @@
                             <ul class="navbar-nav ml-auto">
                                     <!-- Authentication Links -->
                                     @guest
+                                    <form class="form-inline">
                                         @if (Route::has('login'))
-                                            <li class="nav-item-2">
+                                            <div class="nav-item-2 p-2">
                                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                            </li>
+                                            </div>
                                         @endif
                                         
                                         @if (Route::has('register'))
-                                            <li class="nav-item-2">
+                                            <div class="nav-item-2 p-2">
                                                 <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                            </li>
+                                            </div>
                                         @endif
+                                    </form>
                                     @else
                                         <li class="nav-item-2 dropdown">
                                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
