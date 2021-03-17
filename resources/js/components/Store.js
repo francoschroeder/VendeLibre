@@ -9,6 +9,20 @@ import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
 import ItemList from './ItemList';
 
+const useStyles = makeStyles((theme) => ({
+    heroContent: {
+        backgroundColor: theme.palette.background.paper,
+        padding: theme.spacing(8, 0, 6),
+    },
+    heroButtons: {
+        marginTop: theme.spacing(4),
+    },
+    footer: {
+        backgroundColor: theme.palette.background.paper,
+        padding: theme.spacing(6),
+    },
+}));
+
 function Copyright() {
     return (
         <Typography variant="body2" color="textSecondary" align="center">
@@ -22,9 +36,10 @@ function Copyright() {
     );
 }
 
-function RenderHeader(edit, id) {
-    const [name, setName] = useState();
-    const [description, setDescription] = useState();
+function RenderHeader(edit) {
+    let { id } = useParams();
+    const [name, setName] = useState('');
+    const [description, setDescription] = useState('');
 
     useEffect(() =>{
         window.axios = require('axios');
@@ -44,6 +59,11 @@ function RenderHeader(edit, id) {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
             />
+            <input
+                className="MuiTypography-root MuiTypography-h4 MuiTypography-displayInline"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+            />
             </React.Fragment>
         )
     else
@@ -59,20 +79,6 @@ function RenderHeader(edit, id) {
         )
 }
 
-const useStyles = makeStyles((theme) => ({
-    heroContent: {
-        backgroundColor: theme.palette.background.paper,
-        padding: theme.spacing(8, 0, 6),
-    },
-    heroButtons: {
-        marginTop: theme.spacing(4),
-    },
-    footer: {
-        backgroundColor: theme.palette.background.paper,
-        padding: theme.spacing(6),
-    },
-}));
-
 export default function Store({edit}) {
     const classes = useStyles();
     let { id } = useParams();
@@ -84,7 +90,7 @@ export default function Store({edit}) {
             {/* Hero unit */}
             <div className={classes.heroContent}>
                 <Container maxWidth="sm">
-                    {RenderHeader(edit, id)}
+                    {RenderHeader(edit)}
                 </Container>
             </div>
             <ItemList edit = {edit}/>
