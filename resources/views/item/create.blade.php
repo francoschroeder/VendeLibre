@@ -29,7 +29,7 @@
 												<input class="form-control" type="text" id="example-text-input" name = "description" rows="3">
 												</div>
 												<div class="form-group">
-												<label for="exampleFormControlFile1">Example file input</label>
+												<label for="exampleFormControlFile1">Agregar Imagen</label>
 												<input type="file" class="form-control-file" id="exampleFormControlFile1">
 												</div>
 										</div>
