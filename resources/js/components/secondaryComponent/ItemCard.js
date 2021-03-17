@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
@@ -22,10 +22,71 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ItemCard({item}) {
+export default function ItemCard({item}, edit) {
   const classes = useStyles();
+  const [title, setTitle] = useState(item.title);
+  const [description, setDescription] = useState(item.description);
+  const [editable, setEditable] = useState(false);
+
   let { id } = useParams();
 
+  if (editable)
+    return (
+    <Card className={classes.card}>
+      <CardMedia
+        className={classes.cardMedia}
+          image="https://source.unsplash.com/random"
+          title="Image title"
+      />
+      <CardContent className={classes.cardContent}>
+        <input
+          className="MuiTypography-root MuiTypography-h4 MuiTypography-displayInline"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+        <input
+          className="MuiTypography-root MuiTypography-h4 MuiTypography-displayInline"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+        />
+      </CardContent>
+      <CardActions>
+        <Button size="small" color="primary" href={'/store/' + id + '/' + item.id}>
+          Ver
+        </Button>
+        <Button size="small" color="primary" onClick={() => setEditable(false)}>
+          Listo
+        </Button>
+      </CardActions>
+    </Card>
+  );
+  else if (edit)
+    return (
+    <Card className={classes.card}>
+      <CardMedia
+        className={classes.cardMedia}
+          image="https://source.unsplash.com/random"
+          title="Image title"
+      />
+      <CardContent className={classes.cardContent}>
+        <Typography gutterBottom variant="h5" component="h2">
+          {item.title}
+        </Typography>
+        <Typography>
+          {item.description}
+        </Typography>
+      </CardContent>
+      <CardActions>
+        <Button size="small" color="primary" href={'/store/' + id + '/' + item.id}>
+          Ver
+        </Button>
+        <Button size="small" color="primary" onClick={() => setEditable(true)}>
+          Editar
+        </Button>
+      </CardActions>
+    </Card>
+  );
+  else  
   return (
     <Card className={classes.card}>
       <CardMedia
