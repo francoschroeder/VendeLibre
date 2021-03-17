@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.navBar')
 @extends('layouts.headerStore')
 @section('title')
     Página Principal
@@ -12,11 +12,7 @@
         <h2> {{$store->description}} </h2>
             
         
-            <div class="card">
-                <div style="width: 500px; height: 500px;">
-                    {!! Mapper::render() !!}
-                </div>
-            </div>
+          
         </div>  
     </div>
 
@@ -57,6 +53,13 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="col-lg-6 offset-lg-1">
+                <div class="card">
+                        <div style="width: 600px; height: 300px;">
+                            {!! Mapper::render() !!}
+                        </div>
+                </div>
                 </div>
             </div>
         </div>
