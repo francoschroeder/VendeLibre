@@ -36,24 +36,27 @@ function RenderHeader(edit, id) {
         })
     }, []);
 
-            /*if (edit)
-                return (
-                    <input
-                    className="MuiTypography-root MuiTypography-h4 MuiTypography-displayInline"
-                    value={name}
-                    />
-                )
-            else*/
+    if (edit)
         return (
             <React.Fragment>
-            <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
-                {name}
-            </Typography>
-            <Typography variant="h5" align="center" color="textSecondary" paragraph>
-                {description}
-            </Typography>
+            <input
+                className="MuiTypography-root MuiTypography-h4 MuiTypography-displayInline"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+            />
             </React.Fragment>
-        );
+        )
+    else
+        return (
+            <React.Fragment>
+                <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
+                    {name}
+                </Typography>
+                <Typography variant="h5" align="center" color="textSecondary" paragraph>
+                    {description}
+                </Typography>
+            </React.Fragment>
+        )
 }
 
 const useStyles = makeStyles((theme) => ({
