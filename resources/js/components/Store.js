@@ -40,6 +40,7 @@ function RenderHeader(edit) {
     let { id } = useParams();
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
+    const [editable, setEditable] = useState(false);
 
     useEffect(() =>{
         window.axios = require('axios');
@@ -51,7 +52,7 @@ function RenderHeader(edit) {
         })
     }, []);
 
-    if (edit)
+    if (editable)
         return (
             <React.Fragment>
             <input
@@ -64,6 +65,17 @@ function RenderHeader(edit) {
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
             />
+            </React.Fragment>
+        )
+    else if (edit)
+        return (
+            <React.Fragment>
+                <Typography component="h1" variant="h2" align="center" color="textPrimary" onClick={() => setEditable(true)} gutterBottom>
+                    {name}
+                </Typography>
+                <Typography variant="h5" align="center" color="textSecondary" paragraph>
+                    {description}
+                </Typography>
             </React.Fragment>
         )
     else
