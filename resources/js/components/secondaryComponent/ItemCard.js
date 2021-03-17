@@ -70,10 +70,10 @@ export default function ItemCard({item}, edit) {
       />
       <CardContent className={classes.cardContent}>
         <Typography gutterBottom variant="h5" component="h2">
-          {item.title}
+          {title}
         </Typography>
         <Typography>
-          {item.description}
+          {description}
         </Typography>
       </CardContent>
       <CardActions>
@@ -96,10 +96,10 @@ export default function ItemCard({item}, edit) {
       />
       <CardContent className={classes.cardContent}>
         <Typography gutterBottom variant="h5" component="h2">
-          {item.title}
+          {title}
         </Typography>
         <Typography>
-          {item.description}
+          {description}
         </Typography>
       </CardContent>
       <CardActions>
