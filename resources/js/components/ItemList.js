@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ItemList({ edit }) {
+export default function ItemList({edit}) {
 	const classes = useStyles();
     let { id } = useParams();
     const [items, setItems] = useState([]);

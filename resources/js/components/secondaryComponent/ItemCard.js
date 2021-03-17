@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ItemCard({item}, edit) {
+export default function ItemCard({item, edit}) {
   const classes = useStyles();
   const [title, setTitle] = useState(item.title);
   const [description, setDescription] = useState(item.description);
