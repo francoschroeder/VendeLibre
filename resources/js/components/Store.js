@@ -65,17 +65,23 @@ function RenderHeader(edit) {
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
             />
+            <Button variant="outlined" color="primary" onClick={() => setEditable(false)}>
+                Listo
+            </Button>
             </React.Fragment>
         )
     else if (edit)
         return (
             <React.Fragment>
-                <Typography component="h1" variant="h2" align="center" color="textPrimary" onClick={() => setEditable(true)} gutterBottom>
+                <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
                     {name}
                 </Typography>
                 <Typography variant="h5" align="center" color="textSecondary" paragraph>
                     {description}
                 </Typography>
+                <Button variant="outlined" color="primary" onClick={() => setEditable(true)}>
+                    Editar
+                </Button>
             </React.Fragment>
         )
     else
