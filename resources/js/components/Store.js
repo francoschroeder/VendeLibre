@@ -22,7 +22,7 @@ function Copyright() {
     );
 }
 
-function RenderHeader(edit) {
+function RenderHeader(edit, id) {
     const [name, setName] = useState();
     const [description, setDescription] = useState();
 
@@ -81,7 +81,7 @@ export default function Store({edit}) {
             {/* Hero unit */}
             <div className={classes.heroContent}>
                 <Container maxWidth="sm">
-                    {RenderHeader(edit)}
+                    {RenderHeader(edit, id)}
                 </Container>
             </div>
             <ItemList edit = {edit}/>
