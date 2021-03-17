@@ -11,22 +11,26 @@
 						
 								@csrf
 								<div class = "container">
-										<div class="form-group row">
+										<div class="form-group">
 												<label for="example-text-input" class="col-2 col-form-label">Item</label>
 											<div class="col-10">
 												<input class="form-control" type="text" id="example-text-input" name = "title">
 												</div>
 										</div>
-										<div class="form-group row">
+										<div class="form-group">
 											<label for="example-date-input" class="col-2 col-form-label">Precio</label>
 											<div class="col-10">
 											<input class="form-control" type="number" min="0,00"  name="price">
 											</div>
 										</div>
-										<div class="form-group row">
-												<label for="example-number-input" class="col-2 col-form-label">Descripcion</label>
+										<div class="form-group">
+												<label for="example-texy-input" class="col-2 col-form-label">Caracteristicas</label>
 												<div class="col-10">
-												<input class="form-control" type="text" id="example-text-input" name = "description">
+												<input class="form-control" type="text" id="example-text-input" name = "description" rows="3">
+												</div>
+												<div class="form-group">
+												<label for="exampleFormControlFile1">Example file input</label>
+												<input type="file" class="form-control-file" id="exampleFormControlFile1">
 												</div>
 										</div>
 									
