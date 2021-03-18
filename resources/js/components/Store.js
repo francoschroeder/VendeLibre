@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
+import SaveIcon from '@material-ui/icons/Save';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
@@ -36,6 +37,22 @@ function Copyright() {
     );
 }
 
+function RenderBotonGuardar(edit) {
+    if (edit)
+        return (
+            <div align="center">
+            <Button
+                variant="contained"
+                color="primary"
+                size="large"
+                startIcon={<SaveIcon />}
+            >
+                Guardar
+            </Button>
+            </div>
+        )
+}
+
 function RenderHeader(edit) {
     let { id } = useParams();
     const [name, setName] = useState('');
@@ -55,16 +72,18 @@ function RenderHeader(edit) {
     if (editable)
         return (
             <React.Fragment>
+            <div align="center">
             <input
-                className="MuiTypography-root MuiTypography-h4 MuiTypography-displayInline"
+                className="MuiTypography-root MuiTypography-h2 MuiTypography-displayInline"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
             />
             <input
-                className="MuiTypography-root MuiTypography-h4 MuiTypography-displayInline"
+                className="MuiTypography-root MuiTypography-h5 MuiTypography-displayInline"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
             />
+            </div>
             <Button variant="outlined" color="primary" onClick={() => setEditable(false)}>
                 Listo
             </Button>
@@ -112,6 +131,7 @@ export default function Store({edit}) {
                 </Container>
             </div>
             <ItemList edit = {edit}/>
+            {RenderBotonGuardar(edit)}
             </main>
         {/* Footer */}
         <footer className={classes.footer}>
