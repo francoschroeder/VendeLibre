@@ -65,9 +65,12 @@ class StoreController extends Controller
 
 	public function edit($store_id) {
 		$store = Store::find($store_id);
-
+		$user = auth()->user();
+		$stores = $user->stores;
 		return view('store.editstore')
-			->with(compact('store'));
+			->with(compact('store'))
+			->with(compact('stores'))
+			;
 	}
 
 	//API
