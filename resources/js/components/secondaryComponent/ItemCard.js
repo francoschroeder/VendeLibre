@@ -52,14 +52,14 @@ export default function ItemCard({item, edit}) {
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
-      </CardContent>
-      <CardActions>
         <input
           className="MuiTypography-root MuiTypography-h7 MuiTypography-displayInline"
           size={price.length}
           value={price}
           onChange={(e) => setPrice(e.target.value)}
         />
+      </CardContent>
+      <CardActions>
         <Button size="small" color="primary" href={'/store/' + id + '/' + item.id}>
           Ver
         </Button>
@@ -84,11 +84,11 @@ export default function ItemCard({item, edit}) {
         <Typography>
           {description}
         </Typography>
-      </CardContent>
-      <CardActions>
         <Typography>
           {"$"+price}
         </Typography>
+      </CardContent>
+      <CardActions>
         <Button size="small" color="primary" href={'/store/' + id + '/' + item.id}>
           Ver
         </Button>
@@ -113,11 +113,11 @@ export default function ItemCard({item, edit}) {
         <Typography>
           {description}
         </Typography>
-      </CardContent>
-      <CardActions>
         <Typography>
           {"$"+price}
         </Typography>
+      </CardContent>
+      <CardActions>
         <Button size="small" color="primary" href={'/store/' + id + '/' + item.id}>
           Ver
         </Button>
