@@ -10,10 +10,17 @@ use Cornford\Googlmapper\Facades\MapperFacade as Mapper;
 class StoreController extends Controller
 {
     public function show($store_id) {
-    	$store = Store::findOrFail($store_id);
-
-		return view('store.showstore')
-    			->with(compact('store'));
+			$store = Store::findOrFail($store_id);
+			$user = auth()->user();
+      $stores = $user->stores;
+			if (auth()->user()==null){
+				return view('store.showstore')
+					->with(compact('store'));
+			}
+			else if (auth()->user()->id){
+				return view('store.showstore')
+					->with(compact('store'))
+					->with(compact('stores'));}
     }
 
     public function create(Request $request) {
@@ -37,11 +44,23 @@ class StoreController extends Controller
 	
 	public function description($store_id){
 		$store = Store::findOrFail($store_id);
-
+		$user = auth()->user();
+		$stores = $user->stores;
 		//$map = Mapper::map($store->latitud, $store->longitud);
 		$map = Mapper::map(1, 1);
-		return view('store.description')->with(compact('store'))
+
+		if (auth()->user()==null){
+			return view('store.description')->with(compact('store'))
 										->with(compact('map'));
+		}
+		else if (auth()->user()->id){
+			return view('store.description')
+							->with(compact('store'))
+							->with(compact('map'))
+							->with(compact('stores'));
+		 }
+
+
 	}
 
 	public function edit($store_id) {

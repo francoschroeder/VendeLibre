@@ -1,27 +1,27 @@
 @extends('layouts.app')
+@extends ('layouts.headerLogin')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
+<section class="hero-section">
+        <div class="hero-items owl-carousel">
+            <div class="single-hero-items set-bg" data-setbg="img/hero-1.jpg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-5">
+                            <h1>Vende Libre</h1>
+                            <p>Diseña tu página a tu gusto y vende facilmente todo tipo de productos</p>
+                            <a href="http://127.0.0.1:8000/createStore" class="primary-btn">Crea tu Tienda</a>
                         </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
+                    </div>
+                    <div class="off-card">
+                        <h2>Sale <span>50%</span></h2>
+                    </div>
                 </div>
-
-                <div>
-                <a href="http://127.0.0.1:8000/createStore">Crear Stores</a>
-		    </div>
             </div>
         </div>
-    </div>
-</div>
+        <div class="container">
+            @yield('storeList')
+            </div>    
+    </section>
+
 @endsection

@@ -11,7 +11,7 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    /*public function __construct()
     {
         $this->middleware('auth');
     }
@@ -23,12 +23,22 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        if (auth()->user()==null){
+            return view('home');
+        }
+        else if (auth()->user()->id) {
+            $user = auth()->user();
+            $stores = $user->stores;
+            return view('homeLogin')
+                    ->with(compact('stores'));
+                 
+        }
     }
 
     public function createStore()
     {
         return view('store.createStore');
     }
+
 
 }
