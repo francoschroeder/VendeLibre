@@ -26,6 +26,7 @@ export default function ItemCard({item, edit}) {
   const classes = useStyles();
   const [title, setTitle] = useState(item.title);
   const [description, setDescription] = useState(item.description);
+  const [price, setPrice] = useState(item.price);
   const [editable, setEditable] = useState(false);
 
   let { id } = useParams();
@@ -40,17 +41,25 @@ export default function ItemCard({item, edit}) {
       />
       <CardContent className={classes.cardContent}>
         <input
-          className="MuiTypography-root MuiTypography-h4 MuiTypography-displayInline"
+          className="MuiTypography-root MuiTypography-h5 MuiTypography-displayInline"
+          size={title.length}
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
         <input
-          className="MuiTypography-root MuiTypography-h4 MuiTypography-displayInline"
+          className="MuiTypography-root MuiTypography-h7 MuiTypography-displayInline"
+          size={description.length}
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
       </CardContent>
       <CardActions>
+        <input
+          className="MuiTypography-root MuiTypography-h7 MuiTypography-displayInline"
+          size={price.length}
+          value={price}
+          onChange={(e) => setPrice(e.target.value)}
+        />
         <Button size="small" color="primary" href={'/store/' + id + '/' + item.id}>
           Ver
         </Button>
@@ -77,6 +86,9 @@ export default function ItemCard({item, edit}) {
         </Typography>
       </CardContent>
       <CardActions>
+        <Typography>
+          {"$"+price}
+        </Typography>
         <Button size="small" color="primary" href={'/store/' + id + '/' + item.id}>
           Ver
         </Button>
@@ -103,6 +115,9 @@ export default function ItemCard({item, edit}) {
         </Typography>
       </CardContent>
       <CardActions>
+        <Typography>
+          {"$"+price}
+        </Typography>
         <Button size="small" color="primary" href={'/store/' + id + '/' + item.id}>
           Ver
         </Button>

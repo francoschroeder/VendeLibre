@@ -75,18 +75,22 @@ function RenderHeader(edit) {
             <div align="center">
             <input
                 className="MuiTypography-root MuiTypography-h2 MuiTypography-displayInline"
+                size={name.length}
                 value={name}
                 onChange={(e) => setName(e.target.value)}
             />
             <input
                 className="MuiTypography-root MuiTypography-h5 MuiTypography-displayInline"
+                size={description.length}
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
             />
             </div>
+            <div align="center">
             <Button variant="outlined" color="primary" onClick={() => setEditable(false)}>
                 Listo
             </Button>
+            </div>
             </React.Fragment>
         )
     else if (edit)
@@ -98,9 +102,11 @@ function RenderHeader(edit) {
                 <Typography variant="h5" align="center" color="textSecondary" paragraph>
                     {description}
                 </Typography>
+                <div align="center">
                 <Button variant="outlined" color="primary" onClick={() => setEditable(true)}>
                     Editar
                 </Button>
+                </div>
             </React.Fragment>
         )
     else
