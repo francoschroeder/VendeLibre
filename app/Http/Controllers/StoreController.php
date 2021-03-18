@@ -12,12 +12,13 @@ class StoreController extends Controller
     public function show($store_id) {
 			$store = Store::findOrFail($store_id);
 			$user = auth()->user();
-      $stores = $user->stores;
+      
 			if (auth()->user()==null){
 				return view('store.showstore')
 					->with(compact('store'));
 			}
 			else if (auth()->user()->id){
+				$stores = $user->stores;
 				return view('store.showstore')
 					->with(compact('store'))
 					->with(compact('stores'));}
@@ -45,7 +46,7 @@ class StoreController extends Controller
 	public function description($store_id){
 		$store = Store::findOrFail($store_id);
 		$user = auth()->user();
-		$stores = $user->stores;
+		
 		//$map = Mapper::map($store->latitud, $store->longitud);
 		$map = Mapper::map(1, 1);
 
@@ -54,6 +55,7 @@ class StoreController extends Controller
 										->with(compact('map'));
 		}
 		else if (auth()->user()->id){
+			$stores = $user->stores;
 			return view('store.description')
 							->with(compact('store'))
 							->with(compact('map'))
@@ -67,6 +69,7 @@ class StoreController extends Controller
 		$store = Store::find($store_id);
 		$user = auth()->user();
 		$stores = $user->stores;
+
 		return view('store.editstore')
 			->with(compact('store'))
 			->with(compact('stores'))

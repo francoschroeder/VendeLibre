@@ -27,7 +27,7 @@ class ItemController extends Controller
         $item = Item::findOrFail($id);
         $store = Store::findOrFail($store_id);
         $user = auth()->user();
-		$stores = $user->stores;
+		
 
         if (auth()->user()==null){
 			return view('item.show')
@@ -35,6 +35,7 @@ class ItemController extends Controller
                 ->with(compact('store'));
 		}
 		else if (auth()->user()->id){
+            $stores = $user->stores;
 			return view('item.show')
                 ->with(compact('item'))
                 ->with(compact('store'))
@@ -50,13 +51,14 @@ class ItemController extends Controller
     public function addItem($id_store) {
         $store = Store::findOrFail($id_store);
         $user = auth()->user();
-		$stores = $user->stores;
+		
         if (auth()->user()==null){
 			return view('store.showstore')
 					->with(compact('store'));
 		}
 		else if (auth()->user()->id){
-			return view('item.create')
+            $stores = $user->stores;
+            return view('item.create')
             ->with(compact('store'))
             ->with(compact('stores'));
         }
