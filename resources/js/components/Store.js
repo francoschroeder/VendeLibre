@@ -111,7 +111,13 @@ export default function Store({edit}) {
     }
 
     function guardarCambios() {
-        console.log(name);
-        console.log(description);
+        axios.put('/api/saveStore/' + id, {
+            name: name,
+            description: description,
+            items: items
+        })
+            .then(function(response) {
+                console.log(response);
+            })
     }
 }

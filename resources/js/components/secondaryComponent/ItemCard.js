@@ -63,7 +63,11 @@ export default function ItemCard({item, edit}) {
         <Button size="small" color="primary" href={'/store/' + id + '/' + item.id}>
           Ver
         </Button>
-        <Button size="small" color="primary" onClick={() => setEditable(false)}>
+        <Button size="small" color="primary" onClick={() => {
+                                                          setEditable(false);
+                                                          item.title = title;
+                                                          item.description = description;
+                                                          item.price = price;}}>
           Listo
         </Button>
       </CardActions>
