@@ -30,7 +30,7 @@ export default function ListaItem() {
 
   return (
     <div>
-      <FixedSizeList height={400} width={300} itemSize={46} itemCount={200}>
+      <FixedSizeList height={400} width={300} itemSize={46} itemCount={4}>
         {renderRow}
       </FixedSizeList>
     </div>
