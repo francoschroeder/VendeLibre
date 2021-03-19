@@ -1,23 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useState } from 'react';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
-export default function RenderHeader({edit}) {
-    let { id } = useParams();
-    const [name, setName] = useState('');
-    const [description, setDescription] = useState('');
+export default function RenderHeader({edit, name, setName, description, setDescription}) {
     const [editable, setEditable] = useState(false);
-
-    useEffect(() =>{
-        window.axios = require('axios');
-
-        axios.get('/api/getStore/' + id)
-            .then(function (response) {
-                setName(response.data.name);
-                setDescription(response.data.description);
-        })
-    }, []);
 
     if (editable)
         return (
@@ -62,7 +48,7 @@ export default function RenderHeader({edit}) {
     else
         return (
             <React.Fragment>
-                <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
+                <Typography id="name" component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
                     {name}
                 </Typography>
                 <Typography variant="h5" align="center" color="textSecondary" paragraph>
