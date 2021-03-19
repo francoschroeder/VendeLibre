@@ -3,23 +3,10 @@ import { useParams } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
-export default function RenderHeader({edit}) {
+export default function RenderHeader({edit, name, setName, description, setDescription}) {
     let { id } = useParams();
-    const [name, setName] = useState('');
-    const [description, setDescription] = useState('');
+
     const [editable, setEditable] = useState(false);
-
-    
-   
-    useEffect(() =>{
-        window.axios = require('axios');
-
-        axios.get('/api/getStore/' + id)
-            .then(function (response) {
-                setName(response.data.name);
-                setDescription(response.data.description);
-        })
-    }, []);
 
     if (editable)
         return (
