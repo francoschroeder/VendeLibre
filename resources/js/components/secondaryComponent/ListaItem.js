@@ -31,7 +31,7 @@ function renderRow(items) {
   return (
     <div>  
     {items.map((item) => (
-      <ListItem item key={item.id} >
+      <ListItem  key={item.id} >
           item
       </ListItem>
     ))}
