@@ -20,16 +20,13 @@ export default function ItemList({edit, items, setItems}) {
     let { id } = useParams();
 
 	return (
+    <div>
+     {/* End hero unit */}
+     <div className="container">
+     <ListaItem items = {items} ></ListaItem>
+      </div>
 		<Container className={classes.cardGrid} maxWidth="md">
-         
-          {/* End hero unit */}
-          <div class="container">
-            <ListaItem ></ListaItem>
-          </div>
-        
-
-        
-          <Grid container spacing={4}>
+         <Grid container spacing={4}>
             {items.map((item) => (
               <Grid item key={item.id} xs={12} sm={6} md={4}>
                 <ItemCard item = {item} edit = {edit}/>
@@ -37,5 +34,6 @@ export default function ItemList({edit, items, setItems}) {
             ))}
           </Grid>
         </Container>
+      </div>
 	);
 }
