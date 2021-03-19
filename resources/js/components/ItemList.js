@@ -6,6 +6,7 @@ import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import ItemCard from './secondaryComponent/ItemCard';
+import ListaItem from './secondaryComponent/ListaItem';
 
 const useStyles = makeStyles((theme) => ({
   cardGrid: {
@@ -30,7 +31,14 @@ export default function ItemList({edit}) {
 
 	return (
 		<Container className={classes.cardGrid} maxWidth="md">
+         
           {/* End hero unit */}
+          <div class="container">
+            <ListaItem item = {item} edit = {edit}></ListaItem>
+          </div>
+        
+
+        
           <Grid container spacing={4}>
             {items.map((item) => (
               <Grid item key={item.id} xs={12} sm={6} md={4}>
