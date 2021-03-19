@@ -16,11 +16,11 @@ const useStyles = makeStyles((theme) =>
 );
 
 function renderRow() {
-  const { index, style } = props;
+  
 
   return (
-    <ListItem button style={style} key={index}>
-      <ListItemText primary={`Item ${index + 1}`} />
+    <ListItem >
+      <ListItemText primary={`Item `} />
     </ListItem>
   );
 }
@@ -29,7 +29,7 @@ export default function ListaItem() {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
+    <div>
       <FixedSizeList height={400} width={300} itemSize={46} itemCount={200}>
         {renderRow}
       </FixedSizeList>

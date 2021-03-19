@@ -24,7 +24,7 @@ export default function ItemList({edit, items, setItems}) {
          
           {/* End hero unit */}
           <div class="container">
-            <ListaItem item = {item} edit = {edit}></ListaItem>
+            <ListaItem ></ListaItem>
           </div>
         
 
