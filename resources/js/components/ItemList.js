@@ -14,19 +14,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ItemList({edit}) {
+export default function ItemList({edit, items, setItems}) {
 	const classes = useStyles();
     let { id } = useParams();
-    const [items, setItems] = useState([]);
-
-    useEffect(() =>{
-        window.axios = require('axios');
-
-        axios.get('/api/getItemList/' + id)
-            .then(function (response) {
-                setItems(response.data)
-        })
-    }, []); 
 
 	return (
 		<Container className={classes.cardGrid} maxWidth="md">

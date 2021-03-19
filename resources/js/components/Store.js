@@ -39,10 +39,11 @@ function Copyright() {
 
 export default function Store({edit}) {
     let { id } = useParams();
-    
+
     const classes = useStyles();
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
+    const [items, setItems] = useState([]);
 
     useEffect(() =>{
         window.axios = require('axios');
@@ -51,6 +52,11 @@ export default function Store({edit}) {
             .then(function (response) {
                 setName(response.data.name);
                 setDescription(response.data.description);
+        })
+
+        axios.get('/api/getItemList/' + id)
+            .then(function (response) {
+                setItems(response.data);
         })
     }, []);
 
@@ -68,7 +74,9 @@ export default function Store({edit}) {
                             setDescription={setDescription}/>
                 </Container>
             </div>
-            <ItemList edit = {edit}/>
+            <ItemList edit = {edit}
+                      items = {items}
+                      setItems = {setItems}/>
             {RenderBotonGuardar(edit)}
             </main>
         {/* Footer */}

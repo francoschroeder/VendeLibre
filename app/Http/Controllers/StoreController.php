@@ -80,7 +80,8 @@ class StoreController extends Controller
 	public function getStore($store_id) {
 		$store = Store::find($store_id);
 
-		return response()->json($store);
+		return response()
+				->json($store);
 	}
 
 	public function getItemList($store_id) {
