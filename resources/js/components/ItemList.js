@@ -6,7 +6,7 @@ import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import ItemCard from './secondaryComponent/ItemCard';
-import ListaItem from './secondaryComponent/ListaItem';
+
 import TabelItem from './secondaryComponent/TableItem';
 
 const useStyles = makeStyles((theme) => ({
@@ -31,8 +31,15 @@ export default function ItemList({edit, items, setItems}) {
     {/* <ListaItem items = {items} ></ListaItem>
       </div>*/}
       <Container className={classes.TabelItem}>
-        <TabelItem  items = {items}/>
-      
+        <TableContainer component={Paper} className={classestable.root}>  
+        <Table className={classes.table} aria-label="simple table">
+            <TableBody>
+              {items.map((item) => (
+                <TabelItem  item = {item}/>
+              ))}
+            </TableBody>
+          </Table>
+          </TableContainer>
       </Container>
   
 

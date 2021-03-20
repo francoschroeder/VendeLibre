@@ -27,29 +27,27 @@ export default function TabelItem({items}) {
   const classestable = tableStyle();
 
   return (
-    <TableContainer component={Paper} className={classestable.root}>
-      <Table className={classes.table} aria-label="simple table">
-        <TableBody>
-          {items.map((item) => (
-            <TableRow key={item.id}>
-              <TableCell component="th" scope="row">
-                Imagen
-              </TableCell>
-              <TableCell align="left">
-                <Typography gutterBottom variant="h5" component="h2">
-                    {item.title}
-                    </Typography>
-                    <Typography>
-                    {item.description}
-                    </Typography>
-                    <Typography>
-                    {"$"+item.price}
-                    </Typography>
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+    <TableRow key={item.id}>
+    <TableCell component="th" scope="row">
+      Imagen
+    </TableCell>
+    <TableCell align="left">
+      <Typography gutterBottom variant="h5" component="h2">
+          {item.title}
+          </Typography>
+          <Typography>
+          {item.description}
+          </Typography>
+          <Typography>
+          {"$"+item.price}
+          </Typography>
+          <Button size="small" color="primary" href={'/store/' + id + '/' + item.id}>
+            Ver
+          </Button>
+          <Button size="small" color="primary" >
+            Editar
+          </Button>
+    </TableCell>
+  </TableRow>
   );
 }
