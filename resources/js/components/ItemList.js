@@ -7,12 +7,17 @@ import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import ItemCard from './secondaryComponent/ItemCard';
 import ListaItem from './secondaryComponent/ListaItem';
+import TabelItem from './secondaryComponent/TableItem';
 
 const useStyles = makeStyles((theme) => ({
   cardGrid: {
     paddingTop: theme.spacing(8),
     paddingBottom: theme.spacing(8),
   },
+  TabelItem:{
+    padding: '30 360px',
+    display: 'flex',
+  }
 }));
 
 export default function ItemList({edit, items, setItems}) {
@@ -22,10 +27,16 @@ export default function ItemList({edit, items, setItems}) {
 	return (
     <div>
      {/* End hero unit */}
-     <div className="container">
-     <ListaItem items = {items} ></ListaItem>
-      </div>
-		<Container className={classes.cardGrid} maxWidth="md">
+    
+    {/* <ListaItem items = {items} ></ListaItem>
+      </div>*/}
+      <Container className={classes.TabelItem}>
+        <TabelItem  items = {items}/>
+      
+      </Container>
+  
+
+    <Container className={classes.cardGrid} maxWidth="md">
          <Grid container spacing={4}>
             {items.map((item) => (
               <Grid item key={item.id} xs={12} sm={6} md={4}>
