@@ -6,8 +6,13 @@ import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import ItemCard from './secondaryComponent/ItemCard';
+import TableHead from '@material-ui/core/TableHead';
+import TableContainer from '@material-ui/core/TableContainer';
+import Paper from '@material-ui/core/Paper';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
 
-import TabelItem from './secondaryComponent/TableItem';
+import TableItem from './secondaryComponent/TableItem';
 
 const useStyles = makeStyles((theme) => ({
   cardGrid: {
@@ -18,11 +23,20 @@ const useStyles = makeStyles((theme) => ({
     padding: '30 360px',
     display: 'flex',
   }
+ 
 }));
 
+const tableStyle = makeStyles({
+  root: {
+   width: 400,
+   display: 'flex',
+  },
+});
+
 export default function ItemList({edit, items, setItems}) {
-	const classes = useStyles();
-    let { id } = useParams();
+  const classes = useStyles();
+  const classestable = tableStyle();
+   
 
 	return (
     <div>
@@ -35,7 +49,7 @@ export default function ItemList({edit, items, setItems}) {
         <Table className={classes.table} aria-label="simple table">
             <TableBody>
               {items.map((item) => (
-                <TabelItem  item = {item}/>
+                <TableItem key={item.id} item = {item} edit = {edit}/>
               ))}
             </TableBody>
           </Table>
