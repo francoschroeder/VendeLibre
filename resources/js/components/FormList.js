@@ -13,7 +13,6 @@ import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 
 import TableItem from './secondaryComponent/TableItem';
-import FormList from './FormList';
 
 const useStyles = makeStyles((theme) => ({
   cardGrid: {
@@ -37,27 +36,39 @@ const tableStyle = makeStyles({
   },
 });
 
-export default function ItemList({edit, items, setItems}) {
+export default function FormList({edit, items, setItems}) {
   const classes = useStyles();
   const classestable = tableStyle();
-  
 
- 
-  if (edit)
+  if (opcion == 1 )
   return (
     <div>
-      
-      <FormList edit = {edit}
-                      items = {items}
-                      setItems = {setItems}/>
-    </div>
-  );
-  else
-  return (
-  <div>
-    <FormList edit = {edit}
-                  items = {items}
-                  setItems = {setItems}/>
-  </div>);
 
+      <Container className={classes.TabelItem}>
+        <TableContainer component={Paper} className={classestable.root}>  
+        <Table className={classes.TableItem} aria-label="simple table" >
+            <TableBody>
+              {items.map((item) => (
+                <TableItem key={item.id} item = {item} edit = {edit}/>
+              ))}
+            </TableBody>
+          </Table>
+          </TableContainer>
+      </Container>
+  
+
+      </div>
+  );
+  else return(
+
+    <Container className={classes.cardGrid} maxWidth="md">
+         <Grid container spacing={4}>
+            {items.map((item) => (
+              <Grid item key={item.id} xs={12} sm={6} md={4}>
+                <ItemCard item = {item} edit = {edit}/>
+              </Grid>
+            ))}
+          </Grid>
+        </Container>
+  )
 }

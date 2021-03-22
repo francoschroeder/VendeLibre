@@ -44,6 +44,7 @@ export default function Store({edit}) {
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [items, setItems] = useState([]);
+    var opcion;
 
     useEffect(() =>{
         window.axios = require('axios');
@@ -60,6 +61,7 @@ export default function Store({edit}) {
         })
     }, []);
 
+    
     return (
     <React.Fragment>
         <CssBaseline />
@@ -92,6 +94,7 @@ export default function Store({edit}) {
         {/* End footer */}
     </React.Fragment>
   );
+  
 
     function RenderBotonGuardar(edit) {
     if (edit)
