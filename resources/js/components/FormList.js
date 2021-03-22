@@ -11,8 +11,8 @@ import TableContainer from '@material-ui/core/TableContainer';
 import Paper from '@material-ui/core/Paper';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
-
 import TableItem from './secondaryComponent/TableItem';
+import { SketchPicker } from 'react-color'
 
 const useStyles = makeStyles((theme) => ({
   cardGrid: {
@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
   TabelItem:{
     padding: '100 600px',
     display: 'flex',
-    //backgroundColor: 'red'
+    backgroundColor: 'red'
   }
  
 }));
@@ -32,18 +32,25 @@ const tableStyle = makeStyles({
    width: 400,
    display: 'flex',
    padding: '100 600px',
-   //backgroundColor: 'red'
+   backgroundColor: 'red'
   },
 });
+
+
+
 
 export default function FormList({edit, items, setItems}) {
   const classes = useStyles();
   const classestable = tableStyle();
+  var opcion = 1;
 
+ 
+  //obtener la opcion de lstado desde la base de datos
   if (opcion == 1 )
   return (
     <div>
-
+    
+    <SketchPicker />  
       <Container className={classes.TabelItem}>
         <TableContainer component={Paper} className={classestable.root}>  
         <Table className={classes.TableItem} aria-label="simple table" >
