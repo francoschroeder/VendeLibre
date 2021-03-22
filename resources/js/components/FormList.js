@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
   TabelItem:{
     padding: '100 600px',
     display: 'flex',
-    backgroundColor: 'red'
+    //backgroundColor: 'red'
   }
  
 }));
@@ -32,11 +32,12 @@ const tableStyle = makeStyles({
    width: 400,
    display: 'flex',
    padding: '100 600px',
-   backgroundColor: 'red'
+   //backgroundColor: 'red'
   },
 });
 
-
+/*handleChangeComplete = (color) => {
+this.setState({ background: color.hex });*/
 
 
 export default function FormList({edit, items, setItems}) {
@@ -50,7 +51,11 @@ export default function FormList({edit, items, setItems}) {
   return (
     <div>
     
-    <SketchPicker />  
+    <SketchPicker
+        //quiero modificar el estado actual 
+        
+        //onChangeComplete={ this.handleChangeComplete }
+      />
       <Container className={classes.TabelItem}>
         <TableContainer component={Paper} className={classestable.root}>  
         <Table className={classes.TableItem} aria-label="simple table" >
