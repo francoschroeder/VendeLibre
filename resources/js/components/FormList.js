@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,Component } from 'react';
 import { useParams } from 'react-router-dom';
 import Card from '@material-ui/core/Card';
 import Container from '@material-ui/core/Container';
@@ -14,10 +14,10 @@ import TableBody from '@material-ui/core/TableBody';
 import TableItem from './secondaryComponent/TableItem';
 import { SketchPicker } from 'react-color'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles ({
   cardGrid: {
-    paddingTop: theme.spacing(8),
-    paddingBottom: theme.spacing(8),
+    paddingTop: 9,
+    paddingBottom: 9,
   },
   TabelItem:{
     padding: '100 600px',
@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
     //backgroundColor: 'red'
   }
  
-}));
+});
 
 const tableStyle = makeStyles({
   root: {
@@ -40,15 +40,25 @@ const tableStyle = makeStyles({
 this.setState({ background: color.hex });*/
 
 
-export default function FormList({edit, items, setItems}) {
-  const classes = useStyles();
-  const classestable = tableStyle();
-  var opcion = 1;
+export default class FormList extends Component {
+  constructor(props){
+     super(props);
+  }
 
+  render (){
+    var opcion = 1;
+    if (opcion == 1 ) {
+      console.log('entro a render')
+        return  this.tableItem();}
+    else return this.cardItem();
+  
+  };
+        
  
-  //obtener la opcion de lstado desde la base de datos
-  if (opcion == 1 )
+ 
+tableItem(){
   return (
+    
     <div>
     
     <SketchPicker
@@ -56,12 +66,12 @@ export default function FormList({edit, items, setItems}) {
         
         //onChangeComplete={ this.handleChangeComplete }
       />
-      <Container className={classes.TabelItem}>
-        <TableContainer component={Paper} className={classestable.root}>  
-        <Table className={classes.TableItem} aria-label="simple table" >
+      <Container className={useStyles.TabelItem}>
+        <TableContainer component={Paper} className={tableStyle.root}>  
+        <Table className={useStyles.TableItem} aria-label="simple table" >
             <TableBody>
-              {items.map((item) => (
-                <TableItem key={item.id} item = {item} edit = {edit}/>
+              {this.props.items.map((item) => (
+                <TableItem key={item.id} item = {item} edit = {this.props.edit}/>
               ))}
             </TableBody>
           </Table>
@@ -70,17 +80,20 @@ export default function FormList({edit, items, setItems}) {
   
 
       </div>
-  );
-  else return(
-
-    <Container className={classes.cardGrid} maxWidth="md">
-         <Grid container spacing={4}>
-            {items.map((item) => (
-              <Grid item key={item.id} xs={12} sm={6} md={4}>
-                <ItemCard item = {item} edit = {edit}/>
-              </Grid>
-            ))}
-          </Grid>
-        </Container>
   )
+}
+cardItem(){
+  
+  return (
+    <Container className={useStyles.cardGrid} maxWidth="md">
+    <Grid container spacing={4}>
+       {this.props.items.map((item) => (
+         <Grid item key={item.id} xs={12} sm={6} md={4}>
+           <ItemCard item = {item} edit = {item.edit}/>
+         </Grid>
+       ))}
+     </Grid>
+   </Container>
+  )
+  }
 }
