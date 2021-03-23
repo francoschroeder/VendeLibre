@@ -10,7 +10,7 @@ import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableItemClass from './secondaryComponent/TableItemClass';
 import { SketchPicker } from 'react-color';
-import { PhotoshopPicker } from 'react-color'
+import { PhotoshopPicker, ChromePicker  } from 'react-color'
 
 const useStyles = makeStyles ({
   cardGrid: {
@@ -59,19 +59,29 @@ export default class FormList extends Component {
         background: '#9f3'
       },
     };
-    this.handleChange = this.handleChange.bind(this)
+    this.handleChange = this.handleChange.bind(this);
+    this.handleClose = this.handleClose.bind(this);
+    this.handleClick = this.handleClick.bind(this)
     }
  
 
   render (){
-    var opcion = this.props.style.item_style;
+    //this.props.style.item_style
+    var opcion = 1;
     if (opcion == 1 ) {
       console.log('entro a render')
         return  this.tableItem();}
     else return this.cardItem();
   
   };
-        
+     
+  handleClick(){
+    this.setState({ displayColorPicker: !this.state.displayColorPicker })
+  };
+
+  handleClose(){
+    this.setState({ displayColorPicker: false })
+  };
   handleChange(e){
     this.setState({ color: {background: e.hex} })
   };
@@ -81,7 +91,14 @@ tableItem(){
     
   
     <div>
-      <SketchPicker color={ this.state.color } onChange={ this.handleChange } />
+      <div>
+        <button onClick={ this.handleClick }>Edit Color</button>
+        { this.state.displayColorPicker ? <div >
+          <div onClick={ this.handleClose }/>
+          <ChromePicker color={ this.state.color } onChange={ this.handleChange }/>
+        </div> : null }
+      </div>
+      
       
       <Container className={this.state.TabelItem}>
         <TableContainer component={Paper} className={tableStyle.root} style={this.state.color}>  
