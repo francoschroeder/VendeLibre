@@ -72,8 +72,8 @@ export default class FormList extends Component {
   
   };
         
-  handleChange(color){
-    this.setState({ background: color.hex })
+  handleChange(e){
+    this.setState({ color: {background: e.hex} })
   };
  
 tableItem(){
