@@ -1,4 +1,4 @@
-import React, { useState, useEffect,Component } from 'react';
+import React, { useState } from 'react';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
@@ -17,7 +17,7 @@ const useStyles = makeStyles ({
     paddingTop: 9,
     paddingBottom: 9,
   },
-  TabelItem:{
+  TableItem:{
     padding: '100 600px',
     display: 'flex',
     //backgroundColor: 'red'
@@ -38,10 +38,10 @@ const tableStyle = makeStyles({
 this.setState({ background: color.hex });*/
 
 
-export default class FormList extends Component {
-  constructor(props){
-    
-     super(props);
+export default function FormList({edit, items, style}) {
+  const [color, setColor] = useState('#9f3');
+  const [itemStyle, setItemStyle] = useState(style.item_style);
+    /* super(props);
      this.state = {
       background: '#9f3', 
       displayColorPicker: false,
@@ -64,44 +64,32 @@ export default class FormList extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleClose = this.handleClose.bind(this);
     this.handleClick = this.handleClick.bind(this)
-    }
+    }*/
  
-  render () {
-    if (this.state.itemStyle == 1 )
-    return  this.tableItem();
-    else return this.cardItem();
-  };
-     
-  handleClick(){
-    this.setState({ displayColorPicker: !this.state.displayColorPicker })
-  };
-
-  handleClose(){
-    this.setState({ displayColorPicker: false })
-  };
-  handleChange(e){
-    this.setState({ color: {background: e.hex} })
-  };
- 
-tableItem(){
+  if (itemStyle == 1 )
+    return tableItem();
+  else 
+    return cardItem();
+  
+  function tableItem(){
   return (
     <div>
-      { this.renderBoton() }
+      { renderBoton() }
       <div>
-        <button onClick={ this.handleClick }>Edit Color</button>
-        { this.state.displayColorPicker ? <div >
+        <button onClick={ handleClick }>Edit Color</button>
+        {/* this.state.displayColorPicker ? <div >
           <div onClick={ this.handleClose }/>
-          <ChromePicker color={ this.state.color } onChange={ this.handleChange }/>
-        </div> : null }
+          <ChromePicker color={ color } onChange={ this.handleChange }/>
+        </div> : null */}
       </div>
       
       
-      <Container className={this.state.TabelItem}>
-        <TableContainer component={Paper} className={tableStyle.root} style={this.state.color}>  
-        <Table className={this.state.TabelItem} style={this.state.color} aria-label="simple table" >
+      <Container className={useStyles.TableItem}>
+        <TableContainer component={Paper} className={tableStyle.root} style={{background : color}}>  
+        <Table className={useStyles.TableItem} style={{background : color}} aria-label="simple table" >
             <TableBody>
-              {this.props.items.map((item) => (
-                <TableItemClass key={item.id} item = {item} edit = {this.props.edit}/>
+              {items.map((item) => (
+                <TableItemClass key={item.id} item = {item} edit = {edit}/>
               ))}
             </TableBody>
           </Table>
@@ -112,14 +100,15 @@ tableItem(){
       </div>
   )
 }
-cardItem(){
+
+function cardItem() {
   return (
     <Container className={useStyles.cardGrid} maxWidth="md">
-    { this.renderBoton() }
+    { renderBoton() }
     <Grid container spacing={4}>
-       {this.props.items.map((item) => (
+       {items.map((item) => (
          <Grid item key={item.id} xs={12} sm={6} md={4}>
-           <ItemCard item = {item} edit = {this.props.edit}/>
+           <ItemCard item = {item} edit = {edit}/>
          </Grid>
        ))}
      </Grid>
@@ -127,15 +116,27 @@ cardItem(){
   )
 }
 
-renderBoton() {
-  if (this.props.edit)
+function renderBoton() {
+  if (edit)
     return (
-      <Button onClick={() => {if (this.state.itemStyle == 1)
-                              this.setState({itemStyle : 2})
+      <Button onClick={() => {if (itemStyle == 1)
+                                setItemStyle(2);
                               else
-                              this.setState({itemStyle : 1})}}>
+                                setItemStyle(1)}}>
         Cambiar Estilo
       </Button>
     );
-}
+}  
+
+  function handleClick() {
+    //this.setState({ displayColorPicker: !this.state.displayColorPicker })
+  };
+
+  function handleClose() {
+    //this.setState({ displayColorPicker: false })
+  };
+
+  function handleChange(e) {
+    setState(e.hex);
+  };
 }
