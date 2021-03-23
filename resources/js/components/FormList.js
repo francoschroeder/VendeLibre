@@ -41,7 +41,7 @@ export default class FormList extends Component {
   constructor(props){
      super(props);
      this.state = {
-      backgroundColor: '',
+     
       cardGrid: {
         paddingTop: 9,
         paddingBottom: 9,
@@ -50,13 +50,16 @@ export default class FormList extends Component {
         padding: '100 600px',
         display: 'flex',
         backgroundColor: 'red'
+      },
+      mystyle: {
+        backgroundColor: "DodgerBlue",
       }
     };
     }
  
 
   render (){
-    var opcion = 12;
+    var opcion = 1;
     if (opcion == 1 ) {
       console.log('entro a render')
         return  this.tableItem();}
@@ -64,8 +67,14 @@ export default class FormList extends Component {
   
   };
         
-  handleChangeComplete(color, event) {
-    this.setState({ background: color.hex });
+  handleChangeComplete(color) {
+      this.setState(prevState => ({
+        mystyle: {                   // object that we want to update
+            ...prevState.mystyle,    // keep all other key-value pairs
+            backgroundColor: color.hex        // update the value of specific key
+        }
+    }))
+  
   };
 
  
@@ -80,8 +89,8 @@ tableItem(){
         onChangeComplete={ this.handleChangeComplete }
       />
       <Container className={this.state.TabelItem}>
-        <TableContainer component={Paper} className={tableStyle.root}>  
-        <Table className={this.state.TableItem} aria-label="simple table" >
+        <TableContainer component={Paper} className={tableStyle.root} style={this.state.mystyle}>  
+        <Table className={this.state.TableItem} style={this.state.mystyle} aria-label="simple table" >
             <TableBody>
               {this.props.items.map((item) => (
                 <TableItemClass key={item.id} item = {item} edit = {this.props.edit}/>
