@@ -36,30 +36,6 @@ export default function FormList({edit, items, style}) {
   const [color, setColor] = useState('#9f3');
   const [itemStyle, setItemStyle] = useState(style.item_style);
   const [displayColorPicker, setDisplayColorPicker] = useState(false);
-    /* super(props);
-     this.state = {
-      background: '#9f3', 
-      displayColorPicker: false,
-      cardGrid: {
-        paddingTop: 9,
-        paddingBottom: 9,
-      },
-      TabelItem:{
-        padding: '100 600px',
-        display: 'flex',
-        
-      },
-
-      color: {
-        background: '#9f3'
-      },
-
-      itemStyle : this.props.style.item_style
-    };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleClose = this.handleClose.bind(this);
-    this.handleClick = this.handleClick.bind(this)
-    }*/
  
   if (itemStyle == 1 )
     return tableItem();
@@ -71,17 +47,14 @@ export default function FormList({edit, items, style}) {
     <div>
       { renderBoton() }
       <div>
-        <button onClick={ () => displayColorPicker ? 
-                                setDisplayColorPicker(false) :
-                                setDisplayColorPicker(true)}>
-        Edit Color
+        <button onClick={ handleEditColor }>
+          Edit Color
         </button>
         { displayColorPicker ? 
           <div >
           <ChromePicker color={ color } onChange={ (e) => setColor(e.hex) }/>
           </div> : null }
       </div>
-      
       
       <Container className={useStyles.TableItem}>
         <TableContainer component={Paper} className={tableStyle.root} style={{background : color}}>  
@@ -125,5 +98,12 @@ function renderBoton() {
         Cambiar Estilo
       </Button>
     );
-}  
+}
+
+function handleEditColor() {
+  if (displayColorPicker)
+    setDisplayColorPicker(false);
+  else
+    setDisplayColorPicker(true);
+}
 }
