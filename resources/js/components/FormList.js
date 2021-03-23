@@ -20,7 +20,6 @@ const useStyles = makeStyles ({
   TableItem:{
     padding: '100 600px',
     display: 'flex',
-    //backgroundColor: 'red'
   }
  
 });
@@ -30,17 +29,13 @@ const tableStyle = makeStyles({
    width: 400,
    display: 'flex',
    padding: '100 600px',
-   //backgroundColor: 'red'
   },
 });
-
-/*handleChangeComplete = (color) => {
-this.setState({ background: color.hex });*/
-
 
 export default function FormList({edit, items, style}) {
   const [color, setColor] = useState('#9f3');
   const [itemStyle, setItemStyle] = useState(style.item_style);
+  const [displayColorPicker, setDisplayColorPicker] = useState(false);
     /* super(props);
      this.state = {
       background: '#9f3', 
@@ -76,11 +71,15 @@ export default function FormList({edit, items, style}) {
     <div>
       { renderBoton() }
       <div>
-        <button onClick={ handleClick }>Edit Color</button>
-        {/* this.state.displayColorPicker ? <div >
-          <div onClick={ this.handleClose }/>
-          <ChromePicker color={ color } onChange={ this.handleChange }/>
-        </div> : null */}
+        <button onClick={ () => displayColorPicker ? 
+                                setDisplayColorPicker(false) :
+                                setDisplayColorPicker(true)}>
+        Edit Color
+        </button>
+        { displayColorPicker ? 
+          <div >
+          <ChromePicker color={ color } onChange={ (e) => setColor(e.hex) }/>
+          </div> : null }
       </div>
       
       
@@ -127,16 +126,4 @@ function renderBoton() {
       </Button>
     );
 }  
-
-  function handleClick() {
-    //this.setState({ displayColorPicker: !this.state.displayColorPicker })
-  };
-
-  function handleClose() {
-    //this.setState({ displayColorPicker: false })
-  };
-
-  function handleChange(e) {
-    setState(e.hex);
-  };
 }
