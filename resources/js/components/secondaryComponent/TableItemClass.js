@@ -21,10 +21,8 @@ const tableStyle = makeStyles({
 
 export default class TableItemClass extends Component {
     constructor(props) {
-        const classes = useStyles();
-        const classestable = tableStyle();
-        var editable = false;
-        let { id } = useParams();
+        super(props);
+     
     }   
 render (){
     var editable = false;
@@ -37,6 +35,8 @@ render (){
         };
 
   renderTableListEditable(){
+    //obatener variable del entorno
+    var id = 1;
       return(
           <TableRow >
         <TableCell component="th" scope="row">
@@ -81,6 +81,7 @@ render (){
       </TableRow>)
   }
   renderTableListEdit(){
+    var id = 1;
       return (
         <TableRow >
     <TableCell component="th" scope="row">
@@ -108,6 +109,8 @@ render (){
       )
   }
   renderTableList(){
+    var id = 1;
+    //let { id } = useParams();
       return (
         <TableRow >
     <TableCell component="th" scope="row">
@@ -115,10 +118,10 @@ render (){
     </TableCell>
     <TableCell align="left">
       <Typography gutterBottom variant="h5" component="h2">
-          {item.title}
+          {this.props.item.title}
           </Typography>
           <Typography>
-          {item.description}
+          {this.props.item.description}
           </Typography>
           <Typography>
           {"$"+this.props.item.price}

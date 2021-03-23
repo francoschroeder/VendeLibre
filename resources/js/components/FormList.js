@@ -11,7 +11,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import Paper from '@material-ui/core/Paper';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
-import TableItem from './secondaryComponent/TableItem';
+import TableItemClass from './secondaryComponent/TableItemClass';
 import { SketchPicker } from 'react-color'
 
 const useStyles = makeStyles ({
@@ -71,7 +71,7 @@ tableItem(){
         <Table className={useStyles.TableItem} aria-label="simple table" >
             <TableBody>
               {this.props.items.map((item) => (
-                <TableItem key={item.id} item = {item} edit = {this.props.edit}/>
+                <TableItemClass key={item.id} item = {item} edit = {this.props.edit}/>
               ))}
             </TableBody>
           </Table>
