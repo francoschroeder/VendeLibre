@@ -3,7 +3,7 @@ import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import ItemCard from './secondaryComponent/ItemCard';
-
+import Button from '@material-ui/core/Button';
 import TableContainer from '@material-ui/core/TableContainer';
 import Paper from '@material-ui/core/Paper';
 import Table from '@material-ui/core/Table';
@@ -58,21 +58,18 @@ export default class FormList extends Component {
       color: {
         background: '#9f3'
       },
+
+      itemStyle : this.props.style.item_style
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleClose = this.handleClose.bind(this);
     this.handleClick = this.handleClick.bind(this)
     }
  
-
-  render (){
-    //this.props.style.item_style
-    var opcion = 1;
-    if (opcion == 1 ) {
-      console.log('entro a render')
-        return  this.tableItem();}
+  render () {
+    if (this.state.itemStyle == 1 )
+    return  this.tableItem();
     else return this.cardItem();
-  
   };
      
   handleClick(){
@@ -88,9 +85,8 @@ export default class FormList extends Component {
  
 tableItem(){
   return (
-    
-  
     <div>
+      { this.renderBoton() }
       <div>
         <button onClick={ this.handleClick }>Edit Color</button>
         { this.state.displayColorPicker ? <div >
@@ -117,9 +113,9 @@ tableItem(){
   )
 }
 cardItem(){
-  
   return (
     <Container className={useStyles.cardGrid} maxWidth="md">
+    { this.renderBoton() }
     <Grid container spacing={4}>
        {this.props.items.map((item) => (
          <Grid item key={item.id} xs={12} sm={6} md={4}>
@@ -129,5 +125,17 @@ cardItem(){
      </Grid>
    </Container>
   )
-  }
+}
+
+renderBoton() {
+  if (this.props.edit)
+    return (
+      <Button onClick={() => {if (this.state.itemStyle == 1)
+                              this.setState({itemStyle : 2})
+                              else
+                              this.setState({itemStyle : 1})}}>
+        Cambiar Estilo
+      </Button>
+    );
+}
 }
