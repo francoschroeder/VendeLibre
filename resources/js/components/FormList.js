@@ -9,7 +9,8 @@ import Paper from '@material-ui/core/Paper';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableItemClass from './secondaryComponent/TableItemClass';
-import { SketchPicker } from 'react-color'
+import { SketchPicker } from 'react-color';
+import { PhotoshopPicker } from 'react-color'
 
 const useStyles = makeStyles ({
   cardGrid: {
@@ -67,7 +68,7 @@ export default class FormList extends Component {
   
   };
         
-  handleChangeComplete(color) {
+  handleChangeComplete(color, event) {
       this.setState(prevState => ({
         mystyle: {                   // object that we want to update
             ...prevState.mystyle,    // keep all other key-value pairs
@@ -83,11 +84,7 @@ tableItem(){
     
     <div>
     
-    <SketchPicker
-        //quiero modificar el estado actual 
-        color={ this.state.background }
-        onChangeComplete={ this.handleChangeComplete }
-      />
+     <PhotoshopPicker onChangeComplete={ this.handleChangeComplete } />;
       <Container className={this.state.TabelItem}>
         <TableContainer component={Paper} className={tableStyle.root} style={this.state.mystyle}>  
         <Table className={this.state.TableItem} style={this.state.mystyle} aria-label="simple table" >
