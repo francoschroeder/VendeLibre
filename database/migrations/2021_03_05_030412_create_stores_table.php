@@ -27,7 +27,6 @@ class CreateStoresTable extends Migration
             $table->text('phone');
             $table->float('latitud');
             $table->float('longitud');
-
         });
     }
 

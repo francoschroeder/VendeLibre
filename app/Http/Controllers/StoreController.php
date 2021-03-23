@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Store;
 use App\Models\Item;
+use App\Models\Style;
 use Illuminate\Support\Facades\Auth;
 use Cornford\Googlmapper\Facades\MapperFacade as Mapper;
 
@@ -26,9 +27,8 @@ class StoreController extends Controller
     }
 
     public function create(Request $request) {
-		
-		
 		$store = new Store;
+		$style = new Style;
 
     	$store->name 	= $request->name;
 		$store->latitud	= $request->latitud;
@@ -40,6 +40,10 @@ class StoreController extends Controller
 		$store->user_id = Auth::id();
 
     	$store->save();
+
+    	$style->store_id = $store->id;
+
+    	$style->save();
 
     	return redirect('/store/' . $store->id);
 	}
