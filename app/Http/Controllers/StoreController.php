@@ -105,6 +105,13 @@ class StoreController extends Controller
 			$item->save();
 		}
 
+		$style = $store->style;
+		
+		$style->item_style = $request('style.item_style');
+		$style->background = $request('style.background');
+
+		$style->save();
+
 		$store->save();
 
 		return response()->json("OK");
