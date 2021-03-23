@@ -21,7 +21,6 @@ const useStyles = makeStyles ({
     padding: '100 600px',
     display: 'flex',
   }
- 
 });
 
 const tableStyle = makeStyles({
@@ -45,14 +44,14 @@ export default function FormList({edit, items, style}) {
   function tableItem(){
   return (
     <div>
-      { renderBoton() }
+      { renderBotonCambiarEstilo() }
       <div>
         <button onClick={ handleEditColor }>
           Edit Color
         </button>
         { displayColorPicker ? 
           <div >
-          <ChromePicker color={ color } onChange={ (e) => setColor(e.hex) }/>
+          <ChromePicker color={ color } onChange={ (e) => {setColor(e.hex); style.background = color} }/>
           </div> : null }
       </div>
       
@@ -76,7 +75,7 @@ export default function FormList({edit, items, style}) {
 function cardItem() {
   return (
     <Container className={useStyles.cardGrid} maxWidth="md">
-    { renderBoton() }
+    { renderBotonCambiarEstilo() }
     <Grid container spacing={4}>
        {items.map((item) => (
          <Grid item key={item.id} xs={12} sm={6} md={4}>
@@ -88,7 +87,7 @@ function cardItem() {
   )
 }
 
-function renderBoton() {
+function renderBotonCambiarEstilo() {
   if (edit)
     return (
       <Button onClick={() => {if (itemStyle == 1)
@@ -105,5 +104,14 @@ function handleEditColor() {
     setDisplayColorPicker(false);
   else
     setDisplayColorPicker(true);
+}
+
+function handleCambiarEstilo() {
+  if (itemStyle == 1)
+    setItemStyle(2);
+  else
+    setItemStyle(1)
+
+  style.item_style = itemStyle;
 }
 }
