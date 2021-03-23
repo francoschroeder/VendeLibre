@@ -27,6 +27,19 @@ class StoreController extends Controller
     }
 
     public function create(Request $request) {
+		
+			request()->validate([
+				'name' => ['required', 'min:2', 'max:155'],
+				'latitud' => ['required', 'min:0'],
+				'longitud' => ['required', 'min:2', 'max:155'],
+				'phone' => ['required', 'min:2', 'max:155'],
+				'email' => ['required', 'min:2', 'max:155'],
+				'direction' => ['required', 'min:2', 'max:155'],
+				'description' => ['required', 'min:2', 'max:155']
+
+
+		]);
+		
 		$store = new Store;
 		$style = new Style;
 

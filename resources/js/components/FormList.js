@@ -36,12 +36,15 @@ export default function FormList({edit, items, style}) {
   const [itemStyle, setItemStyle] = useState(style.item_style);
   const [displayColorPicker, setDisplayColorPicker] = useState(false);
  
+  
+  
   if (itemStyle == 1 )
     return tableItem();
   else 
     return cardItem();
   
-  function tableItem(){
+  
+function tableItem(){
   return (
     <div>
       { renderBotonCambiarEstilo() }
