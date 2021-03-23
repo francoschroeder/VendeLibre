@@ -20,7 +20,8 @@ class CreateStylesTable extends Migration
                     ->references('id')
                     ->on('stores')
                     ->onDelete('cascade');
-            $table->integer('item_style');
+            $table->integer('item_style')->default('1');
+            $table->string('background_color')->default('white');
         });
     }
 

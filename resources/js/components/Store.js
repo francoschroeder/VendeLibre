@@ -115,7 +115,8 @@ export default function Store({edit}) {
         axios.put('/api/saveStore/' + id, {
             name: name,
             description: description,
-            items: items
+            items: items,
+            style: style
         })
             .then(function(response) {
                 console.log(response);
