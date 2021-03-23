@@ -18,4 +18,8 @@ class Store extends Model
     public function items() {
     	return $this->hasMany(Item::class);
     }
+
+    public function style() {
+    	return $this->hasOne(Style::class);
+    }
 }
