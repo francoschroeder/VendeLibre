@@ -40,9 +40,11 @@ this.setState({ background: color.hex });*/
 
 export default class FormList extends Component {
   constructor(props){
+    
      super(props);
      this.state = {
-     
+      background: '#9f3', 
+      displayColorPicker: false,
       cardGrid: {
         paddingTop: 9,
         paddingBottom: 9,
@@ -50,12 +52,14 @@ export default class FormList extends Component {
       TabelItem:{
         padding: '100 600px',
         display: 'flex',
-        backgroundColor: 'red'
+        
       },
-      mystyle: {
-        backgroundColor: "DodgerBlue",
-      }
+
+      color: {
+        background: '#9f3'
+      },
     };
+    this.handleChange = this.handleChange.bind(this)
     }
  
 
@@ -68,26 +72,20 @@ export default class FormList extends Component {
   
   };
         
-  handleChangeComplete(color, event) {
-      this.setState(prevState => ({
-        mystyle: {                   // object that we want to update
-            ...prevState.mystyle,    // keep all other key-value pairs
-            backgroundColor: color.hex        // update the value of specific key
-        }
-    }))
-  
+  handleChange(color){
+    this.setState({ background: color.hex })
   };
-
  
 tableItem(){
   return (
     
+  
     <div>
-    
-     <PhotoshopPicker onChangeComplete={ this.handleChangeComplete } />;
+      <SketchPicker color={ this.state.color } onChange={ this.handleChange } />
+      
       <Container className={this.state.TabelItem}>
-        <TableContainer component={Paper} className={tableStyle.root} style={this.state.mystyle}>  
-        <Table className={this.state.TableItem} style={this.state.mystyle} aria-label="simple table" >
+        <TableContainer component={Paper} className={tableStyle.root} style={this.state.color}>  
+        <Table className={this.state.TabelItem} style={this.state.color} aria-label="simple table" >
             <TableBody>
               {this.props.items.map((item) => (
                 <TableItemClass key={item.id} item = {item} edit = {this.props.edit}/>
