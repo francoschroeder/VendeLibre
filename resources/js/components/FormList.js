@@ -40,7 +40,20 @@ this.setState({ background: color.hex });*/
 export default class FormList extends Component {
   constructor(props){
      super(props);
-  }
+     this.state = {
+      backgroundColor: '',
+      cardGrid: {
+        paddingTop: 9,
+        paddingBottom: 9,
+      },
+      TabelItem:{
+        padding: '100 600px',
+        display: 'flex',
+        backgroundColor: 'red'
+      }
+    };
+    }
+ 
 
   render (){
     var opcion = 12;
@@ -51,9 +64,10 @@ export default class FormList extends Component {
   
   };
         
- // handleChangeComplete = (color) => {
- //   this.setState({ background: color.hex });
- // }; 
+  handleChangeComplete(color, event) {
+    this.setState({ background: color.hex });
+  };
+
  
 tableItem(){
   return (
@@ -62,12 +76,12 @@ tableItem(){
     
     <SketchPicker
         //quiero modificar el estado actual 
-        //color={ this.state.background }
-        //onChangeComplete={ this.handleChangeComplete }
+        color={ this.state.background }
+        onChangeComplete={ this.handleChangeComplete }
       />
-      <Container className={useStyles.TabelItem}>
+      <Container className={this.state.TabelItem}>
         <TableContainer component={Paper} className={tableStyle.root}>  
-        <Table className={useStyles.TableItem} aria-label="simple table" >
+        <Table className={this.state.TableItem} aria-label="simple table" >
             <TableBody>
               {this.props.items.map((item) => (
                 <TableItemClass key={item.id} item = {item} edit = {this.props.edit}/>
@@ -88,7 +102,7 @@ cardItem(){
     <Grid container spacing={4}>
        {this.props.items.map((item) => (
          <Grid item key={item.id} xs={12} sm={6} md={4}>
-           <ItemCard item = {item} edit = {item.edit}/>
+           <ItemCard item = {item} edit = {this.props.edit}/>
          </Grid>
        ))}
      </Grid>

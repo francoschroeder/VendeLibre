@@ -36,7 +36,7 @@ export default function ItemList({edit, items, setItems}) {
           lo mismo con el color de fondo, aca lo debria poder elegir y
           ahi cambia mos el atrubito backgroun y listo (eso ya anda)
         */}
-  
+      
       <FormList edit = {edit}
                       items = {items}
                       setItems = {setItems}/>
