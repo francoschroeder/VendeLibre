@@ -44,6 +44,7 @@ export default function Store({edit}) {
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [items, setItems] = useState([]);
+    const [style, setStyle] = useState([]);
     var opcion;
 
     useEffect(() =>{
@@ -51,13 +52,10 @@ export default function Store({edit}) {
 
         axios.get('/api/getStore/' + id)
             .then(function (response) {
-                setName(response.data.name);
-                setDescription(response.data.description);
-        })
-
-        axios.get('/api/getItemList/' + id)
-            .then(function (response) {
-                setItems(response.data);
+                setName(response.data.store.name);
+                setDescription(response.data.store.description);
+                setItems(response.data.items);
+                setStyle(response.data.style);
         })
     }, []);
 
@@ -117,7 +115,8 @@ export default function Store({edit}) {
         axios.put('/api/saveStore/' + id, {
             name: name,
             description: description,
-            items: items
+            items: items,
+            style: style
         })
             .then(function(response) {
                 console.log(response);

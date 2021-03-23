@@ -81,13 +81,9 @@ class StoreController extends Controller
 	public function getStore($store_id) {
 		$store = Store::find($store_id);
 
-		return response()->json($store);
-	}
-
-	public function getItemList($store_id) {
-		$store = Store::find($store_id);
-
-		return response()->json($store->items);
+		return response()->json(['store' => $store,
+								'items' => $store->items,
+								'style' => $store->style]);
 	}
 
 	public function saveStore($store_id, Request $request) {
