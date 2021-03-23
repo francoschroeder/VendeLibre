@@ -64,7 +64,7 @@ export default class FormList extends Component {
  
 
   render (){
-    var opcion = 1;
+    var opcion = this.props.style.item_style;
     if (opcion == 1 ) {
       console.log('entro a render')
         return  this.tableItem();}

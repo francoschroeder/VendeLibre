@@ -48,6 +48,7 @@ export default function Store({edit}) {
     var opcion;
 
     useEffect(() =>{
+        console.log({style});
         window.axios = require('axios');
 
         axios.get('/api/getStore/' + id)
@@ -74,9 +75,12 @@ export default function Store({edit}) {
                             setDescription={setDescription}/>
                 </Container>
             </div>
+            
             <ItemList edit = {edit}
                       items = {items}
-                      setItems = {setItems}/>
+                      setItems = {setItems}
+                      style = {style}
+                      />
             {RenderBotonGuardar(edit)}
             </main>
         {/* Footer */}

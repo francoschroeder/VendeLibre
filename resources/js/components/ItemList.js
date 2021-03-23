@@ -24,7 +24,7 @@ const tableStyle = makeStyles({
   },
 });
 
-export default function ItemList({edit, items, setItems}) {
+export default function ItemList({edit, items, setItems, style}) {
   const classes = useStyles();
   const classestable = tableStyle();
 
@@ -39,7 +39,8 @@ export default function ItemList({edit, items, setItems}) {
       
       <FormList edit = {edit}
                       items = {items}
-                      setItems = {setItems}/>
+                      setItems = {setItems}
+                      style = {style}/>
     </div>
   );
   else
@@ -47,7 +48,8 @@ export default function ItemList({edit, items, setItems}) {
   <div>
     <FormList edit = {edit}
                   items = {items}
-                  setItems = {setItems}/>
+                  setItems = {setItems}
+                  style = {style}/>
   </div>);
 
 }
