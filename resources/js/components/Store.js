@@ -48,7 +48,6 @@ export default function Store({edit}) {
     var opcion;
 
     useEffect(() =>{
-        console.log({style});
         window.axios = require('axios');
 
         axios.get('/api/getStore/' + id)
