@@ -66,8 +66,6 @@ export default function FormList({edit, items, style}) {
           </Table>
           </TableContainer>
       </Container>
-  
-
       </div>
   )
 }
@@ -90,10 +88,7 @@ function cardItem() {
 function renderBotonCambiarEstilo() {
   if (edit)
     return (
-      <Button onClick={() => {if (itemStyle == 1)
-                                setItemStyle(2);
-                              else
-                                setItemStyle(1)}}>
+      <Button onClick={ handleCambiarEstilo }>
         Cambiar Estilo
       </Button>
     );
