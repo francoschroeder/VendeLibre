@@ -67,7 +67,7 @@ render (){
               onChange={(e) => setPrice(e.target.value)}
             />
               </Typography>
-              <Button size="small" color="primary" href={'/store/' + id + '/' + item.id}>
+              <Button size="small" color="primary" href={'/store/' + id + '/' + this.props.item.id}>
                 Ver
               </Button>
               <Button size="small" color="primary" onClick={() => {
@@ -98,7 +98,7 @@ render (){
           {"$"+this.props.item.price}
           </Typography>
         
-          <Button size="small" color="primary" href={'/store/' + id + '/' + item.id}>
+          <Button size="small" color="primary" href={'/store/' + id + '/' + this.props.item.id}>
             Ver
           </Button>
           <Button size="small" color="primary" onClick={() => setEditable(true)}>
