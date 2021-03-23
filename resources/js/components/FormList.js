@@ -43,7 +43,7 @@ export default class FormList extends Component {
   }
 
   render (){
-    var opcion = 1;
+    var opcion = 12;
     if (opcion == 1 ) {
       console.log('entro a render')
         return  this.tableItem();}
@@ -51,7 +51,9 @@ export default class FormList extends Component {
   
   };
         
- 
+ // handleChangeComplete = (color) => {
+ //   this.setState({ background: color.hex });
+ // }; 
  
 tableItem(){
   return (
@@ -60,7 +62,7 @@ tableItem(){
     
     <SketchPicker
         //quiero modificar el estado actual 
-        
+        //color={ this.state.background }
         //onChangeComplete={ this.handleChangeComplete }
       />
       <Container className={useStyles.TabelItem}>
