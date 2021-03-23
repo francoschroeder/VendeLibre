@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Store;
+use App\Models\Item;
 use Illuminate\Support\Facades\Auth;
 use Cornford\Googlmapper\Facades\MapperFacade as Mapper;
 
@@ -95,7 +96,14 @@ class StoreController extends Controller
 		$store->name = $request->input('name');
 		$store->description = $request->input('description');
 
-		//Falta guardar los items
+		foreach ($request->input('items') as $itemResponse) {
+			$item = Item::find($itemResponse['id']);
+			$item->title = $itemResponse['title'];
+			$item->description = $itemResponse['description'];
+			$item->price = $itemResponse['price'];
+
+			$item->save();
+		}
 
 		$store->save();
 
