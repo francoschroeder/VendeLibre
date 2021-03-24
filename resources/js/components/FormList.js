@@ -85,7 +85,7 @@ function renderColorPicker() {
     if (displayColorPicker)
       return (
         <div>
-        <button onClick={ handleEditColor }>
+        <button onClick={ () => displayColorPicker ? setDisplayColorPicker(false) : setDisplayColorPicker(true) }>
           Edit Color
         </button>
           <ChromePicker color={ color } onChange={ (e) => {setColor(e.hex); style.background = color} }/>
@@ -106,13 +106,6 @@ function renderBotonCambiarEstilo() {
         Cambiar Estilo
       </Button>
     );
-}
-
-function handleEditColor() {
-  if (displayColorPicker)
-    setDisplayColorPicker(false);
-  else
-    setDisplayColorPicker(true);
 }
 
 function handleCambiarEstilo() {
