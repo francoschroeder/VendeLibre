@@ -3,9 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import { useParams } from 'react-router-dom';
 import TableCell from '@material-ui/core/TableCell';
-
 import TableRow from '@material-ui/core/TableRow';
-
 import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles({
@@ -21,7 +19,7 @@ const tableStyle = makeStyles({
   });
 
 
-export default function TablelItem({item, edit}) {
+export default function TableItem({item, edit}) {
   const classes = useStyles();
   const classestable = tableStyle();
   const [title, setTitle] = useState(item.title);

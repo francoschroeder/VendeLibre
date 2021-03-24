@@ -3,12 +3,12 @@ import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import ItemCard from './secondaryComponent/ItemCard';
+import TableItem from './secondaryComponent/TableItem';
 import Button from '@material-ui/core/Button';
 import TableContainer from '@material-ui/core/TableContainer';
 import Paper from '@material-ui/core/Paper';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
-import TableItemClass from './secondaryComponent/TableItemClass';
 import { SketchPicker } from 'react-color';
 import { PhotoshopPicker, ChromePicker  } from 'react-color'
 
@@ -44,7 +44,6 @@ export default function FormList({edit, items, style}) {
   else 
     return cardItem();
   
-  
 function tableItem(){
   return (
     <div>
@@ -55,7 +54,7 @@ function tableItem(){
         <Table className={useStyles.TableItem} style={{background : style.background_color}} aria-label="simple table" >
             <TableBody>
               {items.map((item) => (
-                <TableItemClass key={item.id} item = {item} edit = {edit}/>
+                <TableItem key = {item.id} item = {item} edit = {edit}/>
               ))}
             </TableBody>
           </Table>
