@@ -12,6 +12,9 @@ import TableItemClass from './secondaryComponent/TableItemClass';
 import { SketchPicker } from 'react-color';
 import { PhotoshopPicker, ChromePicker  } from 'react-color'
 
+const TABLE = "1";
+const CARD  = "2"; 
+
 const useStyles = makeStyles ({
   cardGrid: {
     paddingTop: 9,
@@ -35,10 +38,8 @@ export default function FormList({edit, items, style}) {
   const [color, setColor] = useState('#9f3');
   const [itemStyle, setItemStyle] = useState(style.item_style);
   const [displayColorPicker, setDisplayColorPicker] = useState(false);
- 
-  
-  
-  if (itemStyle == 1 )
+
+  if (style.item_style == TABLE)
     return tableItem();
   else 
     return cardItem();
@@ -105,11 +106,13 @@ function handleEditColor() {
 }
 
 function handleCambiarEstilo() {
-  if (itemStyle == 1)
-    setItemStyle(2);
-  else
-    setItemStyle(1)
-
-  style.item_style = itemStyle;
+  if (style.item_style == TABLE) {
+    setItemStyle(CARD);
+    style.item_style = CARD;
+  }
+  else {
+    setItemStyle(TABLE);
+    style.item_style = TABLE;
+  }
 }
 }
