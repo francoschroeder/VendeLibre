@@ -49,16 +49,7 @@ function tableItem(){
   return (
     <div>
       { renderBotonCambiarEstilo() }
-      <div>
-        <button onClick={ handleEditColor }>
-          Edit Color
-        </button>
-        { displayColorPicker ? 
-          <div >
-          <ChromePicker color={ color } onChange={ (e) => {setColor(e.hex); style.background = color} }/>
-          </div> : null }
-      </div>
-      
+      { renderColorPicker() }
       <Container className={useStyles.TableItem}>
         <TableContainer component={Paper} className={tableStyle.root} style={{background : color}}>  
         <Table className={useStyles.TableItem} style={{background : color}} aria-label="simple table" >
@@ -87,6 +78,25 @@ function cardItem() {
      </Grid>
    </Container>
   )
+}
+
+function renderColorPicker() {
+  if (edit)
+    if (displayColorPicker)
+      return (
+        <div>
+        <button onClick={ handleEditColor }>
+          Edit Color
+        </button>
+          <ChromePicker color={ color } onChange={ (e) => {setColor(e.hex); style.background = color} }/>
+        </div>
+      )
+    else
+      return (
+        <button onClick={ handleEditColor }>
+          Edit Color
+        </button>
+      )
 }
 
 function renderBotonCambiarEstilo() {
