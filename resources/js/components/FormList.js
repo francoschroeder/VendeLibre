@@ -51,8 +51,8 @@ function tableItem(){
       { renderBotonCambiarEstilo() }
       { renderColorPicker() }
       <Container className={useStyles.TableItem}>
-        <TableContainer component={Paper} className={tableStyle.root} style={{background : color}}>  
-        <Table className={useStyles.TableItem} style={{background : color}} aria-label="simple table" >
+        <TableContainer component={Paper} className={tableStyle.root} style={{background : style.background_color}}>  
+        <Table className={useStyles.TableItem} style={{background : style.background_color}} aria-label="simple table" >
             <TableBody>
               {items.map((item) => (
                 <TableItemClass key={item.id} item = {item} edit = {edit}/>
@@ -88,12 +88,12 @@ function renderColorPicker() {
         <button onClick={ () => displayColorPicker ? setDisplayColorPicker(false) : setDisplayColorPicker(true) }>
           Edit Color
         </button>
-          <ChromePicker color={ color } onChange={ (e) => {setColor(e.hex); style.background = color} }/>
+          <ChromePicker color={ color } onChange={ (e) => {setColor(e.hex); style.background_color = color} }/>
         </div>
       )
     else
       return (
-        <button onClick={ handleEditColor }>
+        <button onClick={ () => displayColorPicker ? setDisplayColorPicker(false) : setDisplayColorPicker(true) }>
           Edit Color
         </button>
       )
