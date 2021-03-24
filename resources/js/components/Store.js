@@ -45,7 +45,6 @@ export default function Store({edit}) {
     const [description, setDescription] = useState('');
     const [items, setItems] = useState([]);
     const [style, setStyle] = useState([]);
-    var opcion;
 
     useEffect(() =>{
         window.axios = require('axios');
@@ -77,10 +76,9 @@ export default function Store({edit}) {
             
             <ItemList edit = {edit}
                       items = {items}
-                      setItems = {setItems}
                       style = {style}
                       />
-            {RenderBotonGuardar(edit)}
+            {RenderBotonGuardar()}
             </main>
         {/* Footer */}
         <footer className={classes.footer}>
@@ -97,7 +95,7 @@ export default function Store({edit}) {
   );
   
 
-    function RenderBotonGuardar(edit) {
+    function RenderBotonGuardar() {
     if (edit)
         return (
             <div align="center">

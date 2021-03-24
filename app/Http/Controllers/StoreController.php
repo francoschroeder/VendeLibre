@@ -119,9 +119,9 @@ class StoreController extends Controller
 		}
 
 		$style = $store->style;
-		
-		$style->item_style = $request('style.item_style');
-		$style->background = $request('style.background');
+
+		$style->item_style = $request->input('style.item_style');
+		$style->background_color = $request->input('style.background_color');
 
 		$style->save();
 
