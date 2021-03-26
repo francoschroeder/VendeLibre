@@ -7,7 +7,7 @@
 
 @section('content')
 <div class = "container">
-					<form method = "POST" action="/store/{{$store->id}}/addItem">
+					<form method = "POST" action="/store/{{$store->id}}/addItem" enctype="multipart/form-data">
 						
 								@csrf
 								<div class = "container">
@@ -30,13 +30,9 @@
 												</div>
 												<div class="form-group">
 												<label for="exampleFormControlFile1">Agregar Imagen</label>
-												<input type="file" class="form-control-file" id="exampleFormControlFile1">
+												<input type="file" class="form-control-file" name="image" id="exampleFormControlFile1">
 												</div>
 										</div>
-									
-								
-								
-								
 								</div>
 								<div>
 								<button type="submit" class="btn btn-primary">Agregar</button>

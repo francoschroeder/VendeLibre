@@ -32,7 +32,7 @@ export default function TableItem({item, edit}) {
   return (
     <TableRow >
     <TableCell component="th" scope="row">
-      Imagen
+      <img src={'/images/'+item.id} alt="Not Found"/>
     </TableCell>
     <TableCell align="left">
       <Typography gutterBottom variant="h5" component="h2">
@@ -82,7 +82,7 @@ export default function TableItem({item, edit}) {
   return (
     <TableRow >
     <TableCell component="th" scope="row">
-      Imagen
+      <img src={'/images/'+item.id} alt="Not Found"/>
     </TableCell>
     <TableCell align="left">
       <Typography gutterBottom variant="h5" component="h2">
@@ -113,7 +113,7 @@ export default function TableItem({item, edit}) {
   return (
     <TableRow >
     <TableCell component="th" scope="row">
-      Imagen
+      <img src={'/images/'+item.id} alt="Not Found"/>
     </TableCell>
     <TableCell align="left">
       <Typography gutterBottom variant="h5" component="h2">

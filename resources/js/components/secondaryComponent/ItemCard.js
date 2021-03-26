@@ -34,11 +34,7 @@ export default function ItemCard({item, edit}) {
   if (editable)
     return (
     <Card className={classes.card}>
-      <CardMedia
-        className={classes.cardMedia}
-          image="https://source.unsplash.com/random"
-          title="Image title"
-      />
+      <img src={'/images/'+item.id} alt="Not Found"/>
       <CardContent className={classes.cardContent}>
         <input
           className="MuiTypography-root MuiTypography-h5 MuiTypography-displayInline"
@@ -76,11 +72,7 @@ export default function ItemCard({item, edit}) {
   else if (edit)
     return (
     <Card className={classes.card}>
-      <CardMedia
-        className={classes.cardMedia}
-          image="https://source.unsplash.com/random"
-          title="Image title"
-      />
+      <img src={'/images/'+item.id} alt="Not Found"/>
       <CardContent className={classes.cardContent}>
         <Typography gutterBottom variant="h5" component="h2">
           {title}
@@ -105,11 +97,7 @@ export default function ItemCard({item, edit}) {
   else  
   return (
     <Card className={classes.card}>
-      <CardMedia
-        className={classes.cardMedia}
-          image="https://source.unsplash.com/random"
-          title="Image title"
-      />
+      <img src={'/images/'+item.id} alt="Not Found"/>
       <CardContent className={classes.cardContent}>
         <Typography gutterBottom variant="h5" component="h2">
           {title}

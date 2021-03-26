@@ -69,8 +69,8 @@ class ItemController extends Controller
         request()->validate([
             'title' => ['required', 'min:2', 'max:155'],
             'price' => ['required', 'min:0,0'],
-            'description' => ['required', 'min:2', 'max:155']
-
+            'description' => ['required', 'min:2', 'max:155'],
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg'
         ]);
         
         $item = new Item;
@@ -79,6 +79,9 @@ class ItemController extends Controller
         $item->description = request('description');
         $item->store_id = $store_id;
         $item->save();
+
+        request('image')->move(public_path('images'), $item->id);
+
         return redirect('/store/'.$store_id); 
     }
 }
