@@ -5,6 +5,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import ItemCard from './secondaryComponent/ItemCard';
 import TableItem from './secondaryComponent/TableItem';
 import Button from '@material-ui/core/Button';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
 import TableContainer from '@material-ui/core/TableContainer';
 import Paper from '@material-ui/core/Paper';
 import Table from '@material-ui/core/Table';
@@ -38,6 +40,7 @@ export default function FormList({edit, items, style}) {
   const [color, setColor] = useState('#9f3');
   const [itemStyle, setItemStyle] = useState(style.item_style);
   const [displayColorPicker, setDisplayColorPicker] = useState(false);
+  const [anchorEl, setAnchorEl] = useState(null);
 
   if (style.item_style == TABLE)
     return tableItem();
@@ -101,20 +104,32 @@ function renderColorPicker() {
 function renderBotonCambiarEstilo() {
   if (edit)
     return (
-      <Button onClick={ handleCambiarEstilo }>
-        Cambiar Estilo
+      <div>
+      <Button aria-controls="simple-menu" aria-haspopup="true" onClick={(e) => setAnchorEl(e.currentTarget)}>
+        Estilo
       </Button>
+      <Menu
+        id="simple-menu"
+        anchorEl={anchorEl}
+        keepMounted
+        open={Boolean(anchorEl)}
+        onClose={() => setAnchorEl(null)}
+      >
+        <MenuItem onClick={() => { changeStyle(CARD);
+                                   setAnchorEl(null);}}>
+          Tarjetas
+        </MenuItem>
+        <MenuItem onClick={() => { changeStyle(TABLE);
+                                   setAnchorEl(null);}}>
+          Lista
+        </MenuItem>
+      </Menu>
+      </div>
     );
 }
 
-function handleCambiarEstilo() {
-  if (style.item_style == TABLE) {
-    setItemStyle(CARD);
-    style.item_style = CARD;
-  }
-  else {
-    setItemStyle(TABLE);
-    style.item_style = TABLE;
-  }
+function changeStyle(sty) {
+  setItemStyle(sty);
+  style.item_style = sty;
 }
 }
