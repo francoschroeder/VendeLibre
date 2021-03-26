@@ -49,7 +49,7 @@ export default function FormList({edit, items, style}) {
   
 function tableItem(){
   return (
-    <div>
+    <div style={{background : style.background_color}}>
       { renderBotonCambiarEstilo() }
       { renderColorPicker() }
       <Container className={useStyles.TableItem}>
@@ -63,7 +63,7 @@ function tableItem(){
           </Table>
           </TableContainer>
       </Container>
-      </div>
+    </div>
   )
 }
 
