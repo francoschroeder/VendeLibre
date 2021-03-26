@@ -41,35 +41,41 @@ export default function TableItem({item, edit}) {
             size={title.length}
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-          />
-          </Typography>
-          <Typography>
-          <input
+        />
+      </Typography>
+    </TableCell>
+    <TableCell align="left">
+      <Typography>
+        <input
           className="MuiTypography-root MuiTypography-h7 MuiTypography-displayInline"
           size={description.length}
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
-          </Typography>
-          <Typography>
-          <input
+      </Typography>
+    </TableCell>
+    <TableCell align="left">
+      <Typography>
+        <input
           className="MuiTypography-root MuiTypography-h7 MuiTypography-displayInline"
           size={price.length}
           value={price}
           onChange={(e) => setPrice(e.target.value)}
         />
-          </Typography>
-          <Button size="small" color="primary" href={'/store/' + id + '/' + item.id}>
-            Ver
-          </Button>
-          <Button size="small" color="primary" onClick={() => {
+      </Typography>
+    </TableCell>
+    <TableCell align="right">
+      <Button size="small" color="primary" href={'/store/' + id + '/' + item.id}>
+        Ver
+      </Button>
+      <Button size="small" color="primary" onClick={() => {
                                                           setEditable(false);
                                                           item.title = title;
                                                           item.description = description;
                                                           item.price = price;}}>
-          Listo
-        </Button>
-        </TableCell>
+        Listo
+      </Button>
+    </TableCell>
   </TableRow>
   );
   else if (edit)
@@ -80,22 +86,27 @@ export default function TableItem({item, edit}) {
     </TableCell>
     <TableCell align="left">
       <Typography gutterBottom variant="h5" component="h2">
-          {item.title}
-          </Typography>
-          <Typography>
-          {item.description}
-          </Typography>
-          <Typography>
-          {"$"+item.price}
-          </Typography>
-        
-          <Button size="small" color="primary" href={'/store/' + id + '/' + item.id}>
-            Ver
-          </Button>
-          <Button size="small" color="primary" onClick={() => setEditable(true)}>
-          Editar
-        </Button>
-      </TableCell>
+        {item.title}
+      </Typography>
+    </TableCell>
+    <TableCell align="left">
+      <Typography>
+        {item.description}
+      </Typography>
+    </TableCell>
+    <TableCell align="left">
+      <Typography>
+        {"$"+item.price}
+      </Typography>
+    </TableCell>
+    <TableCell align="right">
+      <Button size="small" color="primary" href={'/store/' + id + '/' + item.id}>
+        Ver
+      </Button>
+      <Button size="small" color="primary" onClick={() => setEditable(true)}>
+        Editar
+      </Button>
+    </TableCell>
   </TableRow>
     );
   else  
@@ -106,17 +117,23 @@ export default function TableItem({item, edit}) {
     </TableCell>
     <TableCell align="left">
       <Typography gutterBottom variant="h5" component="h2">
-          {item.title}
-          </Typography>
-          <Typography>
-          {item.description}
-          </Typography>
-          <Typography>
-          {"$"+item.price}
-          </Typography>
-          <Button size="small" color="primary" href={'/store/' + id + '/' + item.id}>
-            Ver
-          </Button>
+        {item.title}
+      </Typography>
+    </TableCell>
+    <TableCell align="left">
+      <Typography>
+        {item.description}
+      </Typography>
+    </TableCell>
+    <TableCell align="left">
+      <Typography>
+        {"$"+item.price}
+      </Typography>
+    </TableCell>
+    <TableCell align="right">
+      <Button size="small" color="primary" href={'/store/' + id + '/' + item.id}>
+        Ver
+      </Button>
     </TableCell>
   </TableRow>
   );
