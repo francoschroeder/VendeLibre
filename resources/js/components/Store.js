@@ -57,7 +57,6 @@ export default function Store({edit}) {
                 setStyle(response.data.style);
         })
     }, []);
-
     
     return (
     <React.Fragment>
@@ -73,7 +72,7 @@ export default function Store({edit}) {
                             setDescription={setDescription}/>
                 </Container>
             </div>
-            
+
             <ItemList edit = {edit}
                       items = {items}
                       style = {style}

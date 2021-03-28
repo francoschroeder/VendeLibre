@@ -34,7 +34,10 @@ export default function ItemCard({item, edit}) {
   if (editable)
     return (
     <Card className={classes.card}>
-      <img src={'/images/'+item.id} alt="Not Found"/>
+      <input id={'uploadImage'+item.id} type="file" name="image" hidden/>
+      <label htmlFor={'uploadImage'+item.id}>
+        <img src={'/images/'+item.id} onError={placeholderImage}/>
+      </label>
       <CardContent className={classes.cardContent}>
         <input
           className="MuiTypography-root MuiTypography-h5 MuiTypography-displayInline"
@@ -72,7 +75,7 @@ export default function ItemCard({item, edit}) {
   else if (edit)
     return (
     <Card className={classes.card}>
-      <img src={'/images/'+item.id} alt="Not Found"/>
+      <img src={'/images/'+item.id} onError={placeholderImage}/>
       <CardContent className={classes.cardContent}>
         <Typography gutterBottom variant="h5" component="h2">
           {title}
@@ -97,7 +100,7 @@ export default function ItemCard({item, edit}) {
   else  
   return (
     <Card className={classes.card}>
-      <img src={'/images/'+item.id} alt="Not Found"/>
+      <img src={'/images/'+item.id} onError={placeholderImage}/>
       <CardContent className={classes.cardContent}>
         <Typography gutterBottom variant="h5" component="h2">
           {title}
@@ -116,4 +119,9 @@ export default function ItemCard({item, edit}) {
       </CardActions>
     </Card>
   );
+  
+  function placeholderImage(e) {
+    e.target.onerror=null;
+    e.target.src="/images/placeholder.jpg";
+  }
 }

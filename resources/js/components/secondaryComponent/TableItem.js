@@ -32,7 +32,10 @@ export default function TableItem({item, edit}) {
   return (
     <TableRow >
     <TableCell component="th" scope="row">
-      <img src={'/images/'+item.id} alt="Not Found"/>
+      <input id={'uploadImage'+item.id} type="file" name="image" hidden/>
+      <label htmlFor={'uploadImage'+item.id}>
+        <img src={'/images/'+item.id} onError={placeholderImage}/>
+      </label>
     </TableCell>
     <TableCell align="left">
       <Typography gutterBottom variant="h5" component="h2">
@@ -82,7 +85,7 @@ export default function TableItem({item, edit}) {
   return (
     <TableRow >
     <TableCell component="th" scope="row">
-      <img src={'/images/'+item.id} alt="Not Found"/>
+      <img src={'/images/'+item.id} onError={placeholderImage}/>
     </TableCell>
     <TableCell align="left">
       <Typography gutterBottom variant="h5" component="h2">
@@ -113,7 +116,7 @@ export default function TableItem({item, edit}) {
   return (
     <TableRow >
     <TableCell component="th" scope="row">
-      <img src={'/images/'+item.id} alt="Not Found"/>
+      <img src={'/images/'+item.id} onError={placeholderImage}/>
     </TableCell>
     <TableCell align="left">
       <Typography gutterBottom variant="h5" component="h2">
@@ -137,4 +140,9 @@ export default function TableItem({item, edit}) {
     </TableCell>
   </TableRow>
   );
+
+  function placeholderImage(e) {
+    e.target.onerror=null;
+    e.target.src="/images/placeholder.jpg";
+  }
 }
