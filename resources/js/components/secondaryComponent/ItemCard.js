@@ -94,6 +94,9 @@ export default function ItemCard({item, edit}) {
         <Button size="small" color="primary" onClick={() => setEditable(true)}>
           Editar
         </Button>
+        <Button size="small" color="primary" onClick={()=>guardarCambios(id,item.id)}>
+         Eliminar
+        </Button>
       </CardActions>
     </Card>
   );
@@ -124,4 +127,11 @@ export default function ItemCard({item, edit}) {
     e.target.onerror=null;
     e.target.src="/images/placeholder.jpg";
   }
+
+  function guardarCambios(id,itemId) {
+    axios.delete('/store/'+id+'/'+itemId+'/delete')
+        .then(function(response) {
+            console.log(response);
+        })
+}
 }
