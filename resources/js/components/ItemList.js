@@ -39,7 +39,9 @@ export default function ItemList({edit, items, setItems, style}) {
       
       <FormList edit = {edit}
                       items = {items}
-                      style = {style}/>
+                      style = {style}
+                      setItems = {setItems}
+                      />
     </div>
   );
   else

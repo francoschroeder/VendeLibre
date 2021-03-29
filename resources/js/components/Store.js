@@ -55,6 +55,7 @@ export default function Store({edit}) {
                 setDescription(response.data.store.description);
                 setItems(response.data.items);
                 setStyle(response.data.style);
+                console.log(items);
         })
     }, []);
     
@@ -76,6 +77,7 @@ export default function Store({edit}) {
             <ItemList edit = {edit}
                       items = {items}
                       style = {style}
+                      setItems = {setItems}
                       />
             {RenderBotonGuardar()}
             </main>

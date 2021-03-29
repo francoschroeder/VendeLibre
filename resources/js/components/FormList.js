@@ -36,7 +36,7 @@ const tableStyle = makeStyles({
   },
 });
 
-export default function FormList({edit, items, style}) {
+export default function FormList({edit, items, style, setItems}) {
   const [color, setColor] = useState('#9f3');
   const [itemStyle, setItemStyle] = useState(style.item_style);
   const [displayColorPicker, setDisplayColorPicker] = useState(false);
@@ -57,7 +57,7 @@ function tableItem(){
         <Table className={useStyles.TableItem} style={{background : style.background_color}} aria-label="simple table" >
             <TableBody>
               {items.map((item) => (
-                <TableItem key = {item.id} item = {item} edit = {edit}/>
+                <TableItem key = {item.id} item = {item} edit = {edit} onDelete = {deleteItem(item)}/>
               ))}
             </TableBody>
           </Table>
@@ -74,7 +74,7 @@ function cardItem() {
     <Grid container spacing={4}>
        {items.map((item) => (
          <Grid item key={item.id} xs={12} sm={6} md={4}>
-           <ItemCard item = {item} edit = {edit}/>
+           <ItemCard item = {item} edit = {edit} items onDelete = {deleteItem}/>
          </Grid>
        ))}
      </Grid>
@@ -132,4 +132,15 @@ function changeStyle(sty) {
   setItemStyle(sty);
   style.item_style = sty;
 }
+
+function deleteItem(item){
+  console.log('pepe');
+  var newItems = [];
+  for (let itemN in items){
+    if (item != itemN)
+      newItems.push(itemN)
+  }
+  //setItems(newItems);
+}
+
 }

@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ItemCard({item, edit}) {
+export default function ItemCard({item, edit, onDelete}) {
   const classes = useStyles();
   const [title, setTitle] = useState(item.title);
   const [description, setDescription] = useState(item.description);
@@ -94,7 +94,7 @@ export default function ItemCard({item, edit}) {
         <Button size="small" color="primary" onClick={() => setEditable(true)}>
           Editar
         </Button>
-        <Button size="small" color="primary" onClick={eliminarItem}>
+        <Button size="small" color="primary" onClick={onDelete}>
           Eliminar
         </Button>
       </CardActions>
