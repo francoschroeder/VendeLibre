@@ -20,3 +20,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('/getStore/{id_store}', 'StoreController@getStore');
 Route::put('saveStore/{id_store}', 'StoreController@saveStore');
+Route::delete('/store/{id_store}/{id_item}/delete', 'ItemController@deleteItem');

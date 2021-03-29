@@ -84,4 +84,12 @@ class ItemController extends Controller
 
         return redirect('/store/'.$store_id); 
     }
+
+    public function deleteItem($id) {
+        $item = Item::findOrFail($id);
+
+        $item->delete();
+
+        return response()->json('OK');
+    }
 }
