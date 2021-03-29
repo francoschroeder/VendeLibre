@@ -95,7 +95,7 @@ export default function ItemCard({item, edit}) {
           Editar
         </Button>
         <Button size="small" color="primary" onClick={eliminarItem(item.id)}>
-         Eliminar
+          Eliminar
         </Button>
       </CardActions>
     </Card>
@@ -129,8 +129,7 @@ export default function ItemCard({item, edit}) {
   }
 
   function eliminarItem(itemId) {
-    console.log(id,itemId);
-    axios.delete('/api/deleteItem/'+itemId)
+    axios.delete('/api/deleteItem/'+itemId, {})
         .then(function(response) {
             console.log(response);
         })
