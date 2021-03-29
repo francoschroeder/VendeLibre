@@ -145,4 +145,13 @@ export default function TableItem({item, edit}) {
     e.target.onerror=null;
     e.target.src="/images/placeholder.jpg";
   }
+
+  function updateImage(e) {
+    axios.put('/api/updateImage/' + item.id, {
+            image: e.target.files[0]
+        })
+            .then(function(response) {
+                console.log(response);
+            })
+  }
 }

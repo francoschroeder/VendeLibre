@@ -92,4 +92,11 @@ class ItemController extends Controller
 
         return response()->json('OK');
     }
+
+    //API
+    public function updateImage($item_id, Request $request) {
+        //$request->input('image')->move(public_path('images'), $item_id);
+
+        return response()->json($request->input('image'));
+    }
 }
