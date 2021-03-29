@@ -94,7 +94,7 @@ export default function ItemCard({item, edit}) {
         <Button size="small" color="primary" onClick={() => setEditable(true)}>
           Editar
         </Button>
-        <Button size="small" color="primary" onClick={eliminarItem(item.id)}>
+        <Button size="small" color="primary" onClick={eliminarItem}>
           Eliminar
         </Button>
       </CardActions>
@@ -128,8 +128,8 @@ export default function ItemCard({item, edit}) {
     e.target.src="/images/placeholder.jpg";
   }
 
-  function eliminarItem(itemId) {
-    axios.delete('/api/deleteItem/'+itemId, {})
+  function eliminarItem() {
+    axios.delete('/api/deleteItem/'+item.id, {})
         .then(function(response) {
             console.log(response);
         })
