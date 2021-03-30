@@ -49,9 +49,9 @@ const tableStyle = makeStyles({
 
 export default function FormList({edit, items, style, setItems}) {
   const [color, setColor] = useState('#9f3');
+  const [color2, setColor2] = useState('#9f3');
   const [itemStyle, setItemStyle] = useState(style.item_style);
   const [displayColorPicker, setDisplayColorPicker] = useState(false);
-  const [displayColorPickerItems, setDisplayColorPickerItems] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
 
   if (style.item_style == TABLE)
@@ -105,17 +105,18 @@ function renderColorPicker() {
       return (
           <table className={useStyles.Buttons}>
               <tr>
-             <th>
-                <button onClick={ () => displayColorPicker ? setDisplayColorPicker(false) : setDisplayColorPicker(true) }>
-                  Edit Background
-                </button>
+              <th>
+                <label>Background Color</label>
                   <ChromePicker color={ color } onChange={ (e) => {setColor(e.hex); style.background_color = color} }/>
+                </th>
+              <th>
+              <label>Items Color</label>
+                  <ChromePicker color={ color2 } onChange={ (e) => {setColor2(e.hex); style.items_color = color2} }/>
               </th>
               <th>
-                <button onClick={ () => displayColorPickerItems ? setDisplayColorPickerItems(false) : setDisplayColorPickerItems(true) }>
-                  Edit Color Item
-                </button>
-                  <ChromePicker color={ color } onChange={ (e) => {setColor(e.hex); style.items_color = color} }/>
+                <button onClick={ () => displayColorPicker ? setDisplayColorPicker(false) : setDisplayColorPicker(true) }>
+                  OK
+                </button>   
               </th>
           </tr>
           </table>
@@ -124,10 +125,7 @@ function renderColorPicker() {
       return (
         <div>
             <button onClick={ () => displayColorPicker ? setDisplayColorPicker(false) : setDisplayColorPicker(true) }>
-              Edit Background
-            </button>
-            <button onClick={ () => displayColorPickerItems ? setDisplayColorPickerItems(false) : setDisplayColorPickerItems(true) }>
-              Edit Color Item
+              Edit Color
             </button>
         </div>
       
