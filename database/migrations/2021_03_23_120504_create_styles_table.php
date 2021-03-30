@@ -22,6 +22,7 @@ class CreateStylesTable extends Migration
                     ->onDelete('cascade');
             $table->integer('item_style')->default('1');
             $table->string('background_color')->default('white');
+            $table->string('items_color')->default('white');
         });
     }
 

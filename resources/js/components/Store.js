@@ -9,6 +9,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Link from '@material-ui/core/Link';
 import ItemList from './ItemList';
 import Header from './Header';
+import SaveAlert from './SaveAlert';
+
 
 const useStyles = makeStyles((theme) => ({
     heroContent: {
@@ -39,14 +41,16 @@ function Copyright() {
 
 export default function Store({edit}) {
     let { id } = useParams();
-
+    const [open, setOpen] = React.useState(false);
     const classes = useStyles();
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [items, setItems] = useState([]);
     const [style, setStyle] = useState([]);
-
-    useEffect(() =>{
+    
+    
+    
+      useEffect(() =>{
         window.axios = require('axios');
 
         axios.get('/api/getStore/' + id)
@@ -73,6 +77,7 @@ export default function Store({edit}) {
                             setDescription={setDescription}/>
                 </Container>
             </div>
+      
 
             <ItemList edit = {edit}
                       items = {items}
@@ -80,6 +85,7 @@ export default function Store({edit}) {
                       setItems = {setItems}
                       />
             {RenderBotonGuardar()}
+            <SaveAlert/>
             </main>
         {/* Footer */}
         <footer className={classes.footer}>
@@ -113,7 +119,9 @@ export default function Store({edit}) {
         )
     }
 
+  
     function guardarCambios() {
+       
         axios.put('/api/saveStore/' + id, {
             name: name,
             description: description,
@@ -124,4 +132,8 @@ export default function Store({edit}) {
                 console.log(response);
             })
     }
+
+   
 }
+    
+
