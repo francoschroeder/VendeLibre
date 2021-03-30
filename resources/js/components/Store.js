@@ -47,10 +47,8 @@ export default function Store({edit}) {
     const [description, setDescription] = useState('');
     const [items, setItems] = useState([]);
     const [style, setStyle] = useState([]);
-    
-    
-    
-      useEffect(() =>{
+
+    useEffect(() =>{
         window.axios = require('axios');
 
         axios.get('/api/getStore/' + id)
@@ -118,10 +116,8 @@ export default function Store({edit}) {
             </div>
         )
     }
-
   
     function guardarCambios() {
-       
         axios.put('/api/saveStore/' + id, {
             name: name,
             description: description,
@@ -132,8 +128,6 @@ export default function Store({edit}) {
                 window.alert(response.data);
             })
     }
-
-   
 }
     
 

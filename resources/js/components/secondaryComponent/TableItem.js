@@ -26,6 +26,7 @@ export default function TableItem({item, edit}) {
   const [description, setDescription] = useState(item.description);
   const [price, setPrice] = useState(item.price);
   const [editable, setEditable] = useState(false);
+  const [image, setImage] = useState();
   let { id } = useParams();
 
   if (editable)
@@ -147,15 +148,18 @@ export default function TableItem({item, edit}) {
   }
 
   function updateImage(e) {
-    const formData = { image : e.target.files[0], caca:"hola" }
+    setImage(e.target.files[0]);
+
+    const formData = new FormData();
+    formData.append('img', image);
 
     axios.post('/api/updateImage/' + item.id, formData, {
       headers: {
-      'content-type': 'multipart/form-data'
+      'Content-Type': 'multipart/form-data',
     }
     })
-          .then(function(response) {
-              console.log(response);
-          })
+    .then(function(response) {
+      console.log(response);
+    })
   }
 }

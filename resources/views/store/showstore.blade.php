@@ -7,7 +7,6 @@
 
 @section('content')
 
-<div class="container">
-    <div id="react-app"/>  
-</div>
+<div id="react-app"/>  
+
 @endsection
