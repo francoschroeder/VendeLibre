@@ -148,10 +148,8 @@ export default function TableItem({item, edit}) {
   }
 
   function updateImage(e) {
-    setImage(e.target.files[0]);
-
     const formData = new FormData();
-    formData.append('img', image);
+    formData.append('img', e.target.files[0]);
 
     axios.post('/api/updateImage/' + item.id, formData, {
       headers: {
@@ -159,6 +157,7 @@ export default function TableItem({item, edit}) {
     }
     })
     .then(function(response) {
+      forceUpdate();
       console.log(response);
     })
   }
