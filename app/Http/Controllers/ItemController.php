@@ -95,8 +95,9 @@ class ItemController extends Controller
 
     //API
     public function updateImage($item_id, Request $request) {
-        //$request->input('image')->move(public_path('images'), $item_id);
+        if (!$request->hasFile('image'))
+            return response()->json($request->all());
 
-        return response()->json($request->input('image'));
+        return response()->json($request->input('image.name'));
     }
 }

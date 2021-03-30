@@ -32,7 +32,7 @@ export default function TableItem({item, edit}) {
   return (
     <TableRow >
     <TableCell component="th" scope="row">
-      <input id={'uploadImage'+item.id} type="file" name="image" hidden/>
+      <input id={'uploadImage'+item.id} type="file" name="image" onChange={updateImage} hidden/>
       <label htmlFor={'uploadImage'+item.id}>
         <img src={'/images/'+item.id} onError={placeholderImage}/>
       </label>
@@ -147,11 +147,15 @@ export default function TableItem({item, edit}) {
   }
 
   function updateImage(e) {
-    axios.put('/api/updateImage/' + item.id, {
-            image: e.target.files[0]
-        })
-            .then(function(response) {
-                console.log(response);
-            })
+    const formData = { image : e.target.files[0], caca:"hola" }
+
+    axios.post('/api/updateImage/' + item.id, formData, {
+      headers: {
+      'content-type': 'multipart/form-data'
+    }
+    })
+          .then(function(response) {
+              console.log(response);
+          })
   }
 }

@@ -103,7 +103,6 @@ function renderColorPicker() {
   if (edit)
     if (displayColorPicker)
       return (
-        
           <table className={useStyles.Buttons}>
               <tr>
              <th>
@@ -115,7 +114,7 @@ function renderColorPicker() {
               <th>
                 <button onClick={ () => displayColorPickerItems ? setDisplayColorPickerItems(false) : setDisplayColorPickerItems(true) }>
                   Edit Color Item
-                  </button>
+                </button>
                   <ChromePicker color={ color } onChange={ (e) => {setColor(e.hex); style.items_color = color} }/>
               </th>
           </tr>

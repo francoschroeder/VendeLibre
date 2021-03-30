@@ -129,7 +129,7 @@ export default function Store({edit}) {
             style: style
         })
             .then(function(response) {
-                console.log(response);
+                window.alert(response.data);
             })
     }
 
