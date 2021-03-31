@@ -102,11 +102,12 @@ function renderColorPicker() {
     if (displayColorPicker)
       return (
           <table className={useStyles.Buttons}>
-              <tr>
+          <tbody>
+          <tr>
               <th>
                 <label>Background Color</label>
                   <ChromePicker color={ color } onChange={ (e) => {setColor(e.hex); setBackground(e.hex); style.background_color = color} }/>
-                </th>
+              </th>
               <th>
               <label>Items Color</label>
                   <ChromePicker color={ color2 } onChange={ (e) => {setColor2(e.hex); style.items_color = color2} }/>
@@ -117,6 +118,7 @@ function renderColorPicker() {
                 </button>   
               </th>
           </tr>
+          </tbody>
           </table>
       )
     else
