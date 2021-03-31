@@ -4,6 +4,9 @@ import FormList from './FormList';
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
+import AppBar from '@material-ui/core/AppBar';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
 
 
 
@@ -16,7 +19,12 @@ const useStyles = makeStyles((theme) => ({
     padding: '100 600px',
     display: 'flex',
     //backgroundColor: 'red'
-  }
+  },
+  root: {
+    backgroundColor: theme.palette.background.paper,
+    position: 'relative',
+   
+  },
  
 }));
 
@@ -30,13 +38,25 @@ const tableStyle = makeStyles({
 });
 const TABLE = "1";
 const CARD  = "2"; 
-export default function ItemList({edit, items, setItems, style, setBackground}) {
+
+export default function ItemList({edit, items, setItems, style}) {
   const classes = useStyles();
+  const [value, setValue] = React.useState(1);
   const classestable = tableStyle();
   const [itemStyle, setItemStyle] = useState(style.item_style);
   const [anchorEl, setAnchorEl] = useState(null);
 
- return (
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+    setItemStyle(newValue);
+    style.item_style = newValue;
+  };
+
+  const handleChangeIndex = (index) => {
+    setValue(index);
+  };
+ 
+  return (
     <div>
         {/*aca deberia poder elegir que opcion de listado desea 
           y ahi ir cambiando las forma de listado pero no se como
@@ -48,7 +68,7 @@ export default function ItemList({edit, items, setItems, style, setBackground}) 
                       items = {items}
                       style = {style}
                       setItems = {setItems}
-                      setBackground = {setBackground}
+                      
                       />
     </div>
   );
@@ -56,8 +76,23 @@ export default function ItemList({edit, items, setItems, style, setBackground}) 
   function renderBotonCambiarEstilo() {
     if (edit)
       return (
-        <div>
-        <Button aria-controls="simple-menu" aria-haspopup="true" onClick={(e) => setAnchorEl(e.currentTarget)}>
+         <div className={classes.root}>
+      <AppBar position="static" color="default">
+          <Tabs
+            value={value}
+            onChange={handleChange}
+            indicatorColor="primary"
+            textColor="primary"
+            variant="fullWidth"
+            aria-label="action tabs example"
+          >
+            <Tab label="Tarjeta" {...a11yProps(1)} />
+            <Tab label="Lista" {...a11yProps(2)} />
+          </Tabs>
+      </AppBar>
+        
+        
+       {/*<Button aria-controls="simple-menu" aria-haspopup="true" onClick={(e) => setAnchorEl(e.currentTarget)}>
           Estilo
         </Button>
         <Menu
@@ -76,7 +111,8 @@ export default function ItemList({edit, items, setItems, style, setBackground}) 
             Lista
           </MenuItem>
         </Menu>
-        </div>
+          </div>*/}
+          </div>
       );
   }
 
@@ -87,5 +123,12 @@ function changeStyle(sty) {
   style.item_style = sty;
 }
   
+function a11yProps(index) {
+  return {
+    id: `action-tab-${index}`,
+    'aria-controls': `action-tabpanel-${index}`,
+  };
+}
+
 
 }
