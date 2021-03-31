@@ -93,17 +93,15 @@ export default function ItemList({edit, items, setItems, style, setBackground}) 
       );
   }
 
-
-function changeStyle(event, sty) {
-  console.log("cambiando el etilo");
-  setItemStyle(sty);
-  style.item_style = sty;
-}
+  function changeStyle(event, sty) {
+    setItemStyle(sty);
+    style.item_style = sty;
+  }
   
-function a11yProps(index) {
-  return {
-    id: `action-tab-${index}`,
-    'aria-controls': `action-tabpanel-${index}`,
-  };
-}
+  function a11yProps(index) {
+    return {
+      id: `action-tab-${index}`,
+      'aria-controls': `action-tabpanel-${index}`,
+    };
+  }
 }
