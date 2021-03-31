@@ -87,7 +87,7 @@ export default function Store({edit}) {
                       setItems = {setItems}
                       />
             {RenderBotonGuardar()}
-            <SaveAlert/>
+     
             </main>
         {/* Footer */}
         <footer className={classes.footer}>
