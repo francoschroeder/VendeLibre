@@ -157,7 +157,7 @@ export default function TableItem({item, edit}) {
     }
     })
     .then(function(response) {
-      forceUpdate();
+      setEditable(false);
       console.log(response);
     })
   }
