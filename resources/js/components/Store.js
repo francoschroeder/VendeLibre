@@ -62,7 +62,6 @@ export default function Store({edit}) {
                 setDescription(response.data.store.description);
                 setItems(response.data.items);
                 setStyle(response.data.style);
-                console.log(items);
         })
     }, []);
     

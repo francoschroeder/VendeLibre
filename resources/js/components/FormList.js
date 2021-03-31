@@ -132,10 +132,7 @@ function renderColorPicker() {
       )
 }
 
-
-
 function deleteItem(item){
-  console.log('pepe');
   var newItems = [];
   for (let itemN in items){
     if (item != itemN)
