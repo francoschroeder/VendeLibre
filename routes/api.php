@@ -18,7 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/getStore/{id_store}', 'StoreController@getStore');
-Route::put('/saveStore/{id_store}', 'StoreController@saveStore');
-Route::post('/updateImage/{id_item}', 'ItemController@updateImage');
-Route::delete('/deleteItem/{id_item}', 'ItemController@deleteItem');
+Route::get('/getStore/{id_store}', 'StoreController@getStore');//->middleware('auth:api');
+Route::put('/saveStore/{id_store}', 'StoreController@saveStore');//->middleware('auth:api');
+Route::post('/updateImage/{id_item}', 'ItemController@updateImage');//->middleware('auth:api');
+Route::delete('/deleteItem/{id_item}', 'ItemController@deleteItem');//->middleware('auth:api');

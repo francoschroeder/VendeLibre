@@ -9,6 +9,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Link from '@material-ui/core/Link';
 import ItemList from './ItemList';
 import Header from './Header';
+import axios from 'axios';
 import SaveAlert from './SaveAlert';
 
 
@@ -41,6 +42,8 @@ function Copyright() {
 
 export default function Store({edit}) {
     let { id } = useParams();
+    let api_token = document.querySelector('meta[name="api-token"]');
+    let token = document.head.querySelector('meta[name="csrf-token"]');
     const [open, setOpen] = React.useState(false);
     const classes = useStyles();
     const [name, setName] = useState('');
@@ -50,6 +53,8 @@ export default function Store({edit}) {
 
     useEffect(() =>{
         window.axios = require('axios');
+        window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+        window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
 
         axios.get('/api/getStore/' + id)
             .then(function (response) {
@@ -118,6 +123,12 @@ export default function Store({edit}) {
     }
   
     function guardarCambios() {
+        window.axios = require('axios');
+        let api_token = document.querySelector('meta[name="api-token"]');
+        let token = document.head.querySelector('meta[name="csrf-token"]');
+        window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+        window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
+
         axios.put('/api/saveStore/' + id, {
             name: name,
             description: description,
