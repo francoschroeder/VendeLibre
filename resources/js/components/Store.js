@@ -48,6 +48,7 @@ export default function Store({edit}) {
     const [description, setDescription] = useState('');
     const [items, setItems] = useState([]);
     const [style, setStyle] = useState([]);
+    const [background, setBackground] = useState('white');
 
     useEffect(() =>{
         window.axios = require('axios');
@@ -60,6 +61,7 @@ export default function Store({edit}) {
                 setDescription(response.data.store.description);
                 setItems(response.data.items);
                 setStyle(response.data.style);
+                setBackground(response.data.style.background_color);
         })
     }, []);
     
@@ -83,12 +85,13 @@ export default function Store({edit}) {
                       items = {items}
                       style = {style}
                       setItems = {setItems}
+                      setBackground = {setBackground}
                       />
             {RenderBotonGuardar()}
      
             </main>
         {/* Footer */}
-        <footer className={classes.footer}>
+        <footer className={classes.footer} style={{background : background}}>
             <Typography variant="h6" align="center" gutterBottom>
                 Develop by el Fuller Schroeder
             </Typography>
@@ -105,7 +108,7 @@ export default function Store({edit}) {
     function RenderBotonGuardar() {
     if (edit)
         return (
-            <div align="center" style={{position : "relative", top : 15}}>
+            <div align="center" style={{position : "relative", background : background}}>
             <Button
                 variant="contained"
                 color="primary"
@@ -137,5 +140,3 @@ export default function Store({edit}) {
             })
     }
 }
-    
-

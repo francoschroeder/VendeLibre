@@ -30,7 +30,7 @@ const tableStyle = makeStyles({
 });
 const TABLE = "1";
 const CARD  = "2"; 
-export default function ItemList({edit, items, setItems, style}) {
+export default function ItemList({edit, items, setItems, style, setBackground}) {
   const classes = useStyles();
   const classestable = tableStyle();
   const [itemStyle, setItemStyle] = useState(style.item_style);
@@ -48,7 +48,7 @@ export default function ItemList({edit, items, setItems, style}) {
                       items = {items}
                       style = {style}
                       setItems = {setItems}
-                      
+                      setBackground = {setBackground}
                       />
     </div>
   );

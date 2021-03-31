@@ -47,12 +47,10 @@ const tableStyle = makeStyles({
   
 });
 
-export default function FormList({edit, items, style, setItems}) {
+export default function FormList({edit, items, style, setItems, setBackground}) {
   const [color, setColor] = useState('#9f3');
   const [color2, setColor2] = useState('#9f3');
   const [displayColorPicker, setDisplayColorPicker] = useState(false);
-
-  
 
   if (style.item_style == TABLE)
     return tableItem();
@@ -107,7 +105,7 @@ function renderColorPicker() {
               <tr>
               <th>
                 <label>Background Color</label>
-                  <ChromePicker color={ color } onChange={ (e) => {setColor(e.hex); style.background_color = color} }/>
+                  <ChromePicker color={ color } onChange={ (e) => {setColor(e.hex); setBackground(e.hex); style.background_color = color} }/>
                 </th>
               <th>
               <label>Items Color</label>
