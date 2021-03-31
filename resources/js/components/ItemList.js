@@ -41,9 +41,8 @@ const CARD  = "2";
 
 export default function ItemList({edit, items, setItems, style, setBackground}) {
   const classes = useStyles();
-  const [value, setValue] = React.useState(1);
   const classestable = tableStyle();
-  const [itemStyle, setItemStyle] = useState(style.item_style);
+  const [itemStyle, setItemStyle] = useState(1);
   const [anchorEl, setAnchorEl] = useState(null);
 
   const handleChange = (event, newValue) => {
@@ -79,8 +78,8 @@ export default function ItemList({edit, items, setItems, style, setBackground}) 
          <div className={classes.root}>
       <AppBar position="static" color="default">
           <Tabs
-            value={value}
-            onChange={handleChange}
+            value={itemStyle}
+            onChange={changeStyle}
             indicatorColor="primary"
             textColor="primary"
             variant="fullWidth"
@@ -90,34 +89,12 @@ export default function ItemList({edit, items, setItems, style, setBackground}) 
             <Tab label="Lista" {...a11yProps(2)} />
           </Tabs>
       </AppBar>
-        
-        
-       {/*<Button aria-controls="simple-menu" aria-haspopup="true" onClick={(e) => setAnchorEl(e.currentTarget)}>
-          Estilo
-        </Button>
-        <Menu
-          id="simple-menu"
-          anchorEl={anchorEl}
-          keepMounted
-          open={Boolean(anchorEl)}
-          onClose={() => setAnchorEl(null)}
-        >
-          <MenuItem onClick={() => { changeStyle(CARD);
-                                     setAnchorEl(null);}}>
-            Tarjetas
-          </MenuItem>
-          <MenuItem onClick={() => { changeStyle(TABLE);
-                                     setAnchorEl(null);}}>
-            Lista
-          </MenuItem>
-        </Menu>
-          </div>*/}
-          </div>
+      </div>
       );
   }
 
 
-function changeStyle(sty) {
+function changeStyle(event, sty) {
   console.log("cambiando el etilo");
   setItemStyle(sty);
   style.item_style = sty;
@@ -129,6 +106,4 @@ function a11yProps(index) {
     'aria-controls': `action-tabpanel-${index}`,
   };
 }
-
-
 }
