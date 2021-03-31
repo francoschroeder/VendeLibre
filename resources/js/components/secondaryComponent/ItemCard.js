@@ -36,7 +36,7 @@ export default function ItemCard({item, edit, onDelete, colorItem}) {
   if (editable)
     return (
     <Card className={classes.card} style = { {backgroundColor: colorItem}}>
-      <input id={'uploadImage'+item.id} type="file" name="image" hidden/>
+      <input id={'uploadImage'+item.id} type="file" name="image" onChange={updateImage} hidden/>
       <label htmlFor={'uploadImage'+item.id}>
         <img src={'/images/'+item.id} onError={placeholderImage}/>
       </label>
@@ -128,6 +128,21 @@ export default function ItemCard({item, edit, onDelete, colorItem}) {
   function placeholderImage(e) {
     e.target.onerror=null;
     e.target.src="/images/placeholder.jpg";
+  }
+
+  function updateImage(e) {
+    const formData = new FormData();
+    formData.append('img', e.target.files[0]);
+
+    axios.post('/api/updateImage/' + item.id, formData, {
+      headers: {
+      'Content-Type': 'multipart/form-data',
+    }
+    })
+    .then(function(response) {
+      setEditable(false);
+      console.log(response);
+    })
   }
 
   function eliminarItem() {
