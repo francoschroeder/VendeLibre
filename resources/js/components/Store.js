@@ -108,7 +108,7 @@ export default function Store({edit}) {
     function RenderBotonGuardar() {
     if (edit)
         return (
-            <div align="center" style={{position : "relative", background : background}}>
+            <div align="center" style={{position : "relative", background : style.background_color}}>
             <Button
                 variant="contained"
                 color="primary"
