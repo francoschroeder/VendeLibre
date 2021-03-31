@@ -10,8 +10,6 @@ import Link from '@material-ui/core/Link';
 import ItemList from './ItemList';
 import Header from './Header';
 import axios from 'axios';
-import SaveAlert from './SaveAlert';
-
 
 const useStyles = makeStyles((theme) => ({
     heroContent: {
