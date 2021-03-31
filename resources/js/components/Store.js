@@ -91,7 +91,7 @@ export default function Store({edit}) {
      
             </main>
         {/* Footer */}
-        <footer className={classes.footer} style={{background : background}}>
+        <footer className={classes.footer} style={{background : style.background_color}}>
             <Typography variant="h6" align="center" gutterBottom>
                 Develop by el Fuller Schroeder
             </Typography>
