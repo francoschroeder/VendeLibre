@@ -12,7 +12,7 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-3">
-      Imagen
+      <img src="{{url('/images/'.$item->id)}}" alt="No hay Imagen"/>
     </div>
     <div class="col-sm-9">
       
