@@ -50,9 +50,9 @@ const tableStyle = makeStyles({
 export default function FormList({edit, items, style, setItems}) {
   const [color, setColor] = useState('#9f3');
   const [color2, setColor2] = useState('#9f3');
-  const [itemStyle, setItemStyle] = useState(style.item_style);
   const [displayColorPicker, setDisplayColorPicker] = useState(false);
-  const [anchorEl, setAnchorEl] = useState(null);
+
+  
 
   if (style.item_style == TABLE)
     return tableItem();
@@ -62,7 +62,7 @@ export default function FormList({edit, items, style, setItems}) {
 function tableItem(){
   return (
     <div style={{background : style.background_color}}>
-      { renderBotonCambiarEstilo() }
+     
       { renderColorPicker() }
       <br></br>
       <Container className={useStyles.TableItem}>
@@ -84,7 +84,7 @@ function cardItem() {
   return (
     <div style={{background : style.background_color}}>
     <Container className={useStyles.cardGrid} maxWidth="md">
-    { renderBotonCambiarEstilo() }
+ 
     { renderColorPicker() }
     <br></br>
     <Grid container spacing={4}>
@@ -132,37 +132,7 @@ function renderColorPicker() {
       )
 }
 
-function renderBotonCambiarEstilo() {
-  if (edit)
-    return (
-      <div>
-      <Button aria-controls="simple-menu" aria-haspopup="true" onClick={(e) => setAnchorEl(e.currentTarget)}>
-        Estilo
-      </Button>
-      <Menu
-        id="simple-menu"
-        anchorEl={anchorEl}
-        keepMounted
-        open={Boolean(anchorEl)}
-        onClose={() => setAnchorEl(null)}
-      >
-        <MenuItem onClick={() => { changeStyle(CARD);
-                                   setAnchorEl(null);}}>
-          Tarjetas
-        </MenuItem>
-        <MenuItem onClick={() => { changeStyle(TABLE);
-                                   setAnchorEl(null);}}>
-          Lista
-        </MenuItem>
-      </Menu>
-      </div>
-    );
-}
 
-function changeStyle(sty) {
-  setItemStyle(sty);
-  style.item_style = sty;
-}
 
 function deleteItem(item){
   console.log('pepe');
