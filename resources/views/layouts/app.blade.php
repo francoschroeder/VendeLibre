@@ -44,8 +44,8 @@
                 <div class="container">
                     <div class="ht-left">
                         <div class="mail-service">
-                            <i class=" fa fa-enveloe"></i>
-                            @yield('company_name')
+                            <i class=" fa fa-envelope"></i>
+                            <a href="/home">@yield('company_name')</a>
                         </div>
                         <div class="phone-service">
                             <i class=" fa fa-phone"></i>
