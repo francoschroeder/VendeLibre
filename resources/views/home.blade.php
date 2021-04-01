@@ -10,7 +10,7 @@
                         <div class="col-lg-5">
                             <h1>Vende Libre</h1>
                             <p>Diseña tu página a tu gusto y vende facilmente todo tipo de productos</p>
-                            <a href="http://127.0.0.1:8000/createStore" class="primary-btn">Crea tu Tienda</a>
+                            <a href="/createStore" class="primary-btn">Crea tu Tienda</a>
                         </div>
                     </div>
                     <div class="off-card">
