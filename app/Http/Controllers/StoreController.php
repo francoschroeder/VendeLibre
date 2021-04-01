@@ -15,33 +15,27 @@ class StoreController extends Controller
 		$store = Store::findOrFail($store_id);
 		$user = auth()->user();
   
-		if (auth()->user()==null || auth()->user()->id != $store->user_id){
+		if (auth()->user()==null || auth()->user()->id != $store->user_id) {
 			return view('store.showstore')
 				->with(compact('store'));
-		}
-		else if (auth()->user()->id == $store->user_id){
+		} 
+		else if (auth()->user()->id == $store->user_id) {
 			$stores = $user->stores;
 			return view('store.showstore')
 				->with(compact('store'))
 				->with(compact('stores'));
-			}
-
-				
-		
-}
+		}
+	}
 
     public function create(Request $request) {
-		
-			request()->validate([
-				'name' => ['required', 'min:2', 'max:155'],
-				'latitud' => ['required', 'min:0'],
-				'longitud' => ['required', 'min:2', 'max:155'],
-				'phone' => ['required', 'min:2', 'max:155'],
-				'email' => ['required', 'min:2', 'max:155'],
-				'direction' => ['required', 'min:2', 'max:155'],
-				'description' => ['required', 'min:2', 'max:155']
-
-
+		request()->validate([
+			'name' => ['required', 'min:2', 'max:155'],
+			'latitud' => ['required', 'min:0'],
+			'longitud' => ['required', 'min:2', 'max:155'],
+			'phone' => ['required', 'min:2', 'max:155'],
+			'email' => ['required', 'min:2', 'max:155'],
+			'direction' => ['required', 'min:2', 'max:155'],
+			'description' => ['required', 'min:2', 'max:155']
 		]);
 		
 		$store = new Store;
@@ -69,8 +63,7 @@ class StoreController extends Controller
 		$store = Store::findOrFail($store_id);
 		$user = auth()->user();
 		
-		//$map = Mapper::map($store->latitud, $store->longitud);
-		$map = Mapper::map(1, 1);
+		$map = Mapper::map($store->latitud, $store->longitud);
 
 		if (auth()->user()==null){
 			return view('store.description')->with(compact('store'))
