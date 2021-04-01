@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Store;
 use App\Models\Item;
 use MercadoPago;
+use Validator;
 
 class ItemController extends Controller
 {
@@ -102,9 +103,12 @@ class ItemController extends Controller
             return response()->json("Acceso no autorizado. Usted no es el propietario de esta tienda");
 
         if ($request->hasFile('img') && $request->file('img')->isValid()) {
-            $request->validate([
+            $validator = Validator::make($request->all(), [
                 'img' => 'image|mimes:jpeg,png,jpg,gif,svg',
             ]);
+
+            if ($validator->fails())
+                return response()->json("Solicitud invalida");
 
             $request->file('img')->move(public_path('images'), $item_id);
 

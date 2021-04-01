@@ -158,7 +158,7 @@ export default function TableItem({item, edit}) {
     })
     .then(function(response) {
       setEditable(false);
-      console.log(response);
+      window.alert(response.data);
     })
   }
 }

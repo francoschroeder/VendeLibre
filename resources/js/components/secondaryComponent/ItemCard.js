@@ -143,7 +143,7 @@ export default function ItemCard({item, edit, onDelete, colorItem}) {
     })
     .then(function(response) {
       setEditable(false);
-      console.log(response);
+      window.alert(response.data);
     })
   }
 
