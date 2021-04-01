@@ -70,7 +70,7 @@ export default function Store({edit}) {
         <CssBaseline />
             <main>
             {/* Hero unit */}
-            <div className={classes.heroContent}>
+            <div className={classes.heroContent} style={{backgroundImage: 'url(/images/store)'}}>
                 <Container maxWidth="sm">
                     <Header edit={edit}
                             name={name}
@@ -80,7 +80,6 @@ export default function Store({edit}) {
                 </Container>
             </div>
       
-
             <ItemList edit = {edit}
                       items = {items}
                       style = {style}

@@ -82,7 +82,7 @@ class ItemController extends Controller
 
     //API
     public function deleteItem($item_id) {
-        $item = Item::findOrFail($id);
+        $item = Item::findOrFail($item_id);
         $user_id = auth('api')->user()->id;
 
         if ($item->store->user->id != $user_id)
