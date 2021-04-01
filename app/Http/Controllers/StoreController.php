@@ -104,7 +104,11 @@ class StoreController extends Controller
 	}
 
 	public function saveStore($store_id, Request $request) {
+		$user_id = auth('api')->user()->id;
 		$store = Store::find($store_id);
+
+		if ($store->user_id != $user_id)
+			return response()->json("Acceso no autorizado. Usted no es el propietario de esta tienda");
 
 		$store->name = $request->input('name');
 		$store->description = $request->input('description');
@@ -128,6 +132,6 @@ class StoreController extends Controller
 
 		$store->save();
 
-		return response()->json("OK");
+		return response()->json("Cambios guardados satisfactoriamente");
 	}
 }

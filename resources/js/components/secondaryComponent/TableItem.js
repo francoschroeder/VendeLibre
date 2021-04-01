@@ -18,7 +18,6 @@ const tableStyle = makeStyles({
     },
   });
 
-
 export default function TableItem({item, edit}) {
   const classes = useStyles();
   const classestable = tableStyle();
