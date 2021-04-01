@@ -11,20 +11,24 @@ use Cornford\Googlmapper\Facades\MapperFacade as Mapper;
 
 class StoreController extends Controller
 {
-    public function show($store_id) {
-			$store = Store::findOrFail($store_id);
-			$user = auth()->user();
-      
-			if (auth()->user()==null){
-				return view('store.showstore')
-					->with(compact('store'));
+	public function show($store_id) {
+		$store = Store::findOrFail($store_id);
+		$user = auth()->user();
+  
+		if (auth()->user()==null || auth()->user()->id != $store->user_id){
+			return view('store.showstore')
+				->with(compact('store'));
+		}
+		else if (auth()->user()->id == $store->user_id){
+			$stores = $user->stores;
+			return view('store.showstore')
+				->with(compact('store'))
+				->with(compact('stores'));
 			}
-			else if (auth()->user()->id){
-				$stores = $user->stores;
-				return view('store.showstore')
-					->with(compact('store'))
-					->with(compact('stores'));}
-    }
+
+				
+		
+}
 
     public function create(Request $request) {
 		
