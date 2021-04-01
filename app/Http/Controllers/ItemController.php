@@ -87,12 +87,16 @@ class ItemController extends Controller
     }
 
     //API
-    public function deleteItem($id) {
+    public function deleteItem($item_id) {
         $item = Item::findOrFail($id);
+        $user_id = auth('api')->user()->id;
+
+        if ($item->store->user->id != $user_id)
+            return response()->json("Acceso no autorizado. Usted no es el propietario de esta tienda");
 
         $item->delete();
 
-        return response()->json('OK');
+        return response()->json('Item eliminado satisfactoriamente');
     }
 
     public function updateImage($item_id, Request $request) {
