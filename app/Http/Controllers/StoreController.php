@@ -92,10 +92,12 @@ class StoreController extends Controller
 		$user = auth()->user();
 		$stores = $user->stores;
 
+		if ($store->id != $user->id)
+			return view('error');
+
 		return view('store.editstore')
 			->with(compact('store'))
-			->with(compact('stores'))
-			;
+			->with(compact('stores'));
 	}
 
 	//API
