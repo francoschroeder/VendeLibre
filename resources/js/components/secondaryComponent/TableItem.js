@@ -109,7 +109,11 @@ export default function TableItem({item, edit}) {
       <Button size="small" color="primary" onClick={() => setEditable(true)}>
         Editar
       </Button>
+      <Button size="small" color="primary" onClick={eliminarItem}>
+          Eliminar
+        </Button>
     </TableCell>
+  
   </TableRow>
     );
   else  
@@ -161,4 +165,10 @@ export default function TableItem({item, edit}) {
       window.alert(response.data);
     })
   }
+  function eliminarItem() {
+    axios.delete('/api/deleteItem/'+item.id, {})
+        .then(function(response) {
+            console.log(response);
+        })
+}
 }

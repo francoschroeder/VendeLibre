@@ -97,7 +97,7 @@ export default function ItemCard({item, edit, onDelete, colorItem}) {
         <Button size="small" color="primary" onClick={() => setEditable(true)}>
           Editar
         </Button>
-        <Button size="small" color="primary" onClick={onDelete}>
+        <Button size="small" color="primary" onClick={eliminarItem}>
           Eliminar
         </Button>
       </CardActions>
