@@ -53,7 +53,8 @@ export default function Store({edit}) {
     useEffect(() =>{
         window.axios = require('axios');
         window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
-        window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
+        if (api_token != null) 
+            window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + api_token.content;
 
         axios.get('/api/getStore/' + id)
             .then(function (response) {
