@@ -95,11 +95,17 @@ class ItemController extends Controller
 
     //API
     public function updateImage($item_id, Request $request) {
+        $user_id = auth('api')->user()->id;
+        $item = Item::find($item_id);
+
+        if ($item->store->user_id != $user_id)
+            return response()->json("Acceso no autorizado. Usted no es el propietario de esta tienda");
+
         if (!$request->hasFile('img'))
-            return response()->json($request);
+            return response()->json("Solicitud invalida");
 
         $request->file('img')->move(public_path('images'), $item_id);
 
-        return response()->json("no hiciste cagadas");
+        return response()->json("Imagen guardada satisfactoriamente");
     }
 }
