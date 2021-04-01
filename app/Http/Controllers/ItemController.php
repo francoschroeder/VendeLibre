@@ -70,7 +70,7 @@ class ItemController extends Controller
             'title' => ['required', 'min:2', 'max:155'],
             'price' => ['required', 'min:0,0'],
             'description' => ['required', 'min:2', 'max:155'],
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg'
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg'
         ]);
         
         $item = new Item;
@@ -85,6 +85,7 @@ class ItemController extends Controller
         return redirect('/store/'.$store_id); 
     }
 
+    //API
     public function deleteItem($id) {
         $item = Item::findOrFail($id);
 
@@ -93,19 +94,23 @@ class ItemController extends Controller
         return response()->json('OK');
     }
 
-    //API
     public function updateImage($item_id, Request $request) {
         $user_id = auth('api')->user()->id;
         $item = Item::find($item_id);
 
-        if ($item->store->user_id != $user_id)
+        if ($item->store->user_id != $user_id) 
             return response()->json("Acceso no autorizado. Usted no es el propietario de esta tienda");
 
-        if (!$request->hasFile('img'))
-            return response()->json("Solicitud invalida");
+        if ($request->hasFile('img') && $request->file('img')->isValid()) {
+            $request->validate([
+                'img' => 'image|mimes:jpeg,png,jpg,gif,svg',
+            ]);
 
-        $request->file('img')->move(public_path('images'), $item_id);
+            $request->file('img')->move(public_path('images'), $item_id);
 
-        return response()->json("Imagen guardada satisfactoriamente");
+            return response()->json("Imagen guardada satisfactoriamente");
+        }
+
+        return response()->json("Solicitud invalida");
     }
 }
