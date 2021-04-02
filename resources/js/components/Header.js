@@ -3,11 +3,10 @@ import { useParams } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
-export default function RenderHeader({edit, name, setName, description, setDescription}) {
+export default function RenderHeader({edit, name, setName, description, setDescription, setBkgImage}) {
     let { id } = useParams();
 
     const [editable, setEditable] = useState(false);
-    const [bkgImage, setBkgImage] = useState('/images/store'+id);
     const inputRef = useRef();
 
     if (editable)
