@@ -8,6 +8,7 @@ use App\Models\Item;
 use App\Models\Style;
 use Illuminate\Support\Facades\Auth;
 use Cornford\Googlmapper\Facades\MapperFacade as Mapper;
+use Validator;
 
 class StoreController extends Controller
 {
@@ -133,4 +134,27 @@ class StoreController extends Controller
 
 		return response()->json("Cambios guardados satisfactoriamente");
 	}
+
+	public function updateImage($store_id, Request $request) {
+        $user_id = auth('api')->user()->id;
+        $store = Store::find($store_id);
+
+        if ($store->user_id != $user_id) 
+            return response()->json("Acceso no autorizado. Usted no es el propietario de esta tienda");
+
+        if ($request->hasFile('img') && $request->file('img')->isValid()) {
+            $validator = Validator::make($request->all(), [
+                'img' => 'image|mimes:jpeg,png,jpg,gif,svg',
+            ]);
+
+            if ($validator->fails())
+                return response()->json("Solicitud invalida");
+
+            $request->file('img')->move(public_path('images'), 'store'.$store_id);
+
+            return response()->json("Imagen guardada satisfactoriamente");
+        }
+
+        return response()->json("Solicitud invalida");
+    }
 }

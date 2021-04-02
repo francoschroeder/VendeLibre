@@ -71,5 +71,16 @@ export default function RenderHeader({edit, name, setName, description, setDescr
 
     function updateImage(e) {
         setBkgImage('url('+URL.createObjectURL(e.target.files[0])+')');
+        const formData = new FormData();
+        formData.append('img', e.target.files[0]);
+
+        axios.post('/api/updateStoreImage/' + id, formData, {
+          headers: {
+          'Content-Type': 'multipart/form-data',
+          }
+        })
+        .then(function(response) {
+          window.alert(response.data);
+        })
     }
 }
