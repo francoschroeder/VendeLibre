@@ -10,12 +10,18 @@ const useStyles = makeStyles({
   table: {
     width: 400,
   },
+  cardMedia: {
+    height: 200,
+    width: 200,
+  },
 });
 const tableStyle = makeStyles({
     root: {
      width: 400,
      display: 'flex',
     },
+
+    
   });
 
 export default function TableItem({item, edit}) {
@@ -34,7 +40,7 @@ export default function TableItem({item, edit}) {
     <TableCell component="th" scope="row">
       <input id={'uploadImage'+item.id} type="file" name="image" onChange={updateImage} hidden/>
       <label htmlFor={'uploadImage'+item.id}>
-        <img src={image} onError={placeholderImage} style={{maxWidth: 345}}/>
+        <img className= {classes.cardMedia} src={image} onError={placeholderImage} style={{maxWidth: 345}}/>
       </label>
     </TableCell>
     <TableCell align="left">
@@ -85,7 +91,7 @@ export default function TableItem({item, edit}) {
   return (
     <TableRow >
     <TableCell component="th" scope="row">
-      <img src={image} onError={placeholderImage} style={{maxWidth: 345}}/>
+      <img className= {classes.cardMedia} src={image} onError={placeholderImage} style={{maxWidth: 345}}/>
     </TableCell>
     <TableCell align="left">
       <Typography gutterBottom variant="h5" component="h2">
@@ -120,7 +126,7 @@ export default function TableItem({item, edit}) {
   return (
     <TableRow >
     <TableCell component="th" scope="row">
-      <img src={image} onError={placeholderImage} style={{maxWidth: 345}}/>
+      <img className= {classes.cardMedia} src={image} onError={placeholderImage} style={{maxWidth: 345}}/>
     </TableCell>
     <TableCell align="left">
       <Typography gutterBottom variant="h5" component="h2">

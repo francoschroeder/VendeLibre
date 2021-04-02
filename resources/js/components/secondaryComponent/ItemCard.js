@@ -13,11 +13,10 @@ const useStyles = makeStyles((theme) => ({
     height: '100%',
     display: 'flex',
     flexDirection: 'column',
-    maxWidth: 345,
+    maxWidth: 325,
   },
   cardMedia: {
-    paddingTop: '56.25%', // 16:9
-    height: 140,
+    height: 200,
   },
   cardContent: {
     flexGrow: 1,
@@ -37,9 +36,9 @@ export default function ItemCard({item, edit, onDelete, colorItem}) {
   if (editable)
     return (
     <Card className={classes.card} style = { {backgroundColor: colorItem}}>
-      <input id={'uploadImage'+item.id} type="file" name="image" onChange={updateImage} hidden/>
+      <input className= {classes.cardMedia} id={'uploadImage'+item.id} type="file" name="image" onChange={updateImage} hidden/>
       <label htmlFor={'uploadImage'+item.id}>
-        <img src={image} onError={placeholderImage}/>
+        <img className= {classes.cardMedia}src={image} onError={placeholderImage}/>
       </label>
       <CardContent className={classes.cardContent}>
         <input
@@ -78,7 +77,7 @@ export default function ItemCard({item, edit, onDelete, colorItem}) {
   else if (edit)
     return (
     <Card className={classes.card} style = { {backgroundColor: colorItem}}>
-      <img src={image} onError={placeholderImage}/>
+      <img className= {classes.cardMedia} src={image} onError={placeholderImage}/>
       <CardContent className={classes.cardContent}>
         <Typography gutterBottom variant="h5" component="h2">
           {title}
@@ -106,7 +105,7 @@ export default function ItemCard({item, edit, onDelete, colorItem}) {
   else  
   return (
     <Card className={classes.card} style = { {backgroundColor: colorItem}}>
-      <img src={image} onError={placeholderImage}/>
+      <img className= {classes.cardMedia} src={image} onError={placeholderImage}/>
       <CardContent className={classes.cardContent}>
         <Typography gutterBottom variant="h5" component="h2">
           {title}
