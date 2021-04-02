@@ -85,7 +85,7 @@ class StoreController extends Controller
 		$user = auth()->user();
 		$stores = $user->stores;
 
-		if ($store->id != $user->id)
+		if ($store->user_id != $user->id)
 			return view('error');
 
 		return view('store.editstore')

@@ -49,6 +49,8 @@ export default function Store({edit}) {
     const [items, setItems] = useState([]);
     const [style, setStyle] = useState([]);
     const [background, setBackground] = useState('white');
+    const [bkgImage, setBkgImage] = useState('url(/images/store'+id+')');
+    const img = "caca"
 
     useEffect(() =>{
         window.axios = require('axios');
@@ -68,16 +70,17 @@ export default function Store({edit}) {
     
     return (
     <React.Fragment>
-        <CssBaseline />
+        <CssBaseline/>
             <main>
             {/* Hero unit */}
-            <div className={classes.heroContent} style={{backgroundImage: 'url(/images/store)'}}>
+            <div className={classes.heroContent} style={{backgroundImage: bkgImage}}>
                 <Container maxWidth="sm">
                     <Header edit={edit}
                             name={name}
                             setName={setName}
                             description={description}
-                            setDescription={setDescription}/>
+                            setDescription={setDescription}
+                            setBkgImage={setBkgImage}/>
                 </Container>
             </div>
       

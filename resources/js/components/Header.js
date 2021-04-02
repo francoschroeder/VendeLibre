@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
@@ -7,6 +7,8 @@ export default function RenderHeader({edit, name, setName, description, setDescr
     let { id } = useParams();
 
     const [editable, setEditable] = useState(false);
+    const [bkgImage, setBkgImage] = useState('/images/store'+id);
+    const inputRef = useRef();
 
     if (editable)
         return (
@@ -29,6 +31,10 @@ export default function RenderHeader({edit, name, setName, description, setDescr
                     <Button variant="outlined" color="primary" onClick={() => setEditable(false)}>
                         Listo
                     </Button>
+                    <input ref={inputRef} type="file" name="image" onChange={updateImage} hidden/>
+                    <Button variant="outlined" color="primary" onClick={() => inputRef.current.click()}>
+                        Cambiar Imagen de Fondo
+                    </Button>
                 </div>
             </div>
         )
@@ -45,6 +51,10 @@ export default function RenderHeader({edit, name, setName, description, setDescr
                 <Button variant="outlined" color="primary" onClick={() => setEditable(true)}>
                     Editar
                 </Button>
+                <input ref={inputRef} type="file" name="image" onChange={updateImage} hidden/>
+                <Button variant="outlined" color="primary" onClick={() => inputRef.current.click()}>
+                    Cambiar Imagen de Fondo
+                </Button>
                 </div>
             </div>
         )
@@ -59,4 +69,8 @@ export default function RenderHeader({edit, name, setName, description, setDescr
                 </Typography>
             </div>
         )
+
+    function updateImage(e) {
+        setBkgImage('url('+URL.createObjectURL(e.target.files[0])+')');
+    }
 }
