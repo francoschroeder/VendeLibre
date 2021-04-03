@@ -16,7 +16,8 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: 325,
   },
   cardMedia: {
-    height: 200,
+    maxHeight: 200,
+    objectFit: 'cover',
   },
   cardContent: {
     flexGrow: 1,

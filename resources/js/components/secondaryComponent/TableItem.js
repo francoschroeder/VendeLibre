@@ -13,6 +13,7 @@ const useStyles = makeStyles({
   cardMedia: {
     height: 200,
     width: 200,
+    objectFit: 'cover',
   },
 });
 const tableStyle = makeStyles({
