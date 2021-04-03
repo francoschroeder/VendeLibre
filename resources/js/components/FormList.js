@@ -146,6 +146,4 @@ function deleteItem(id){
   }
   console.log(newItems);
   //setItems(newItems);
-
-
 }
