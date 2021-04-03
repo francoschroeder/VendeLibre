@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Store;
 use App\Models\Item;
+use Illuminate\Support\Facades\File;
 use MercadoPago;
 use Validator;
 
@@ -75,7 +76,8 @@ class ItemController extends Controller
         $item->store_id = $store_id;
         $item->save();
 
-        request('image')->move(public_path('images'), $item->id);
+        if (request()->hasFile('image'))
+            request('image')->move(public_path('images'), $item->id);
 
         return redirect('/store/'.$store_id); 
     }
@@ -87,6 +89,8 @@ class ItemController extends Controller
 
         if ($item->store->user->id != $user_id)
             return response()->json("Acceso no autorizado. Usted no es el propietario de esta tienda");
+
+        File::delete(public_path('images').'/'.$item_id);
 
         $item->delete();
 
