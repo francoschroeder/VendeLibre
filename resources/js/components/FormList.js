@@ -19,23 +19,26 @@ import { PhotoshopPicker, ChromePicker  } from 'react-color'
 const TABLE = "1";
 const CARD  = "2"; 
 
-const useStyles = makeStyles ({
+const useStyles = makeStyles ((theme) => ({
   cardGrid: {
     paddingTop: 9,
     paddingBottom: 9,
     padding: '100 600px',
-   
   },
+
   TableItem:{
     padding: '100 600px',
     display: 'flex',
-
   },
   
-  Buttons:{
-    padding: '15px',
-  }
-});
+  displayColorButton: {
+    marginTop: theme.spacing(2),
+  },
+
+  okColorButton: {
+    marginLeft: theme.spacing(2),
+  },
+}));
 
 const tableStyle = makeStyles({
   root: {
@@ -43,14 +46,13 @@ const tableStyle = makeStyles({
    display: 'flex',
    padding: '100 600px',
   },
- 
-  
 });
 
 export default function FormList({edit, items, style, setItems, setBackground}) {
   const [color, setColor] = useState('#9f3');
   const [color2, setColor2] = useState('#9f3');
   const [displayColorPicker, setDisplayColorPicker] = useState(false);
+  const classes = useStyles();
 
   if (style.item_style == TABLE)
     return tableItem();
@@ -63,9 +65,9 @@ function tableItem(){
      
       { renderColorPicker() }
       <br></br>
-      <Container className={useStyles.TableItem}>
+      <Container className={classes.TableItem}>
         <TableContainer component={Paper} className={tableStyle.root} style={{background : style.background_color}}>  
-        <Table className={useStyles.TableItem} style={{background : style.items_color}} aria-label="simple table" >
+        <Table className={classes.TableItem} style={{background : style.items_color}} aria-label="simple table" >
             <TableBody>
               {items.map((item) => (
                 <TableItem key = {item.id} item = {item} edit = {edit} onDelete = {deleteItem(item)}/>
@@ -81,7 +83,7 @@ function tableItem(){
 function cardItem() {
   return (
     <div style={{background : style.background_color}}>
-    <Container className={useStyles.cardGrid} maxWidth="md">
+    <Container className={classes.cardGrid} maxWidth="md">
  
     { renderColorPicker() }
     <br></br>
@@ -101,21 +103,21 @@ function renderColorPicker() {
   if (edit)
     if (displayColorPicker)
       return (
-          <table className={useStyles.Buttons}>
+          <table>
           <tbody>
           <tr>
               <th>
-                <label>Background Color</label>
+                <label>Color de Fondo</label>
                   <ChromePicker color={ color } onChange={ (e) => {setColor(e.hex); setBackground(e.hex); style.background_color = color} }/>
               </th>
               <th>
-              <label>Items Color</label>
+              <label>Color de Items</label>
                   <ChromePicker color={ color2 } onChange={ (e) => {setColor2(e.hex); style.items_color = color2} }/>
               </th>
               <th>
-                <button onClick={ () => displayColorPicker ? setDisplayColorPicker(false) : setDisplayColorPicker(true) }>
+                <Button className={classes.okColorButton} variant="contained" color="primary" size="small" onClick={ () => displayColorPicker ? setDisplayColorPicker(false) : setDisplayColorPicker(true) }>
                   OK
-                </button>   
+                </Button>   
               </th>
           </tr>
           </tbody>
@@ -124,9 +126,9 @@ function renderColorPicker() {
     else
       return (
         <div>
-            <button onClick={ () => displayColorPicker ? setDisplayColorPicker(false) : setDisplayColorPicker(true) }>
-              Edit Color
-            </button>
+            <Button className={classes.displayColorButton} variant="contained" color="primary" size="small" onClick={ () => displayColorPicker ? setDisplayColorPicker(false) : setDisplayColorPicker(true) }>
+              Editar Color
+            </Button>
         </div>
       
       )

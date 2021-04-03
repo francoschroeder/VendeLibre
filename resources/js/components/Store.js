@@ -113,6 +113,7 @@ export default function Store({edit}) {
         return (
             <div align="center" style={{position : "relative", background : style.background_color}}>
             <Button
+                className={classes.heroButtons}
                 variant="contained"
                 color="primary"
                 size="large"
