@@ -63,7 +63,7 @@ class ItemController extends Controller
 
     public function createItem($store_id){
         request()->validate([
-            'title' => ['required', 'min:2', 'max:155'],
+            'title' => ['required', 'min:2', 'max:50'],
             'price' => ['required', 'min:0,0'],
             'description' => ['required', 'min:2', 'max:155'],
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg'
@@ -110,13 +110,13 @@ class ItemController extends Controller
             ]);
 
             if ($validator->fails())
-                return response()->json("Solicitud invalida");
+                return response()->json("Solicitud inválida: Imagen no soportada");
 
             $request->file('img')->move(public_path('images'), $item_id);
 
             return response()->json("Imagen guardada satisfactoriamente");
         }
 
-        return response()->json("Solicitud invalida");
+        return response()->json("Solicitud inválida");
     }
 }

@@ -77,8 +77,6 @@ class StoreController extends Controller
 							->with(compact('map'))
 							->with(compact('stores'));
 		 }
-
-
 	}
 
 	public function edit($store_id) {

@@ -164,7 +164,7 @@ export default function TableItem({item, edit, onDelete}) {
     const formData = new FormData();
     formData.append('img', e.target.files[0]);
 
-    axios.post('/api/updateImage/' + item.id, formData, {
+    axios.post('/api/updateItemImage/' + item.id, formData, {
       headers: {
       'Content-Type': 'multipart/form-data',
     }
