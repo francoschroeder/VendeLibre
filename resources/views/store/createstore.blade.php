@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@extends ('layouts.headerLogin')
 @section('title')
     Añadir Tienda
 @endsection
