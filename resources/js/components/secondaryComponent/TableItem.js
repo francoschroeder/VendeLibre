@@ -5,6 +5,8 @@ import { useParams } from 'react-router-dom';
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 const useStyles = makeStyles({
   table: {
@@ -116,9 +118,9 @@ export default function TableItem({item, edit, onDelete}) {
       <Button size="small" color="primary" onClick={() => setEditable(true)}>
         Editar
       </Button>
-      <Button size="small" color="primary" onClick={eliminarItem}>
-          Eliminar
-        </Button>
+      <IconButton color="secondary" aria-label="delete" onClick={eliminarItem}>
+         <DeleteIcon/>
+      </IconButton>
     </TableCell>
   
   </TableRow>
@@ -173,14 +175,14 @@ export default function TableItem({item, edit, onDelete}) {
     })
   }
   function eliminarItem() {
-    var txt;
     var respuesta = confirm("¿Desea eliminar este item?");
+    
     if (respuesta) {
       onDelete(item.id);
       axios.delete('/api/deleteItem/'+item.id, {})
           .then(function(response) {
-              console.log(response);
+              window.alert(response.data);
           })
-    } else {}
+    }
   }
 }
