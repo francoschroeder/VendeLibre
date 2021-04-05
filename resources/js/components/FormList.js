@@ -27,8 +27,7 @@ const useStyles = makeStyles ((theme) => ({
   },
 
   TableItem:{
-    padding: '100 600px',
-    display: 'flex',
+    paddingTop: theme.spacing(3),
   },
   
   displayColor: {
@@ -40,14 +39,6 @@ const useStyles = makeStyles ((theme) => ({
     marginLeft: theme.spacing(2),
   },
 }));
-
-const tableStyle = makeStyles({
-  root: {
-   width: 400,
-   display: 'flex',
-   padding: '100 600px',
-  },
-});
 
 export default function FormList({edit, items, style, setItems, setBackground}) {
   const [color, setColor] = useState('#9f3');
@@ -63,12 +54,10 @@ export default function FormList({edit, items, style, setItems, setBackground}) 
 function tableItem(){
   return (
     <div style={{background : style.background_color}}>
-     
-      { renderColorPicker() }
-      <br></br>
       <Container className={classes.TableItem}>
-        <TableContainer component={Paper} className={tableStyle.root} style={{background : style.background_color}}>  
-        <Table className={classes.TableItem} style={{background : style.items_color}} aria-label="simple table" >
+        { renderColorPicker() }
+        <TableContainer component={Paper} style={{background : style.background_color}}>  
+        <Table style={{background : style.items_color}} aria-label="simple table" >
             <TableBody>
               {items.map((item) => (
                 <TableItem key = {item.id} item = {item} edit = {edit} onDelete = {deleteItem}/>

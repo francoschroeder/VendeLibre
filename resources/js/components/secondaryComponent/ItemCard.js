@@ -156,7 +156,7 @@ export default function ItemCard({item, edit, onDelete, colorItem}) {
       onDelete(item.id);
       axios.delete('/api/deleteItem/'+item.id, {})
           .then(function(response) {
-              console.log(response);
+              window.alert(response.data);
           })
     } else {}
   }
