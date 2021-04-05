@@ -30,7 +30,7 @@ function Copyright() {
         <Typography variant="body2" color="textSecondary" align="center">
             {'Copyright © '}
         <Link color="inherit" href="https://material-ui.com/">
-            Your Website
+            VendeLibre
         </Link>{' '}
             {new Date().getFullYear()}
         {'.'}
@@ -96,10 +96,10 @@ export default function Store({edit}) {
         {/* Footer */}
         <footer className={classes.footer} style={{background : style.background_color}}>
             <Typography variant="h6" align="center" gutterBottom>
-                Develop by el Fuller Schroeder
+                Developed by Liberati y Schroeder
             </Typography>
             <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
-                Aguante Macri
+                Todos los derechos reservados
             </Typography>
             <Copyright />
         </footer>
