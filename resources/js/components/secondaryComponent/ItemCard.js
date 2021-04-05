@@ -150,11 +150,15 @@ export default function ItemCard({item, edit, onDelete, colorItem}) {
   }
 
   function eliminarItem() {
-    confirm("¿Desea eliminar este item?");
-    onDelete(item.id);
-    axios.delete('/api/deleteItem/'+item.id, {})
-        .then(function(response) {
-            console.log(response);
-        })
-}
+    var txt;
+    var respuesta = confirm("¿Desea eliminar este item?");
+    if (respuesta) {
+      onDelete(item.id);
+      axios.delete('/api/deleteItem/'+item.id, {})
+          .then(function(response) {
+              console.log(response);
+          })
+    } else {}
+  }
+
 }
