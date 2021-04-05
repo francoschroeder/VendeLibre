@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@extends ('layouts.headerLogin')
+@extends('layouts.headerLogin')
 
 @section('content')
 <section class="hero-section">

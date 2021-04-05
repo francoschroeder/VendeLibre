@@ -39,19 +39,18 @@
 									<input class="form-control" type="text" id="example-text-input" name = "phone">
 								</div>
 								<div class="col-lg-12">
-									<label for="example-float-input" >Longitud</label>
-									<input class="form-control" type="float" id="example-flot-input" name = "longitud">
-								</div>
-								<div class="col-lg-12">
 									<label for="example-float-input" >Latitud</label>
 									<input class="form-control" type="float" id="example-float-input" name = "latitud">
 								</div>
-								
+								<div class="col-lg-12">
+									<label for="example-float-input" >Longitud</label>
+									<input class="form-control" type="float" id="example-flot-input" name = "longitud">
+								</div>
 							</div>
 						</div>
 					</div>
 					<div>
-						<button type="submit" class="btn btn-primary">Agregar</button>
+						<button type="submit" class="btn btn-primary" style="margin-top:10px">Agregar</button>
 					</div>
 											
 					<div>

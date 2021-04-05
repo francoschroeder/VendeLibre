@@ -30,10 +30,10 @@ class StoreController extends Controller
 
     public function create(Request $request) {
 		request()->validate([
-			'name' => ['required', 'min:2', 'max:155'],
-			'latitud' => ['required', 'min:0'],
-			'longitud' => ['required', 'min:2', 'max:155'],
-			'phone' => ['required', 'min:2', 'max:155'],
+			'name' => ['required', 'min:2', 'max:50'],
+			'latitud' => ['required', 'numeric', 'between:-90,90'],
+			'longitud' => ['required', 'numeric', 'between:-180,180'],
+			'phone' => ['required', 'min:2', 'max:15'],
 			'email' => ['required', 'min:2', 'max:155'],
 			'direction' => ['required', 'min:2', 'max:155'],
 			'description' => ['required', 'min:2', 'max:155']
