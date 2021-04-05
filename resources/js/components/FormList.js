@@ -131,5 +131,4 @@ function deleteItem(id){
   });
    setItems(newItems);
   }
-  
 }
