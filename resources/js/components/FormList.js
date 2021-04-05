@@ -27,8 +27,10 @@ const useStyles = makeStyles ((theme) => ({
   },
 
   TableItem:{
-    padding: '100 600px',
+    padding: '100 50px',
     display: 'flex',
+    width: 800,
+   
   },
   
   displayColorButton: {
@@ -70,7 +72,7 @@ function tableItem(){
         <Table className={classes.TableItem} style={{background : style.items_color}} aria-label="simple table" >
             <TableBody>
               {items.map((item) => (
-                <TableItem key = {item.id} item = {item} edit = {edit} onDelete = {deleteItem(item)}/>
+                <TableItem key = {item.id} item = {item} edit = {edit} onDelete = {deleteItem}/>
               ))}
             </TableBody>
           </Table>
@@ -83,9 +85,10 @@ function tableItem(){
 function cardItem() {
   return (
     <div style={{background : style.background_color}}>
-    <Container className={classes.cardGrid} maxWidth="md">
+    
  
     { renderColorPicker() }
+    <Container className={classes.cardGrid} maxWidth="md">
     <br></br>
     <Grid container spacing={4}>
        {items.map((item) => (
@@ -137,13 +140,11 @@ function renderColorPicker() {
 function deleteItem(id){
   var newItems = [];
   items.forEach(function(itemN) {
-    console.log(itemN);
     if (itemN.id != id) {
       newItems.push(itemN)
     }
   });
    setItems(newItems);
   }
-  console.log(newItems);
-  //setItems(newItems);
+  
 }

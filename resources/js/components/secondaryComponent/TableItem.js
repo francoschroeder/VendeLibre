@@ -25,7 +25,7 @@ const tableStyle = makeStyles({
     
   });
 
-export default function TableItem({item, edit}) {
+export default function TableItem({item, edit, onDelete}) {
   const classes = useStyles();
   const classestable = tableStyle();
   const [title, setTitle] = useState(item.title);
@@ -173,6 +173,7 @@ export default function TableItem({item, edit}) {
     })
   }
   function eliminarItem() {
+    onDelete(item.id);
     axios.delete('/api/deleteItem/'+item.id, {})
         .then(function(response) {
             console.log(response);
