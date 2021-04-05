@@ -17,3 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/getStore/{id_store}', 'StoreController@getStore');
+Route::put('/saveStore/{id_store}', 'StoreController@saveStore')->middleware('auth:api');
+Route::post('/updateStoreImage/{id_store}', 'StoreController@updateImage')->middleware('auth:api');
+Route::post('/updateItemImage/{id_item}', 'ItemController@updateImage')->middleware('auth:api');
+Route::delete('/deleteItem/{id_item}', 'ItemController@deleteItem')->middleware('auth:api');
