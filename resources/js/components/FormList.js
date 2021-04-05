@@ -27,14 +27,13 @@ const useStyles = makeStyles ((theme) => ({
   },
 
   TableItem:{
-    padding: '100 50px',
+    padding: '100 600px',
     display: 'flex',
-    width: 800,
-   
   },
   
-  displayColorButton: {
+  displayColor: {
     marginTop: theme.spacing(2),
+    marginBottom: theme.spacing(3),
   },
 
   okColorButton: {
@@ -85,11 +84,8 @@ function tableItem(){
 function cardItem() {
   return (
     <div style={{background : style.background_color}}>
-    
- 
-    { renderColorPicker() }
     <Container className={classes.cardGrid} maxWidth="md">
-    <br></br>
+    { renderColorPicker() }
     <Grid container spacing={4}>
        {items.map((item) => (
          <Grid item key={item.id} xs={12} sm={6} md={4}>
@@ -106,7 +102,7 @@ function renderColorPicker() {
   if (edit)
     if (displayColorPicker)
       return (
-          <table>
+          <table className={classes.displayColor}>
           <tbody>
           <tr>
               <th>
@@ -128,8 +124,8 @@ function renderColorPicker() {
       )
     else
       return (
-        <div>
-            <Button className={classes.displayColorButton} variant="contained" color="primary" size="small" onClick={ () => displayColorPicker ? setDisplayColorPicker(false) : setDisplayColorPicker(true) }>
+        <div className={classes.displayColor}>
+            <Button variant="contained" color="primary" size="small" onClick={ () => displayColorPicker ? setDisplayColorPicker(false) : setDisplayColorPicker(true) }>
               Editar Color
             </Button>
         </div>
