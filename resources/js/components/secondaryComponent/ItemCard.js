@@ -107,7 +107,7 @@ export default function ItemCard({item, edit, onDelete, colorItem}) {
   );
   else  
   return (
-    <Card className={classes.card} style = { {backgroundColor: colorItem}}>
+    <Card className={classes.card} style = {{backgroundColor: colorItem}}>
       <img className= {classes.cardMedia} src={image} onError={placeholderImage}/>
       <CardContent className={classes.cardContent}>
         <Typography gutterBottom variant="h5" component="h2">
