@@ -100,7 +100,7 @@ export default function ItemCard({item, edit, onDelete, colorItem}) {
           Editar
         </Button>
         <IconButton color="secondary" aria-label="delete" onClick={eliminarItem}>
-          <DeleteIcon />
+         <DeleteIcon />
         </IconButton>
       </CardActions>
     </Card>
@@ -150,6 +150,7 @@ export default function ItemCard({item, edit, onDelete, colorItem}) {
   }
 
   function eliminarItem() {
+    confirm("Press a button!");
     onDelete(item.id);
     axios.delete('/api/deleteItem/'+item.id, {})
         .then(function(response) {
