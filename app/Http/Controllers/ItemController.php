@@ -24,7 +24,7 @@ class ItemController extends Controller
         $product = new MercadoPago\Item();
         $product->title = $item->title;
         $product->quantity = 1;
-        $product->unit_price = $item->price
+        $product->unit_price = $item->price;
         $preference->items = array($product);
         $preference->save();
 
