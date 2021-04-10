@@ -42,12 +42,10 @@ class HomeController extends Controller
     }
 
     public function vincular(Request $request) {
-        $response = Http::post('https://api.mercadopago.com/oauth/token', [
-            'headers' => [
-                'Accept'        => 'application/json',
-                'Content-Type'  => 'application/x-www-form-urlencoded',
-            ],
-
+        $response = Http::withHeaders([
+            'Accept'        => 'application/json',
+            'Content-Type'  => 'application/x-www-form-urlencoded'
+        ])->post('https://api.mercadopago.com/oauth/token', [
             'client_secret' => '3364711930325075',
             'grant_type'    => 'authorization_code',
             'code'          => $request->code,
