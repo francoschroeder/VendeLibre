@@ -40,5 +40,7 @@ class HomeController extends Controller
         return view('store.createStore');
     }
 
-
+    public function vincular($code) {
+        dd($code);
+    }
 }
