@@ -22,9 +22,9 @@ class ItemController extends Controller
 
         // Crea un ítem en la preferencia
         $product = new MercadoPago\Item();
-        $product->title = 'Mi producto';
+        $product->title = $item->title;
         $product->quantity = 1;
-        $product->unit_price = 75.56;
+        $product->unit_price = $item->price
         $preference->items = array($product);
         $preference->save();
 
