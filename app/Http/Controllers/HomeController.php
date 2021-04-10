@@ -46,7 +46,7 @@ class HomeController extends Controller
             'Accept'        => 'application/json',
             'Content-Type'  => 'application/x-www-form-urlencoded'
         ])->post('https://api.mercadopago.com/oauth/token', [
-            'client_secret' => '3364711930325075',
+            'client_secret' => 'TEST-3364711930325075-030813-3ee07693f9e87c8a7226b298529dc3b5-209177342',
             'grant_type'    => 'authorization_code',
             'code'          => $request->code,
             'redirect_uri'  => 'https://vende-libre.herokuapp.com/vincular',
