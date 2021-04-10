@@ -34,15 +34,15 @@ class ItemController extends Controller
         if (auth()->user()==null){
 			return view('item.show')
                 ->with(compact('item'))
-                ->with(compact('store'))
-                ->with(compact('preference'));
+                ->with(compact('store'));
 		}
 		else if (auth()->user()->id){
             $stores = $user->stores;
 			return view('item.show')
                 ->with(compact('item'))
                 ->with(compact('store'))
-                ->with(compact('stores'));
+                ->with(compact('stores'))
+                ->with(compact('preference'));
         
         }
     }
