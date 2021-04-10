@@ -52,6 +52,6 @@ class HomeController extends Controller
             'redirect_uri'  => 'https://vende-libre.herokuapp.com/vincular',
         ]);
 
-        dd($response);
+        dd($response->access_token);
     }
 }
