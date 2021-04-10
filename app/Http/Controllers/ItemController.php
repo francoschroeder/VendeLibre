@@ -12,10 +12,10 @@ use Validator;
 class ItemController extends Controller
 {
     public function show($store_id, $id) {
-        /*// Agrega credenciales
+        // Agrega credenciales
         MercadoPago\SDK::setAccessToken('TEST-3364711930325075-030813-3ee07693f9e87c8a7226b298529dc3b5-209177342');
-
-        // Crea un objeto de preferencia
+        
+        /*// Crea un objeto de preferencia
         $preference = new MercadoPago\Preference();
 
         // Crea un ítem en la preferencia
