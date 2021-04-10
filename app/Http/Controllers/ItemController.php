@@ -25,7 +25,7 @@ class ItemController extends Controller
         $product->title = 'Mi producto';
         $product->quantity = 1;
         $product->unit_price = 75.56;
-        $preference->items = array($item);
+        $preference->items = array($product);
         $preference->save();
 
         $store = Store::findOrFail($store_id);
