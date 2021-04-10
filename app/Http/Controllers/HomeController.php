@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class HomeController extends Controller
 {
@@ -41,6 +42,18 @@ class HomeController extends Controller
     }
 
     public function vincular(Request $request) {
-        dd($request->code);
+        $response = Http::post('https://api.mercadopago.com/oauth/token', [
+            'headers' => [
+                'Accept'        => 'application/json',
+                'Content-Type'  => 'application/x-www-form-urlencoded',
+            ],
+
+            'client_secret' => '3364711930325075',
+            'grant_type'    => 'authorization_code',
+            'code'          => $request->code,
+            'redirect_uri'  => 'https://vende-libre.herokuapp.com/vincular',
+        ]);
+
+        dd($response);
     }
 }
