@@ -36,7 +36,8 @@ class StoreController extends Controller
 			'phone' => ['required', 'min:2', 'max:15'],
 			'email' => ['required', 'min:2', 'max:155'],
 			'direction' => ['required', 'min:2', 'max:155'],
-			'description' => ['required', 'min:2', 'max:155']
+			'description' => ['required', 'min:2', 'max:155'],
+			'token_mercadoPago' => ['required', 'min:2', 'max:155']
 		]);
 		
 		$store = new Store;
@@ -50,6 +51,7 @@ class StoreController extends Controller
 		$store->direction = $request->direction;
 		$store->description = $request->description;
 		$store->user_id = Auth::id();
+		$store->token_mercadoPago = $request->token_mercadoPago;
 
     	$store->save();
 
