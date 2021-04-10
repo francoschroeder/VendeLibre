@@ -39,10 +39,6 @@
 									<input class="form-control" type="text" id="example-text-input" name = "phone">
 								</div>
 								<div class="col-lg-12">
-									<label for="example-text-input">Cradencial MercadoPago<span></span></label>
-									<input class="form-control" type="text" id="example-text-input" name = "token_mercadoPago">
-								</div>
-								<div class="col-lg-12">
 									<label for="example-float-input" >Latitud</label>
 									<input class="form-control" type="float" id="example-float-input" name = "latitud">
 								</div>

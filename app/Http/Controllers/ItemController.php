@@ -15,8 +15,6 @@ class ItemController extends Controller
         $item = Item::findOrFail($id);
         $store = Store::findOrFail($store_id);
 
-        dd('TEST-7c6518eb-ef90-4386-8d98-c6e59fa56135');
-
         // Agrega credenciales
         MercadoPago\SDK::setAccessToken($store->token_mercadoPago);
 
