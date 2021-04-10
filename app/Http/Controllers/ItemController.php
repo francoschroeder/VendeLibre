@@ -13,9 +13,10 @@ class ItemController extends Controller
 {
     public function show($store_id, $id) {
         $item = Item::findOrFail($id);
+        $store = Store::findOrFail($store_id);
 
         // Agrega credenciales
-        MercadoPago\SDK::setAccessToken('TEST-3364711930325075-030813-3ee07693f9e87c8a7226b298529dc3b5-209177342');
+        MercadoPago\SDK::setAccessToken($store->token_mercadoPago);
 
         // Crea un objeto de preferencia
         $preference = new MercadoPago\Preference();
@@ -28,7 +29,6 @@ class ItemController extends Controller
         $preference->items = array($product);
         $preference->save();
 
-        $store = Store::findOrFail($store_id);
         $user = auth()->user();
 		
         if (auth()->user()==null){
