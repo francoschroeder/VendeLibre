@@ -54,8 +54,8 @@ class HomeController extends Controller
 
         $user = auth()->user();
 
-        $user->token_mercadopago = $response->json()->input('access_token');
-        $user->refreshtoken_mercadopago = $response->json()->input('refresh_token');
+        $user->token_mercadopago = $response->json(['access_token']);
+        $user->refreshtoken_mercadopago = $response->json(['refresh_token']);
 
         return view('vincular');
     }
