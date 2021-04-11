@@ -17,7 +17,7 @@ class ItemController extends Controller
         $user = $store->user;
 
         // Agrega credenciales
-        MercadoPago\SDK::setAccessToken($user->token_mercadoPago);
+        MercadoPago\SDK::setAccessToken($user->token_mercadopago);
 
         // Crea un objeto de preferencia
         $preference = new MercadoPago\Preference();
