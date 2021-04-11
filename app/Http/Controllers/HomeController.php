@@ -52,6 +52,11 @@ class HomeController extends Controller
             'redirect_uri'  => env('MERCADOPAGO_REDIRECT_URI'),
         ]);
 
-        dd($response->body());
+        $user = auth()->user();
+
+        $user->token_mercadopago = $response->body()->input('access_token');
+        $user->refreshtoken_mercadopago = $response->body()->input('refresh_token');
+
+        return view('vincular');
     }
 }

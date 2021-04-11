@@ -21,6 +21,8 @@ class User extends Authenticatable
         'email',
         'password',
         'api_token',
+        'token_mercadopago',
+        'refreshtoken_mercadopago',
     ];
 
     /**
