@@ -2,21 +2,15 @@
 @extends('layouts.headerLogin')
 
 @section('content')
-<section class="hero-section">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-        <a class="navbar-brand">Buscar Tienda</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
+<div class="col-8">
+        <div class="input-group">
+        <div class="input-group-append"><span class="input-group-text">Busca la Tienda que necesitas</span></div>
+            <input type="text" class="form-control" id="text" placeholder="Ingrese nombre">
         </div>
+        <div id="resultados" class="bg-light border"></div>
     </div>
-    </nav>
+<section class="hero-section">
+   
     <div class="hero-items owl-carousel">
         <div class="single-hero-items">
             <div class="container">
@@ -35,7 +29,20 @@
     </div>
     <div class="container">
         @yield('storeList')
-    </div>    
+    </div>
+        
 </section>
+<script>
+    window.addEventListener('load',function(){
+        document.getElementById("text").addEventListener("keyup", () => {
+            if((document.getElementById("text").value.length)>=1)
+                fetch(`/search?text=${document.getElementById("text").value}`,{ method:'get' })
+                .then(response  =>  response.text() )
+                .then(html      =>  {   document.getElementById("resultados").innerHTML = html  })
+            else
+                document.getElementById("resultados").innerHTML = ""
+        })
+    });    
 
+</script>
 @endsection

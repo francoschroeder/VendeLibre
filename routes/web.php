@@ -41,5 +41,7 @@ Route::get('/store/{id_store}/{id_item}', 'ItemController@show')->name('item.sho
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::get('/search','HomeController@search')->name('home');;
+
 Route::get('/vincular', 'HomeController@vincular')
 		->middleware('auth');

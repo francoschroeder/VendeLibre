@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use App\Models\Store;
 
 class HomeController extends Controller
 {
@@ -34,6 +35,13 @@ class HomeController extends Controller
                     ->with(compact('stores'));
                  
         }
+    }
+
+    public function search(Request $request)
+    {
+        $nombres  = Store::where("name","like",$request->text."%")->take(5)->get();
+        if ($nombres != null)
+         return view("pages")->with(compact('nombres'));      
     }
 
     public function createStore()
