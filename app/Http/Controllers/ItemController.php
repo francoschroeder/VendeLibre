@@ -35,7 +35,8 @@ class ItemController extends Controller
         if (auth()->user()==null){
 			return view('item.show')
                 ->with(compact('item'))
-                ->with(compact('store'));
+                ->with(compact('store'))
+                ->with(compact('preference'));
 		}
 		else if (auth()->user()->id){
             $stores = $user->stores;
