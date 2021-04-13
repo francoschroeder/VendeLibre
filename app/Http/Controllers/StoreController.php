@@ -85,7 +85,8 @@ class StoreController extends Controller
 		$stores = $user->stores;
 
 		if ($store->user_id != $user->id)
-			return view('error');
+			return view('error')
+				->with('message', 'No está autorizado para acceder a este contenido');
 
 		return view('store.editstore')
 			->with(compact('store'))

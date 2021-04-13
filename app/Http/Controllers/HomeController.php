@@ -61,7 +61,8 @@ class HomeController extends Controller
         ]);
 
         if ($response->failed())
-            return view('error');
+            return view('error')
+                ->with('message', 'Ocurrió un error al vincularse. Intente nuevamente');
 
         $user = auth()->user();
 

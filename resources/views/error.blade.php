@@ -7,7 +7,7 @@
         <div class="single-hero-items">
             <div class="container">
                 <h1>Error</h1>
-                <p>No está autorizado para acceder a este contenido</p>
+                <p>{{$message}}</p>
             </div>
         </div>
     </div>
