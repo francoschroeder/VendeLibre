@@ -60,6 +60,9 @@ class HomeController extends Controller
             'redirect_uri'  => env('MERCADOPAGO_REDIRECT_URI'),
         ]);
 
+        if ($response->failed())
+            return view('error');
+
         $user = auth()->user();
 
         $user->token_mercadopago = $response->json(['access_token']);
