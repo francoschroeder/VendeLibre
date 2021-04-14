@@ -8,7 +8,7 @@
                 <li><a  href="/store/{{$store->id}}">Shop</a></li>
                 <li><a href="/store/{{$store->id}}/contact">Contact</a></li>
 
-                @if (Auth::check() && Auth::user()->id == $store->user_id  )
+                @if (Auth::check() && Auth::user()->id == $store->user_id)
                     <li><a href="/store/{{$store->id}}/addItem">Agregar Producto</a></li>
                     <li><a href="/store/{{$store->id}}/edit">Editar Pagina</a> </li>               
             </ul>
