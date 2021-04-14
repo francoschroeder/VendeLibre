@@ -61,7 +61,7 @@ class ItemController extends Controller
     public function createItem($store_id){
         request()->validate([
             'title' => ['required', 'min:2', 'max:50'],
-            'price' => ['required', 'min:0,0', 'digits:6'],
+            'price' => ['required', 'min:0,00', 'max:999999,99'],
             'description' => ['required', 'min:2', 'max:155'],
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg'
         ]);

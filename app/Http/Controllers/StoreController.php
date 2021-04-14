@@ -88,10 +88,27 @@ class StoreController extends Controller
 		if ($store->user_id != $user_id)
 			return response()->json("Acceso no autorizado. Usted no es el propietario de esta tienda");
 
+		$validator = Validator::make($request->all(), [
+            'name' => ['min:2', 'max:50'],
+			'description' => ['min:2', 'max:155']
+        ]);
+
+        if ($validator->fails())
+            return response()->json("Solicitud inválida");
+
 		$store->name = $request->input('name');
 		$store->description = $request->input('description');
 
 		foreach ($request->input('items') as $itemResponse) {
+			$validator = Validator::make($itemResponse->all(), [
+            	'title' => ['min:2', 'max:50'],
+            	'price' => ['min:0,00', 'max:999999,99'],
+            	'description' => ['min:2', 'max:155']
+        	]);
+
+        	if ($validator->fails())
+            	return response()->json("Solicitud inválida");
+
 			$item = Item::find($itemResponse['id']);
 			$item->title = $itemResponse['title'];
 			$item->description = $itemResponse['description'];
