@@ -15,6 +15,10 @@ class ItemController extends Controller
         $item = Item::findOrFail($id);
         $store = Store::findOrFail($store_id);
         $user = $store->user;
+        $stores = [];
+
+        if (auth()->user() != null)
+            $stores = auth()->user()->stores;
 
         if ($user->token_mercadopago == null)
             return view('item.show')
@@ -37,7 +41,7 @@ class ItemController extends Controller
         $preference->items = array($product);
         $preference->save();
 
-        $user = auth()->user();
+        /*$user = auth()->user();
 		
         if (auth()->user()==null){
 			return view('item.show')
@@ -47,7 +51,7 @@ class ItemController extends Controller
                 ->with(compact('preference'));
 		}
 		else if (auth()->user()->id){
-            $stores = $user->stores;
+            $stores = $user->stores;*/
 			return view('item.show')
                 ->with(compact('item'))
                 ->with(compact('store'))
