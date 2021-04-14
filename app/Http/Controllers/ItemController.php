@@ -43,6 +43,7 @@ class ItemController extends Controller
 			return view('item.show')
                 ->with(compact('item'))
                 ->with(compact('store'))
+                ->with('no_token', false)
                 ->with(compact('preference'));
 		}
 		else if (auth()->user()->id){
@@ -51,6 +52,7 @@ class ItemController extends Controller
                 ->with(compact('item'))
                 ->with(compact('store'))
                 ->with(compact('stores'))
+                ->with('no_token', false)
                 ->with(compact('preference'));
         
         }
