@@ -18,7 +18,7 @@
                 <i class="ti-menu"></i>
                 <span>Mis Tiendas</span>
                 <ul class="depart-hover">
-                    @foreach($stores as $store )
+                    @foreach(Auth::user()->stores as $store)
                         <li><a href="/store/{{$store->id}}">{{$store->name}}</a></li>
                     @endforeach
                 </ul>
