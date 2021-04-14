@@ -32,7 +32,11 @@ class ItemController extends Controller
         $product = new MercadoPago\Item();
         $product->title = $item->title;
         $product->quantity = 1;
+        $product->description = $item->description;
+        $product->picture_url = url($item->image);
         $product->unit_price = $item->price;
+        $product->currency_id = 'ARS';
+        
         $preference->items = array($product);
         $preference->save();
 
