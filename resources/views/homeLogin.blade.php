@@ -16,6 +16,9 @@
         </div>
     </div>
     <div class="col-sm">
+    @if (Auth::user()->token_mercadopago != null)
+        <p>¡Su cuenta ya está vinculada con MercadoPago!</p>
+    @endif
     <a href="https://auth.mercadopago.com.ar/authorization?client_id={{env('MERCADOPAGO_APP_ID')}}&response_type=code&platform_id=mp&redirect_uri={{env('MERCADOPAGO_REDIRECT_URI')}}">
                 <button class="btn btn-outline-info" >Vincular con MercadoPago</button>
             </a>
