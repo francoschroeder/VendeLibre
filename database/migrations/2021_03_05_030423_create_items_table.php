@@ -23,6 +23,7 @@ class CreateItemsTable extends Migration
             $table->string('title');
             $table->float('price');
             $table->string('description');
+            $table->string('image')->default('/images/placeholder.jpg');
             $table->index('store_id');
         });
     }

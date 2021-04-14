@@ -34,7 +34,7 @@ export default function TableItem({item, edit, onDelete}) {
   const [description, setDescription] = useState(item.description);
   const [price, setPrice] = useState(item.price);
   const [editable, setEditable] = useState(false);
-  const [image, setImage] = useState('/images/'+item.id);
+  const [image, setImage] = useState(item.image);
   let { id } = useParams();
 
   if (editable)
@@ -43,7 +43,7 @@ export default function TableItem({item, edit, onDelete}) {
     <TableCell component="th" scope="row">
       <input id={'uploadImage'+item.id} type="file" name="image" onChange={updateImage} hidden/>
       <label htmlFor={'uploadImage'+item.id}>
-        <img className= {classes.cardMedia} src={image} onError={placeholderImage} style={{maxWidth: 345}}/>
+        <img className= {classes.cardMedia} src={image} style={{maxWidth: 345}}/>
       </label>
     </TableCell>
     <TableCell align="left">
@@ -94,7 +94,7 @@ export default function TableItem({item, edit, onDelete}) {
   return (
     <TableRow >
     <TableCell component="th" scope="row">
-      <img className= {classes.cardMedia} src={image} onError={placeholderImage} style={{maxWidth: 345}}/>
+      <img className= {classes.cardMedia} src={image} style={{maxWidth: 345}}/>
     </TableCell>
     <TableCell align="left">
       <Typography gutterBottom variant="h5" component="h2">
@@ -129,7 +129,7 @@ export default function TableItem({item, edit, onDelete}) {
   return (
     <TableRow >
     <TableCell component="th" scope="row">
-      <img className= {classes.cardMedia} src={image} onError={placeholderImage} style={{maxWidth: 345}}/>
+      <img className= {classes.cardMedia} src={image} style={{maxWidth: 345}}/>
     </TableCell>
     <TableCell align="left">
       <Typography gutterBottom variant="h5" component="h2">
@@ -153,11 +153,6 @@ export default function TableItem({item, edit, onDelete}) {
     </TableCell>
   </TableRow>
   );
-
-  function placeholderImage(e) {
-    e.target.onerror=null;
-    e.target.src="/images/placeholder.jpg";
-  }
 
   function updateImage(e) {
     setImage(URL.createObjectURL(e.target.files[0]));

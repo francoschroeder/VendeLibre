@@ -151,6 +151,9 @@ class StoreController extends Controller
 
             $request->file('img')->move(public_path('images'), 'store'.$store_id);
 
+            $store->image = '/images/store'.$store_id;
+            $store->save();
+
             return response()->json("Imagen guardada satisfactoriamente");
         }
 

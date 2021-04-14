@@ -16,6 +16,13 @@ class ItemController extends Controller
         $store = Store::findOrFail($store_id);
         $user = $store->user;
 
+        if ($user->token_mercadopago == null)
+            return view('item.show')
+                ->with(compact('item'))
+                ->with(compact('store'))
+                ->with('stores', $user->stores)
+                ->with('no_token', true);
+
         // Agrega credenciales
         MercadoPago\SDK::setAccessToken($user->token_mercadopago);
 
@@ -80,8 +87,12 @@ class ItemController extends Controller
         $item->store_id = $store_id;
         $item->save();
 
-        if (request()->hasFile('image'))
+        if (request()->hasFile('image')) {
             request('image')->move(public_path('images'), $item->id);
+            $item->image = '/images/'.$item->id;
+        }
+
+        $item->save();
 
         return redirect('/store/'.$store_id); 
     }
@@ -117,6 +128,9 @@ class ItemController extends Controller
                 return response()->json("Solicitud inválida: Imagen no soportada");
 
             $request->file('img')->move(public_path('images'), $item_id);
+            $item->image = '/images/'.$item_id;
+
+            $item->save();
 
             return response()->json("Imagen guardada satisfactoriamente");
         }

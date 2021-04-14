@@ -49,7 +49,7 @@ export default function Store({edit}) {
     const [items, setItems] = useState([]);
     const [style, setStyle] = useState([]);
     const [background, setBackground] = useState('white');
-    const [bkgImage, setBkgImage] = useState('url(/images/store'+id+')');
+    const [bkgImage, setBkgImage] = useState();
     const img = "caca"
 
     useEffect(() =>{
@@ -65,6 +65,9 @@ export default function Store({edit}) {
                 setItems(response.data.items);
                 setStyle(response.data.style);
                 setBackground(response.data.style.background_color);
+
+                if (response.data.store.image != null)
+                    setBkgImage('url('+response.data.store.image+')')
         })
     }, []);
     

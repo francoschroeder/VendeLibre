@@ -32,7 +32,7 @@ export default function ItemCard({item, edit, onDelete, colorItem}) {
   const [description, setDescription] = useState(item.description);
   const [price, setPrice] = useState(item.price);
   const [editable, setEditable] = useState(false);
-  const [image, setImage] = useState('/images/'+item.id);
+  const [image, setImage] = useState(item.image);
 
   let { id } = useParams();
 
@@ -41,7 +41,7 @@ export default function ItemCard({item, edit, onDelete, colorItem}) {
     <Card className={classes.card} style = { {backgroundColor: colorItem}}>
       <input className= {classes.cardMedia} id={'uploadImage'+item.id} type="file" name="image" onChange={updateImage} hidden/>
       <label htmlFor={'uploadImage'+item.id}>
-        <img className= {classes.cardMedia}src={image} onError={placeholderImage}/>
+        <img className= {classes.cardMedia} src={image}/>
       </label>
       <CardContent className={classes.cardContent}>
         <input
@@ -80,7 +80,7 @@ export default function ItemCard({item, edit, onDelete, colorItem}) {
   else if (edit)
     return (
     <Card className={classes.card} style = { {backgroundColor: colorItem}}>
-      <img className= {classes.cardMedia} src={image} onError={placeholderImage}/>
+      <img className= {classes.cardMedia} src={image}/>
       <CardContent className={classes.cardContent}>
         <Typography gutterBottom variant="h5" component="h2">
           {title}
@@ -108,7 +108,7 @@ export default function ItemCard({item, edit, onDelete, colorItem}) {
   else  
   return (
     <Card className={classes.card} style = {{backgroundColor: colorItem}}>
-      <img className= {classes.cardMedia} src={image} onError={placeholderImage}/>
+      <img className= {classes.cardMedia} src={image}/>
       <CardContent className={classes.cardContent}>
         <Typography gutterBottom variant="h5" component="h2">
           {title}
@@ -127,11 +127,6 @@ export default function ItemCard({item, edit, onDelete, colorItem}) {
       </CardActions>
     </Card>
   );
-  
-  function placeholderImage(e) {
-    e.target.onerror=null;
-    e.target.src="/images/placeholder.jpg";
-  }
 
   function updateImage(e) {
     setImage(URL.createObjectURL(e.target.files[0]));
