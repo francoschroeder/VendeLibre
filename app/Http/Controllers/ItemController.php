@@ -15,16 +15,11 @@ class ItemController extends Controller
         $item = Item::findOrFail($id);
         $store = Store::findOrFail($store_id);
         $user = $store->user;
-        $stores = [];
-
-        if (auth()->user() != null)
-            $stores = auth()->user()->stores;
 
         if ($user->token_mercadopago == null)
             return view('item.show')
                 ->with(compact('item'))
                 ->with(compact('store'))
-                ->with('stores', $user->stores)
                 ->with('no_token', true);
 
         // Agrega credenciales
@@ -44,25 +39,19 @@ class ItemController extends Controller
 		return view('item.show')
             ->with(compact('item'))
             ->with(compact('store'))
-            ->with(compact('stores'))
             ->with('no_token', false)
             ->with(compact('preference'));
     }
 
     public function addItem($id_store) {
         $store = Store::findOrFail($id_store);
-        $user = auth()->user();
 		
-        if (auth()->user()==null){
-			return view('store.showstore')
-					->with(compact('store'));
-		}
-		else if (auth()->user()->id){
-            $stores = $user->stores;
-            return view('item.create')
-            ->with(compact('store'))
-            ->with(compact('stores'));
-        }
+        if (auth()->user()->id != $store->user->id)
+			return view('error')
+					->with('message', 'No está autorizado para acceder a este contenido');
+
+        return view('item.create')
+            ->with(compact('store'));
     }
 
     public function createItem($store_id){

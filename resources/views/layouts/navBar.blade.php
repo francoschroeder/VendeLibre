@@ -10,7 +10,7 @@
 
                 @if (Auth::check() && Auth::user()->id == $store->user_id  )
                     <li><a href="/store/{{$store->id}}/addItem">Agregar Producto</a></li>
-                    <li><a href="/store/{{$store->id}}/edit">Editar Pagina</a> </li>                                            
+                    <li><a href="/store/{{$store->id}}/edit">Editar Pagina</a> </li>               
             </ul>
         </nav>
         <div class="nav-depart">
