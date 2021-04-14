@@ -29,6 +29,7 @@
                 data-preference-id={{$preference->id}}>
             </script>
             @elseif (Auth::check() && Auth::user()->id == $store->user_id)
+            <br>
             <p>¡Todavía no ha vinculado su cuenta con MercadoPago!</p>
             <p>No podrá empezar a vender sus productos hasta que no lo haga</p>
             <a href="https://auth.mercadopago.com.ar/authorization?client_id={{env('MERCADOPAGO_APP_ID')}}&response_type=code&platform_id=mp&redirect_uri={{env('MERCADOPAGO_REDIRECT_URI')}}">
@@ -36,7 +37,6 @@
             </a>
             @endif
         </div>
-      
     </div>
   </div>
 </div>
