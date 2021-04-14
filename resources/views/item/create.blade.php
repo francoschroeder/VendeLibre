@@ -20,7 +20,7 @@
 										<div class="form-group">
 											<label for="example-date-input" class="col-2 col-form-label">Precio</label>
 											<div class="col-10">
-											<input class="form-control" type="number" min="0,00"  name="price">
+											<input class="form-control" type="number" step="any" min="0,00" max="999999.99" name="price">
 											</div>
 										</div>
 										<div class="form-group">

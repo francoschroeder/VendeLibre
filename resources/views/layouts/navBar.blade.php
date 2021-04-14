@@ -8,9 +8,9 @@
                 <li><a  href="/store/{{$store->id}}">Shop</a></li>
                 <li><a href="/store/{{$store->id}}/contact">Contact</a></li>
 
-                @if (Auth::check() && Auth::user()->id == $store->user_id  )
+                @if (Auth::check() && Auth::user()->id == $store->user_id)
                     <li><a href="/store/{{$store->id}}/addItem">Agregar Producto</a></li>
-                    <li><a href="/store/{{$store->id}}/edit">Editar Pagina</a> </li>                                            
+                    <li><a href="/store/{{$store->id}}/edit">Editar Pagina</a> </li>               
             </ul>
         </nav>
         <div class="nav-depart">
@@ -18,7 +18,7 @@
                 <i class="ti-menu"></i>
                 <span>Mis Tiendas</span>
                 <ul class="depart-hover">
-                    @foreach($stores as $store )
+                    @foreach(Auth::user()->stores as $store)
                         <li><a href="/store/{{$store->id}}">{{$store->name}}</a></li>
                     @endforeach
                 </ul>

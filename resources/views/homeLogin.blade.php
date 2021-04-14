@@ -2,19 +2,31 @@
 
 @section('storeList')
 <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-8 order-2 order-lg-1 produts-sidebar-filter">
-                    <div class="filter-widget">
-                        <h4 class="fw-title">Mis Tiendas</h4>
+    <div class="col-sm">    
+        <div class="filter-widget">
+            <h4 class="fw-title">Mis Tiendas</h4>
                         
-                        @forelse($stores as $store )
-                        <ul class="filter-catagories">
-                            <li><a href="/store/{{$store->id}}">{{$store->name}}</a></li>
-                        </ul>
-                        @empty
-                        <p>Todavia no tienes ninguna tienda</p>
-                        @endforelse
-                    </div>
-                    </div>
+            @forelse($stores as $store )
+                <ul class="filter-catagories">
+                    <li><a href="/store/{{$store->id}}">{{$store->name}}</a></li>
+                </ul>
+            @empty
+                <p>Todavia no tienes ninguna tienda</p>
+            @endforelse
+        </div>
     </div>
+    <div class="col-sm">
+    @if (Auth::user()->token_mercadopago != null)
+        <p>¡Su cuenta ya está vinculada con MercadoPago!</p>
+    @else
+        <p>Su cuenta aún no está vinculada con MercadoPago</p>
+    @endif
+    <a href="https://auth.mercadopago.com.ar/authorization?client_id={{env('MERCADOPAGO_APP_ID')}}&response_type=code&platform_id=mp&redirect_uri={{env('MERCADOPAGO_REDIRECT_URI')}}">
+                <button class="btn btn-outline-info" >Vincular con MercadoPago</button>
+            </a>
+    </div>
+</div>
+
+
 
 @endSection

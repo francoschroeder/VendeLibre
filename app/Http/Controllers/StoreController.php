@@ -14,18 +14,9 @@ class StoreController extends Controller
 {
 	public function show($store_id) {
 		$store = Store::findOrFail($store_id);
-		$user = auth()->user();
-  
-		if (auth()->user()==null || auth()->user()->id != $store->user_id) {
-			return view('store.showstore')
-				->with(compact('store'));
-		} 
-		else if (auth()->user()->id == $store->user_id) {
-			$stores = $user->stores;
-			return view('store.showstore')
-				->with(compact('store'))
-				->with(compact('stores'));
-		}
+
+		return view('store.showstore')
+			->with(compact('store'));
 	}
 
     public function create(Request $request) {
@@ -60,36 +51,25 @@ class StoreController extends Controller
     	return redirect('/store/' . $store->id);
 	}
 	
-	public function description($store_id){
+	public function description($store_id) {
 		$store = Store::findOrFail($store_id);
-		$user = auth()->user();
 		
 		$map = Mapper::map($store->latitud, $store->longitud);
 
-		if (auth()->user()==null){
-			return view('store.description')->with(compact('store'))
-										->with(compact('map'));
-		}
-		else if (auth()->user()->id){
-			$stores = $user->stores;
-			return view('store.description')
-							->with(compact('store'))
-							->with(compact('map'))
-							->with(compact('stores'));
-		 }
+		return view('store.description')
+			->with(compact('store'))
+			->with(compact('map'));
 	}
 
 	public function edit($store_id) {
 		$store = Store::find($store_id);
-		$user = auth()->user();
-		$stores = $user->stores;
 
-		if ($store->user_id != $user->id)
-			return view('error');
+		if ($store->user_id != auth()->user()->id)
+			return view('error')
+				->with('message', 'No está autorizado para acceder a este contenido');
 
 		return view('store.editstore')
-			->with(compact('store'))
-			->with(compact('stores'));
+			->with(compact('store'));
 	}
 
 	//API
@@ -108,10 +88,25 @@ class StoreController extends Controller
 		if ($store->user_id != $user_id)
 			return response()->json("Acceso no autorizado. Usted no es el propietario de esta tienda");
 
+		$validator = Validator::make($request->all(), [
+            'name' => ['min:2', 'max:50'],
+			'description' => ['min:2', 'max:155']
+        ]);
+
+        if ($validator->fails())
+            return response()->json("Solicitud inválida: El nombre o la descripción de la tienda son muy largos");
+
 		$store->name = $request->input('name');
 		$store->description = $request->input('description');
 
 		foreach ($request->input('items') as $itemResponse) {
+			if ($itemResponse['price'] > 999999.99)
+				return response()->json("Solicitud inválida: El precio del artículo ".$itemResponse['title']." es muy largo");
+			if (strlen($itemResponse['title']) > 50)
+				return response()->json("Solicitud inválida: El título del artículo ".$itemResponse['title']." es muy largo");
+			if (strlen($itemResponse['description']) > 155)
+				return response()->json("Solicitud inválida: La descripción del artículo ".$itemResponse['title']." es muy largo");
+
 			$item = Item::find($itemResponse['id']);
 			$item->title = $itemResponse['title'];
 			$item->description = $itemResponse['description'];
@@ -149,6 +144,9 @@ class StoreController extends Controller
                 return response()->json("Solicitud invalida");
 
             $request->file('img')->move(public_path('images'), 'store'.$store_id);
+
+            $store->image = '/images/store'.$store_id;
+            $store->save();
 
             return response()->json("Imagen guardada satisfactoriamente");
         }
