@@ -58,8 +58,6 @@ class ItemController extends Controller
                 ->with(compact('stores'))
                 ->with('no_token', false)
                 ->with(compact('preference'));
-        
-        }
     }
 
     public function addItem($id_store) {
