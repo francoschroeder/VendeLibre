@@ -41,23 +41,12 @@ class ItemController extends Controller
         $preference->items = array($product);
         $preference->save();
 
-        /*$user = auth()->user();
-		
-        if (auth()->user()==null){
-			return view('item.show')
-                ->with(compact('item'))
-                ->with(compact('store'))
-                ->with('no_token', false)
-                ->with(compact('preference'));
-		}
-		else if (auth()->user()->id){
-            $stores = $user->stores;*/
-			return view('item.show')
-                ->with(compact('item'))
-                ->with(compact('store'))
-                ->with(compact('stores'))
-                ->with('no_token', false)
-                ->with(compact('preference'));
+		return view('item.show')
+            ->with(compact('item'))
+            ->with(compact('store'))
+            ->with(compact('stores'))
+            ->with('no_token', false)
+            ->with(compact('preference'));
     }
 
     public function addItem($id_store) {
