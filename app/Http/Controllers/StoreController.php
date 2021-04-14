@@ -94,20 +94,18 @@ class StoreController extends Controller
         ]);
 
         if ($validator->fails())
-            return response()->json("Solicitud inválida");
+            return response()->json("Solicitud inválida: El nombre o la descripción de la tienda son muy largos");
 
 		$store->name = $request->input('name');
 		$store->description = $request->input('description');
 
 		foreach ($request->input('items') as $itemResponse) {
-			$validator = Validator::make($itemResponse->all(), [
-            	'title' => ['min:2', 'max:50'],
-            	'price' => ['min:0,00', 'max:999999,99'],
-            	'description' => ['min:2', 'max:155']
-        	]);
-
-        	if ($validator->fails())
-            	return response()->json("Solicitud inválida");
+			if ($itemResponse['price'] > 999999.99)
+				return response()->json("Solicitud inválida: El precio del artículo ".$itemResponse['title']." es muy largo");
+			if (strlen($itemResponse['title']) > 50)
+				return response()->json("Solicitud inválida: El título del artículo ".$itemResponse['title']." es muy largo");
+			if (strlen($itemResponse['description']) > 155)
+				return response()->json("Solicitud inválida: La descripción del artículo ".$itemResponse['title']." es muy largo");
 
 			$item = Item::find($itemResponse['id']);
 			$item->title = $itemResponse['title'];

@@ -50,7 +50,6 @@ export default function Store({edit}) {
     const [style, setStyle] = useState([]);
     const [background, setBackground] = useState('white');
     const [bkgImage, setBkgImage] = useState();
-    const img = "caca"
 
     useEffect(() =>{
         window.axios = require('axios');
