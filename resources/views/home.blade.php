@@ -6,18 +6,13 @@
 
 
     <div class="row justify-content-md-center">
-    <div class="col col-lg-2">
-  
-    </div>
+   
     <div class="col-md-auto">
     <div class="input-group">
-        <div class="input-group-append"><span class="input-group-text">Busca la Mejor Tienda que Necesitas</span></div>
+        <div class="input-group-append"><span class="input-group-text">Busca la Tienda que Necesitas</span></div>
             <input type="text" class="form-control" id="text" placeholder="Ingrese nombre">
         </div>
         <div id="resultados" class="bg-light border"></div>
-    </div>
-    <div class="col col-lg-2">
-    
     </div>
   </div>
 <section class="hero-section">
